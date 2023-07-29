@@ -10,14 +10,11 @@ const register = async function (req, res, next) {
 
       if (checkDuplicate) return res.status(409).json({ message: `Email is invalid or already taken` });
 
-      const createUser = await usersModel.create({
+      await usersModel.create({
          username,
          password,
          email,
       });
-
-      if (!createUser)
-         return res.status(400).json({ message: `Something went wrong, cannot create user please try again` });
 
       res.status(200).json({ message: `Account successfully created, welcome ${username}` });
    } catch (error) {

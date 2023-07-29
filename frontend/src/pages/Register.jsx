@@ -1,36 +1,64 @@
-import axios from 'axios';
-import { useRef } from 'react';
+import { Link } from "react-router-dom";
+import { useRef, useState } from "react";
+import { Button } from "../ui/Button";
+import { Section } from "../ui/Section";
+import { Input } from "../ui/Input";
+// import { ErrorMessage } from "../ui/ErrorMessage";
 
 export const Register = () => {
-   const usernameRef = useRef();
-   const passwordRef = useRef();
-   const emailRef = useRef();
+  const [disabledBtn, setDisabledBtn] = useState(true);
+  //   const [error, setError] = useState(false);
+  const formRef = useRef();
 
-   const login = (e) => {
-      e.preventDefault();
+  const verifyFrom = () => {
+    if (
+      !formRef.current.email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/) ||
+      formRef.current.password.value.length < 3 ||
+      formRef.current.username.value.length < 3
+    )
+      // return setError(true);
+      return setDisabledBtn(true);
+    setDisabledBtn(false);
+  };
 
-      const fe = async () => {
-         const res = await axios.post('http://localhost:8000/users/register', {
-            data: {
-               username: usernameRef.current.value,
-               password: passwordRef.current.value,
-               email: emailRef.current.value,
-            },
-         });
-         const data = await res.data;
-         console.log(data);
-      };
-      fe();
-   };
-
-   return (
-      <form className='flex flex-col w-[20em] p-4 gap-3 bg-slate-600'>
-         <input ref={usernameRef} type='text' placeholder='name' name='username' />
-         <input ref={passwordRef} type='text' placeholder='pass' name='password' />
-         <input ref={emailRef} type='text' placeholder='email' name='email' />
-         <button type='submit' onClick={login}>
-            Send
-         </button>
+  return (
+    <Section variant="flexCol">
+      <form
+        onChange={verifyFrom}
+        ref={formRef}
+        className="mx-auto flex w-fit flex-col gap-6 rounded-md bg-purple-200 p-4 backdrop-blur-md"
+      >
+        <Input
+          label="username"
+          type="text"
+          placeholder="e.g. adam"
+          variant="secondary"
+        />
+        {/* {error && <ErrorMessage>asdasdadadsasd</ErrorMessage>} */}
+        <Input
+          label="email"
+          type="text"
+          placeholder="e.g. adam@gmail.com"
+          variant="secondary"
+        />
+        {/* {error && <ErrorMessage>asdasdadadsasd</ErrorMessage>} */}
+        <Input
+          label="password"
+          type="text"
+          placeholder="password"
+          variant="secondary"
+        />
+        {/* {error && <ErrorMessage>asdasdadadsasd</ErrorMessage>} */}
+        <Button variant="primary" disabled={disabledBtn}>
+          Login
+        </Button>
       </form>
-   );
+      <Link to="/login">
+        <p className="opacity-70">
+          Have an account?
+          <span className="ml-2 underline">Log in</span>
+        </p>
+      </Link>
+    </Section>
+  );
 };

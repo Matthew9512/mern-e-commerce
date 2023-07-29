@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-import { Home } from "./pages/Home";
+import { Home } from "./pages/home/Home";
 import { Layout } from "./ui/Layout";
-import { PageNotFound } from "./ui/PageNotFound";
+import { PageNotFound } from "./pages/PageNotFound";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 
