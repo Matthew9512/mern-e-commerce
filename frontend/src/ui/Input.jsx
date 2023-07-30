@@ -6,7 +6,7 @@ export const Input = ({ variant, label, type, placeholder, onHandleFn }) => {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col shadow-sm">
       <label htmlFor={label}>{label}</label>
       <input
         onChange={onHandleFn}

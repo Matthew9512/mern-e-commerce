@@ -9,7 +9,7 @@ import { Register } from "./pages/Register";
 export const App = () => {
   return (
     <>
-      <main className="mx-auto min-h-screen max-w-screen-2xl bg-neutral-50 text-gray-800">
+      <main className="text-slate-800 mx-auto min-h-screen max-w-screen-2xl bg-primaryWhite text-primaryBlack">
         <BrowserRouter>
           <Routes>
             <Route element={<Layout />}>

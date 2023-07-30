@@ -1,14 +1,13 @@
 export const Image = ({ variant, product }) => {
   const styles = {
-    primary: "h-80 object-cover",
+    primary: "object-cover group-hover:scale-105 duration-300",
     profile: "rounded-full w-full h-full object-cover",
   };
-  // mix-blend-multiply
 
   return (
     <img
-      className={`${styles[variant]}`}
-      src={product?.img || "/cat.jpg"}
+      className={`${styles[variant]} `}
+      src={product?.image || "/cat.jpg"}
       alt={product?.title}
     />
   );

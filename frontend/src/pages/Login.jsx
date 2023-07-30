@@ -23,7 +23,7 @@ export const Login = () => {
       <form
         onChange={verifyFrom}
         ref={formRef}
-        className="mx-auto flex w-fit flex-col gap-6 rounded-md bg-purple-200 p-4 backdrop-blur-md"
+        className="mx-auto flex w-fit flex-col gap-6 rounded-md p-4 backdrop-blur-md"
       >
         <Input
           label="email"

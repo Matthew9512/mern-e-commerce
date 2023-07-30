@@ -1,12 +1,16 @@
-export const Button = ({ children, variant, disabled }) => {
-  const mainStyle = `bg-yellow-300 py-2 px-4 rounded-lg hover:bg-yellow-400 active:bg-yellow-400 border border-yellow-400 disabled:bg-red-500`;
+export const Button = ({ children, variant, disabled, onHandleFn }) => {
+  const mainStyle = `bg-primaryBlue text-primaryWhite py-2 px-4 rounded-2xl hover:bg-primaryBlue/90 active:bg-primaryBlue/90 border border-bg-primaryBlue/90 disabled:bg-secondaryWhite`;
   const styles = {
-    primary: `${mainStyle} text-red-600 w-fit mx-auto`,
-    secondary: `${mainStyle} text-blue-600`,
+    primary: `${mainStyle} w-fit mx-auto`,
+    secondary: `${mainStyle}`,
   };
 
   return (
-    <button disabled={disabled} className={`${styles[variant]}`}>
+    <button
+      onClick={onHandleFn}
+      disabled={disabled}
+      className={`${styles[variant]}`}
+    >
       {children}
     </button>
   );

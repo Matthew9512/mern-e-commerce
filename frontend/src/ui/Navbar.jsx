@@ -30,7 +30,7 @@ export const Navbar = () => {
     <nav
       ref={navRef}
       onClick={toggleNavbar}
-      className="relative top-0 z-50 mx-auto flex h-[50px] w-full items-center justify-between bg-purple-500 p-8 text-purple-100"
+      className="relative top-0 z-50 mx-auto flex h-[50px] w-full items-center justify-between p-8"
     >
       <p className="text-lg">logoIcon</p>
       <input type="checkbox" id="navbar-check" className="hidden" />
@@ -48,9 +48,9 @@ export const Navbar = () => {
       <ul className={`navbar__items-wrapper ${navbarVis ? "show" : "hide"}`}>
         <NavbarItem redirect="offer">Offer</NavbarItem>
         <NavbarItem redirect="about">About</NavbarItem>
-        <NavbarItem redirect="contact">Contact</NavbarItem>
+        <NavbarItem redirect="Login">Login</NavbarItem>
         <NavbarItem textSize="xl">
-          <span className="absolute -right-4 -top-3 h-6 w-6 rounded-full bg-red-400 text-center text-base">
+          <span className="absolute -right-4 -top-3 h-6 w-6 rounded-full bg-primaryBlue text-center text-base text-primaryWhite">
             1
           </span>
           {shoppingCartIcon}

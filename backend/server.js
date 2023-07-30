@@ -31,10 +31,52 @@ app.listen(PORT, () => {
 
 // productsModel.insertMany([
 //    {
-//       title: 'dainese boots',
+//       name: 'dainese boots',
+//       price: '600',
+//       description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta, commodi.',
+//       image: 'https://www.4motos.pl/userdata/public/gfx/31722/Buty-Dainese-TORQUE-3-OUT.jpg',
+//       category: 'boots',
+//       discount: true,
+//    },
+//    {
+//       name: 'dainese leather suit',
+//       price: '2000',
+//       description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta, commodi.',
+//       image: 'https://www.4motos.pl/userdata/public/gfx/37393/Kombinezon-Dainese-Laguna-Seca-5-1PC.jpg',
+//       category: 'leather-suits',
+//       discount: false,
+//    },
+//    {
+//       name: 'dainese jacket',
 //       price: '100',
 //       description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta, commodi.',
-//       img: 'https://www.4motos.pl/userdata/public/gfx/31722/Buty-Dainese-TORQUE-3-OUT.jpg',
+//       image: 'https://lagunaseca.pl/pol_pl_Kurtka-motocyklowa-tekstylna-Dainese-Avro-D2-Tex-bialo-czarno-czerwona-85222_1.png',
+//       category: 'jackets',
+//       discount: true,
+//    },
+//    {
+//       name: 'dainese backpack',
+//       price: '100',
+//       description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta, commodi.',
+//       image: 'https://www.motostyl.pl//pol_pl_Plecak-Dainese-D-Mach-Compact-czarny-2463_1.jpg',
+//       category: 'accessories',
+//       discount: false,
+//    },
+//    {
+//       name: 'dainese gloves',
+//       price: '100',
+//       description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta, commodi.',
+//       image: 'https://immotion.pl/7169-big_photo/dainese-rekawiczki-hg-caddo.jpg',
+//       category: 'gloves',
+//       discount: false,
+//    },
+//    {
+//       name: 'dainese helmets',
+//       price: '100',
+//       description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta, commodi.',
+//       image: 'https://wrosport.pl/img/cms/DAINESE/Kask%20DAINESE%20Linea%2001%20Mips%20Bia%C5%82y%2010.jpg',
+//       category: 'helmets',
+//       discount: false,
 //    },
 // ]);
 // =========================
