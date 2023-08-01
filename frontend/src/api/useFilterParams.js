@@ -24,5 +24,5 @@ export const useFilterParams = (setEndpoint) => {
     setSearchParams(searchParams);
   };
 
-  return { searchParams, clearFilters, handleSearchBy };
+  return { searchParams, setSearchParams, clearFilters, handleSearchBy };
 };

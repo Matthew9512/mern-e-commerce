@@ -9,7 +9,7 @@ export const TestiminalCart = ({ style }) => {
 
   return (
     <div
-      className={`w-full ${styles[style]} flex justify-center gap-4 rounded-md bg-secondaryWhite p-3`}
+      className={`w-full ${styles[style]} flex justify-center gap-4 rounded-md border-t border-primaryBlack/40 bg-secondaryWhite p-3`}
     >
       <div className="my-auto h-12 w-12 flex-none">
         <Image variant="profile" />

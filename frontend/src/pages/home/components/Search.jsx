@@ -1,4 +1,3 @@
-// import { useSearchParams } from "react-router-dom";
 import debounce from "lodash.debounce";
 import { useMemo } from "react";
 import { Input } from "../../../ui/Input";
@@ -10,39 +9,16 @@ import { useFilterParams } from "../../../api/useFilterParams";
 import { handleNameFilter } from "../../../api/filterBy";
 
 export const Search = ({ setEndpoint }) => {
-  const { searchParams, clearFilters, handleSearchBy } =
+  const { searchParams, setSearchParams, clearFilters, handleSearchBy } =
     useFilterParams(setEndpoint);
-  // const [searchParams, setSearchParams] = useSearchParams();
 
-  // // clear all params
-  // const clearFilters = () => {
-  //   setSearchParams(searchParams.set("", ""));
-  //   setEndpoint(`/products`);
-  // };
-
-  // // handle filter params
-  // const handleSearchBy = (e) => {
-  //   const click = e.target;
-
-  //   if (!click.value) return;
-
-  //   if (click.dataset.category === "category") {
-  //     searchParams.set("category", click.value);
-  //     setEndpoint(`/products/category/${click.value}`);
-  //     searchParams.delete("sortBy");
-  //   } else searchParams.set("sortBy", click.value);
-
-  //   setSearchParams(searchParams);
-  // };
-
-  // const handleNameFilter = (e) => {
-  //   const click = e.target;
-  //   if (!click.value) return;
-  //   setEndpoint(`/products/q?name=${click.value}`);
-  // };
-
+  // debounce for search by name input
   const debounceFn = useMemo(
-    () => debounce((e) => handleNameFilter(e, setEndpoint), 400),
+    () =>
+      debounce((e) => {
+        setSearchParams(searchParams.set("", ""));
+        handleNameFilter(e, setEndpoint);
+      }, 400),
     [],
   );
 
