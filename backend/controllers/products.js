@@ -1,9 +1,14 @@
 const productsModel = require('../models/productsModel');
 
+// handle sale
+const saleHandler = async function (req, res, next) {
+   await productsModel.updateMany({ category: 'helmets' }, { sale: true, discount: 50 }, { new: true });
+};
+
 const featuresProducts = async function (req, res, next) {
    try {
-      const findProducts = await productsModel.find();
-      // features modela add
+      //    await saleHandler();
+      const findProducts = (await productsModel.find()).splice(0, 2);
       res.status(200).json(findProducts);
    } catch (error) {
       next(error.message);
@@ -40,4 +45,4 @@ const searchByName = async (req, res, next) => {
    }
 };
 
-module.exports = { featuresProducts, categoryProducts, searchByName };
+module.exports = { saleHandler, featuresProducts, categoryProducts, searchByName };

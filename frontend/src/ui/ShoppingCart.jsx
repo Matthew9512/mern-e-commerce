@@ -11,7 +11,7 @@ export const ShoppingCart = ({ shoppingCartVis, setShoppingCartVis }) => {
 
    return (
       <aside
-         className={`w-96 min-h-screen overflow-y-scroll fixed right-0 bottom-0 z-50 bg-primaryGrey p-8 duration-500 ${
+         className={`w-96 h-screen overflow-hidden fixed right-0 bottom-0 z-50 bg-primaryGrey p-8 duration-500 ${
             shoppingCartVis ? 'translate-x-[100%]' : 'translate-x-0'
          } `}
       >
@@ -23,7 +23,7 @@ export const ShoppingCart = ({ shoppingCartVis, setShoppingCartVis }) => {
          >
             {closeIcon}
          </Button>
-         <article className='flex flex-col divide-y divide-primaryBlack/20 gap-4 py-16'>
+         <article className='flex overflow-y-auto h-4/5 flex-col divide-y divide-primaryBlack/20 gap-4 py-16 '>
             {storedValues.map((product) => (
                <ShoppingCartItem
                   key={product?._id}
