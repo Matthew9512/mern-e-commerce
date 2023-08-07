@@ -1,64 +1,68 @@
-import { Link } from "react-router-dom";
-import { useRef, useState } from "react";
-import { Button } from "../ui/Button";
-import { Section } from "../ui/Section";
-import { Input } from "../ui/Input";
-// import { ErrorMessage } from "../ui/ErrorMessage";
+import { Link } from 'react-router-dom';
+import { useRef, useState } from 'react';
+import { toast } from 'react-hot-toast';
+import { useMutation } from '@tanstack/react-query';
+import { Button } from '../ui/Button';
+import { Section } from '../ui/Section';
+import { Input } from '../ui/Input';
+import { LoadingButton } from '../ui/LoadingButton';
+import { fetchData } from '../api/fetchData';
+import { Form } from '../ui/Form';
 
 export const Register = () => {
-  const [disabledBtn, setDisabledBtn] = useState(true);
-  //   const [error, setError] = useState(false);
-  const formRef = useRef();
+   const [disabledBtn, setDisabledBtn] = useState(true);
+   const formRef = useRef();
 
-  const verifyFrom = () => {
-    if (
-      !formRef.current.email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/) ||
-      formRef.current.password.value.length < 3 ||
-      formRef.current.username.value.length < 3
-    )
-      // return setError(true);
-      return setDisabledBtn(true);
-    setDisabledBtn(false);
-  };
+   const registerMutation = useMutation({
+      mutationFn: async (e) => {
+         e.preventDefault();
+         return await fetchData({
+            method: 'POST',
+            url: '/users/register',
+            data: {
+               password: `${formRef.current.password.value}`,
+               email: `${formRef.current.email.value}`,
+               username: `${formRef.current.username.value}`,
+            },
+         });
+      },
+      onSuccess: (data) => toast.success(data?.message),
+      onError: (err) => toast.error(err.message),
+   });
 
-  return (
-    <Section variant="flexCol">
-      <form
-        onChange={verifyFrom}
-        ref={formRef}
-        className="mx-auto flex w-fit flex-col gap-6 rounded-md p-4 backdrop-blur-md"
-      >
-        <Input
-          label="username"
-          type="text"
-          placeholder="e.g. adam"
-          variant="secondary"
-        />
-        {/* {error && <ErrorMessage>asdasdadadsasd</ErrorMessage>} */}
-        <Input
-          label="email"
-          type="text"
-          placeholder="e.g. adam@gmail.com"
-          variant="secondary"
-        />
-        {/* {error && <ErrorMessage>asdasdadadsasd</ErrorMessage>} */}
-        <Input
-          label="password"
-          type="text"
-          placeholder="password"
-          variant="secondary"
-        />
-        {/* {error && <ErrorMessage>asdasdadadsasd</ErrorMessage>} */}
-        <Button variant="primary" disabled={disabledBtn}>
-          Login
-        </Button>
-      </form>
-      <Link to="/login">
-        <p className="opacity-70">
-          Have an account?
-          <span className="ml-2 underline">Log in</span>
-        </p>
-      </Link>
-    </Section>
-  );
+   const verifyFrom = () => {
+      if (
+         !formRef.current.email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/) ||
+         formRef.current.password.value.length < 3 ||
+         formRef.current.username.value.length < 3
+      )
+         return setDisabledBtn(true);
+      setDisabledBtn(false);
+   };
+
+   return (
+      <Section variant='flexCol'>
+         <Form onHandleFn={verifyFrom} formRef={formRef} variant='default'>
+            <Input label='username' type='text' placeholder='e.g. adam' variant='secondary' />
+            {/* {error && <ErrorMessage>asdasdadadsasd</ErrorMessage>} */}
+            <Input label='email' type='email' placeholder='e.g. adam@gmail.com' variant='secondary' />
+            {/* {error && <ErrorMessage>asdasdadadsasd</ErrorMessage>} */}
+            <Input label='password' type='password' placeholder='password' variant='secondary' />
+            {/* {error && <ErrorMessage>asdasdadadsasd</ErrorMessage>} */}
+            {registerMutation.isLoading ? (
+               <LoadingButton />
+            ) : (
+               <Button onHandleFn={(e) => registerMutation.mutate(e)} variant='primary' disabled={disabledBtn}>
+                  Register
+               </Button>
+            )}
+         </Form>
+         <Link to='/login'>
+            <p className='opacity-70'>
+               Have an account?
+               <span className='ml-2 underline'>Log in</span>
+            </p>
+         </Link>
+      </Section>
+   );
 };

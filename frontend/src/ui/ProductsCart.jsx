@@ -1,6 +1,6 @@
 import { Image } from './Image';
 import { Button } from './Button';
-import { ButtonLink } from './ButtonLink';
+import { LinkButton } from './LinkButton';
 import { shoppingCartFillIcon, shoppingCartOutlineIcon } from '../utils/icons';
 import { SaleDiscount } from './SaleDiscount';
 
@@ -27,7 +27,7 @@ export const ProductsCart = ({ product, handleShoppingCartItems, storedValues })
                <p className='opacity-60'>{product?.sale && `$ ${(+product?.price * product?.discount) / 100}`}</p>
             </div>
             <p className='text-base'>{product?.description}</p>
-            <ButtonLink to={`/product/${product?._id}`}>See more</ButtonLink>
+            <LinkButton to={`/product/${product?._id}`}>See more</LinkButton>
          </div>
       </div>
    );

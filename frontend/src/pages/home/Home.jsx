@@ -4,9 +4,10 @@ import { useState } from 'react';
 import { Slider } from './components/Slider';
 import { Section } from '../../ui/Section';
 import { TestiminalCart } from './components/TestiminalCart';
-import { getProducts } from '../../api/getProducts';
+import { fetchData } from '../../api/fetchData';
 import { Search } from './components/Search';
 import { ProductsList } from './components/ProductsList';
+import { useProducts } from '../../api/useProducts';
 
 export const Home = () => {
    const [searchParams] = useSearchParams();
@@ -18,10 +19,15 @@ export const Home = () => {
 
    const sortByParams = searchParams.get('sortBy') || 'all';
 
-   const productsQuery = useQuery({
-      queryKey: ['products', `${endpoint}`],
-      queryFn: () => getProducts(endpoint),
-   });
+   const productsQuery = useProducts(endpoint);
+
+   // const productsQuery = useQuery({
+   //    queryKey: ['products', `${endpoint}`],
+   //    queryFn: () =>
+   //       fetchData({
+   //          url: endpoint,
+   //       }),
+   // });
 
    return (
       <>

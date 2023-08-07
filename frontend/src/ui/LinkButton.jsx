@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import { Button } from './Button';
 
-export const ButtonLink = ({ children, to }) => {
+export const LinkButton = ({ children, to, variant }) => {
    return (
       <Link to={to}>
-         <Button variant='primary'>{children}</Button>
+         <Button variant={variant}>{children}</Button>
       </Link>
    );
 };

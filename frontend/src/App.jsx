@@ -6,6 +6,8 @@ import { PageNotFound } from './pages/PageNotFound';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
 import { Product } from './pages/home/Product';
+import { User } from './pages/user/User';
+import { OrderHistory } from './pages/user/components/orderHistory';
 
 export const App = () => {
    return (
@@ -18,6 +20,8 @@ export const App = () => {
                      <Route path='login' element={<Login />} />
                      <Route path='register' element={<Register />} />
                      <Route path='product/:id' element={<Product />} />
+                     <Route path='user' element={<User />} />
+                     <Route path='user/order-history' element={<OrderHistory />} />
                   </Route>
 
                   <Route path='*' element={<PageNotFound />} />

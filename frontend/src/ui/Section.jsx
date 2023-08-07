@@ -9,7 +9,6 @@ export const Section = ({ children, variant, header }) => {
 
    return (
       <section className='mx-auto max-w-screen-xl border-t border-primaryBlack/40'>
-         {/* <p className="py-4 text-lg font-semibold">{header}</p> */}
          <h2 className='uppercase text-xl tracking-widest'>{header}</h2>
          <article className={`${styles[variant]}`}>{children}</article>
       </section>
