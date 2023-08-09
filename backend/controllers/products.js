@@ -8,7 +8,8 @@ const saleHandler = async function (req, res, next) {
 const featuresProducts = async function (req, res, next) {
    try {
       //    await saleHandler();
-      const findProducts = (await productsModel.find()).splice(0, 2);
+      const findProducts = await productsModel.find();
+      // .splice(0, 2)
       res.status(200).json(findProducts);
    } catch (error) {
       next(error.message);
@@ -45,4 +46,15 @@ const searchByName = async (req, res, next) => {
    }
 };
 
-module.exports = { saleHandler, featuresProducts, categoryProducts, searchByName };
+const getProduct = async (req, res, next) => {
+   try {
+      const { id } = req.params;
+
+      const product = await productsModel.findById(id);
+
+      res.status(200).json(product);
+   } catch (error) {
+      next(error.message);
+   }
+};
+module.exports = { saleHandler, featuresProducts, categoryProducts, searchByName, getProduct };

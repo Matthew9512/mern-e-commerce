@@ -7,7 +7,7 @@ import { closeIcon } from '../utils/icons';
 export const ShoppingCart = ({ shoppingCartVis, setShoppingCartVis }) => {
    const { storedValues, setStoredValues } = useContext(ShoppingCartContext);
 
-   const totalPrice = storedValues.reduce((acc, product) => acc + +product?.price, 0);
+   const totalPrice = storedValues.reduce((acc, product) => acc + product?.price * product?.amount, 0);
 
    return (
       <aside

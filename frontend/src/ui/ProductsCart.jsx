@@ -1,22 +1,11 @@
 import { Image } from './Image';
-import { Button } from './Button';
 import { LinkButton } from './LinkButton';
-import { shoppingCartFillIcon, shoppingCartOutlineIcon } from '../utils/icons';
 import { SaleDiscount } from './SaleDiscount';
 
-export const ProductsCart = ({ product, handleShoppingCartItems, storedValues }) => {
-   // display proper icon based on ls
-   const lsItems = storedValues.find((lsItems) => lsItems._id === product._id);
-
+export const ProductsCart = ({ product }) => {
    return (
       <div className='group flex max-w-[16em] flex-col'>
          <div className='relative flex h-80 items-center justify-center overflow-hidden'>
-            <Button
-               onHandleFn={() => handleShoppingCartItems(product)}
-               customClass='absolute z-20 right-1 top-0 flex items-center justify-center rounded-full w-8 h-8 bg-primaryWhite'
-            >
-               {lsItems ? shoppingCartFillIcon : shoppingCartOutlineIcon}
-            </Button>
             {product?.sale && <SaleDiscount product={product} />}
             <Image variant='primary' product={product} />
          </div>
@@ -27,7 +16,9 @@ export const ProductsCart = ({ product, handleShoppingCartItems, storedValues })
                <p className='opacity-60'>{product?.sale && `$ ${(+product?.price * product?.discount) / 100}`}</p>
             </div>
             <p className='text-base'>{product?.description}</p>
-            <LinkButton to={`/product/${product?._id}`}>See more</LinkButton>
+            <LinkButton variant='primary' to={`/product/${product?._id}`}>
+               See more
+            </LinkButton>
          </div>
       </div>
    );

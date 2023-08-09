@@ -14,8 +14,10 @@ export const ShoppingCartItem = ({ product, storedValues, setStoredValues }) => 
             <Image variant='profile' product={product} />
          </div>
          <div className='flex flex-col'>
-            <p>{product?.name}</p>
-            <p>{product?.price}</p>
+            <p className='font-semibold uppercase'>{product?.name}</p>
+            <p>price: $ {product?.price}</p>
+            <p className='opacity-80 text-sm'>amount: {product?.amount}</p>
+            <p className='opacity-80 text-sm'>size: {product?.size}</p>
          </div>
          <Button variant='rounded' onHandleFn={() => handleFilteredLs(product)} customClass='absolute right-1 top-2'>
             {closeIcon}

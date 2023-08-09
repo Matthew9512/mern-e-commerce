@@ -1,54 +1,42 @@
-import debounce from "lodash.debounce";
-import { useMemo } from "react";
-import { Input } from "../../../ui/Input";
-import { MultiRangeSlider } from "../../../ui/MultiRangeSlider";
-import { SearchSelect } from "../../../ui/SearchSelect";
-import { Button } from "../../../ui/Button";
-import { categoryArr, sortArr } from "../../../utils/constants";
-import { useFilterParams } from "../../../api/useFilterParams";
-import { handleNameFilter } from "../../../api/filterBy";
+import debounce from 'lodash.debounce';
+import { useMemo } from 'react';
+import { Input } from '../../../ui/Input';
+import { MultiRangeSlider } from '../../../ui/MultiRangeSlider';
+import { SearchSelect } from '../../../ui/SearchSelect';
+import { Button } from '../../../ui/Button';
+import { categoryArr, sortArr } from '../../../utils/constants';
+import { useFilterParams } from '../../../api/useFilterParams';
+import { handleNameFilter } from '../../../api/filterBy';
 
 export const Search = ({ setEndpoint }) => {
-  const { searchParams, setSearchParams, clearFilters, handleSearchBy } =
-    useFilterParams(setEndpoint);
+   const { searchParams, setSearchParams, clearFilters, handleSearchBy } = useFilterParams(setEndpoint);
 
-  // debounce for search by name input
-  const debounceFn = useMemo(
-    () =>
-      debounce((e) => {
-        setSearchParams(searchParams.set("", ""));
-        handleNameFilter(e, setEndpoint);
-      }, 400),
-    [],
-  );
+   // debounce for search by name input
+   const debounceFn = useMemo(
+      () =>
+         debounce((e) => {
+            setSearchParams(searchParams.set('', ''));
+            handleNameFilter(e, setEndpoint);
+         }, 400),
+      []
+   );
 
-  return (
-    <>
-      {searchParams?.size > 0 && (
-        <Button variant="primary" onHandleFn={clearFilters}>
-          Clear filters
-        </Button>
-      )}
-      <SearchSelect
-        onHandleFn={handleSearchBy}
-        options={categoryArr}
-        label="Search by category"
-        category="category"
-      />
-      <SearchSelect
-        onHandleFn={handleSearchBy}
-        options={sortArr}
-        label="Filter by"
-        category="filter"
-      />
-      <Input
-        onHandleFn={debounceFn}
-        type="text"
-        label="Product name"
-        placeholder="e.g. gloves"
-        variant="primary"
-      />
-      <MultiRangeSlider onHandleFn={handleSearchBy} min={0} max={3000} />
-    </>
-  );
+   return (
+      <>
+         {searchParams?.size > 0 && (
+            <Button variant='primary' onHandleFn={clearFilters}>
+               Clear filters
+            </Button>
+         )}
+         <SearchSelect
+            onHandleFn={handleSearchBy}
+            options={categoryArr}
+            label='Search by category'
+            category='category'
+         />
+         <SearchSelect onHandleFn={handleSearchBy} options={sortArr} label='Filter by' category='filter' />
+         <Input onHandleFn={debounceFn} type='text' label='Product name' placeholder='e.g. gloves' variant='primary' />
+         <MultiRangeSlider onHandleFn={handleSearchBy} min={0} max={3000} />
+      </>
+   );
 };

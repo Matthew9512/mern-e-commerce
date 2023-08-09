@@ -4,6 +4,10 @@ import { shoppingCartOutlineIcon, userIcon } from '../utils/icons';
 import { ShoppingCartContext } from '../context/shoppingCartContex';
 import { ShoppingCart } from './ShoppingCart';
 
+/**
+ * @todo update icon when user logs in
+ */
+
 export const Navbar = () => {
    const { storedValues } = useContext(ShoppingCartContext);
    const navBtn = useRef();

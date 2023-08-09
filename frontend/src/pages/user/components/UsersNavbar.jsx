@@ -1,5 +1,5 @@
-import { LinkButton } from '../../../ui/LinkButton';
 import { useLocation } from 'react-router-dom';
+import { LinkButton } from '../../../ui/LinkButton';
 
 export const UsersNavbar = () => {
    const { pathname } = useLocation();

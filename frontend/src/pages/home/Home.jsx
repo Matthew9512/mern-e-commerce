@@ -1,10 +1,8 @@
-import { useQuery } from '@tanstack/react-query';
 import { useSearchParams } from 'react-router-dom';
 import { useState } from 'react';
 import { Slider } from './components/Slider';
 import { Section } from '../../ui/Section';
 import { TestiminalCart } from './components/TestiminalCart';
-import { fetchData } from '../../api/fetchData';
 import { Search } from './components/Search';
 import { ProductsList } from './components/ProductsList';
 import { useProducts } from '../../api/useProducts';
@@ -13,10 +11,10 @@ export const Home = () => {
    const [searchParams] = useSearchParams();
    const [endpoint, setEndpoint] = useState(() => {
       let params = searchParams.get('category') || 'all';
-      if (params !== 'all') return (params = `/products/q?category=${params}`);
+      if (params !== 'all') return (params = `/products/category/${params}`);
       else return '/products';
    });
-
+   console.log(endpoint);
    const sortByParams = searchParams.get('sortBy') || 'all';
 
    const productsQuery = useProducts(endpoint);
