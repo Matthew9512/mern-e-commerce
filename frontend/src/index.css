@@ -7,7 +7,33 @@
    @apply animate-pulse shadow-md;
    /* @apply animate-pulse rounded-xl bg-primaryWhite shadow-md; */
 }
+
+.activeSize {
+   @apply bg-primaryBlack text-primaryWhite;
+}
 /* ******************** */
+
+/* ********page transition********* */
+.slide-in {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100vh;
+   background-color: #0f0f0f;
+   transform-origin: left;
+}
+.slide-out {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100vh;
+   opacity: 0;
+   background-color: #848484;
+   /* transform-origin: right; */
+}
+/* ********page transition********* */
 
 .navbar__btn:focus:after,
 .navbar__btn:hover:after {

@@ -9,6 +9,7 @@ import { Product } from './pages/product/Product';
 import { User } from './pages/user/User';
 import { OrderHistory } from './pages/user/components/orderHistory';
 import { ProtectedRoutes } from './ui/ProtectedRoutes';
+import { Shop } from './pages/shop/Shop';
 
 export const App = () => {
    return (
@@ -21,6 +22,7 @@ export const App = () => {
                      <Route path='login' element={<Login />} />
                      <Route path='register' element={<Register />} />
                      <Route path='product/:id' element={<Product />} />
+                     <Route path='shop' element={<Shop />} />
                      <Route element={<ProtectedRoutes />}>
                         <Route path='user' element={<User />} />
                         <Route path='user/order-history' element={<OrderHistory />} />
@@ -31,7 +33,6 @@ export const App = () => {
                </Routes>
             </BrowserRouter>
          </main>
-
          <Toaster
             toastOptions={{
                success: {

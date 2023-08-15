@@ -47,7 +47,7 @@ export const Navbar = () => {
             className='relative top-0 mx-auto flex h-[50px] w-full items-center justify-between p-8'
          >
             <ShoppingCart shoppingCartVis={shoppingCartVis} setShoppingCartVis={setShoppingCartVis} />
-            <p className='text-lg'>logoIcon</p>
+            <NavbarItem redirect='/'>logoIcon</NavbarItem>
             <input type='checkbox' id='navbar-check' className='hidden' />
             <div>
                <label ref={navBtn} htmlFor='navbar-check' className='md:flex md:flex-col md:hover:cursor-pointer'>

@@ -1,5 +1,5 @@
 const productsModel = require('../models/productsModel');
-
+const _resLimit = 2;
 // handle sale
 const saleHandler = async function (req, res, next) {
    await productsModel.updateMany({ category: 'helmets' }, { sale: true, discount: 50 }, { new: true });
@@ -8,8 +8,12 @@ const saleHandler = async function (req, res, next) {
 const featuresProducts = async function (req, res, next) {
    try {
       //    await saleHandler();
-      const findProducts = await productsModel.find();
-      // .splice(0, 2)
+      const { page } = req.params;
+      const findProducts = await productsModel
+         .find()
+         .limit(_resLimit)
+         .skip((page - 1) * _resLimit);
+
       res.status(200).json(findProducts);
    } catch (error) {
       next(error.message);

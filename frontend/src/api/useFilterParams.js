@@ -1,28 +1,28 @@
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams } from 'react-router-dom';
 
 export const useFilterParams = (setEndpoint) => {
-  const [searchParams, setSearchParams] = useSearchParams();
+   const [searchParams, setSearchParams] = useSearchParams();
 
-  // clear all params
-  const clearFilters = () => {
-    setSearchParams(searchParams.set("", ""));
-    setEndpoint(`/products`);
-  };
+   // clear all params
+   const clearFilters = () => {
+      setSearchParams(searchParams.set('', ''));
+      setEndpoint(`/products`);
+   };
 
-  // handle filter params
-  const handleSearchBy = (e) => {
-    const click = e.target;
+   // handle filter params
+   const handleSearchBy = (e) => {
+      const click = e.target;
 
-    if (!click.value) return;
+      if (!click.value) return;
 
-    if (click.dataset.category === "category") {
-      searchParams.set("category", click.value);
-      setEndpoint(`/products/category/${click.value}`);
-      searchParams.delete("sortBy");
-    } else searchParams.set("sortBy", click.value);
+      if (click.dataset.category === 'category') {
+         searchParams.set('category', click.value);
+         setEndpoint(`/products/category/${click.value}`);
+         searchParams.delete('sortBy');
+      } else searchParams.set('sortBy', click.value);
 
-    setSearchParams(searchParams);
-  };
+      setSearchParams(searchParams);
+   };
 
-  return { searchParams, setSearchParams, clearFilters, handleSearchBy };
+   return { searchParams, setSearchParams, clearFilters, handleSearchBy };
 };

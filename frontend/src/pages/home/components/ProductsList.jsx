@@ -1,14 +1,9 @@
-import { useRef } from 'react';
 import { filterBy } from '../../../api/filterBy';
 import { ErrorMessage } from '../../../ui/ErrorMessage';
 import { LoadingSpinner } from '../../../ui/LoadingSpinner';
 import { ProductsCart } from '../../../ui/ProductsCart';
-import { useInfitite } from '../../../hooks/useInfinite';
 
 export const ProductsList = ({ productsQuery, sortByParams }) => {
-   const observerTarget = useRef(null);
-   useInfitite(observerTarget);
-
    // filtered data
    const filteredData = filterBy(sortByParams, productsQuery);
 
@@ -21,7 +16,6 @@ export const ProductsList = ({ productsQuery, sortByParams }) => {
          ) : (
             <p>No data yet</p>
          )}
-         <div ref={observerTarget} className=''></div>
       </>
    );
 };

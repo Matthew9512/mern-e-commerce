@@ -1,5 +1,6 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
+import { Button } from '../../../ui/Button';
 
 export const Slider = () => {
    return (
@@ -15,17 +16,19 @@ export const Slider = () => {
          }}
          aria-label='React Splide'
       >
-         <SplideSlide>
-            <img src='/kangaroo.jpg' className='h-full w-full object-cover' />
+         <SplideSlide className='bg-[url(/kangaroo.jpg)] bg-center bg-no-repeat bg-cover text-primaryWhite'>
+            <h2>Active Sale hurry up dont miss a chance</h2>
          </SplideSlide>
          <SplideSlide>
-            <img src='/cat.jpg' className='h-full w-full object-cover' />
-         </SplideSlide>
-         <SplideSlide>
-            <img src='/mountain.jpg' className='h-full w-full object-cover' />
-         </SplideSlide>
-         <SplideSlide>
-            <img src='/water.jpg' className='h-full w-full object-cover' />
+            <div className='h-full w-full bg-no-repeat bg-center bg-cover bg-[url("../../../../public/kangaroo.jpg")] relative'>
+               <div className='absolute bottom-20 right-20 flex flex-col gap-4'>
+                  <h2 className='text-primaryWhite'>Shop perks</h2>
+                  <p className='text-primaryWhite'>
+                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, iste.
+                  </p>
+                  <Button variant='primary'>See full offer</Button>
+               </div>
+            </div>
          </SplideSlide>
       </Splide>
    );

@@ -41,7 +41,7 @@ export const Login = () => {
    };
 
    return (
-      <Section variant='flexCol'>
+      <Section style='py-24 flex flex-col items-center justify-center flex-wrap'>
          <Form onHandleFn={verifyFrom} formRef={formRef} variant='default'>
             <Input label='email' type='text' placeholder='e.g. adam@gmail.com' variant='secondary' />
             <Input label='password' type='password' placeholder='password' variant='secondary' />

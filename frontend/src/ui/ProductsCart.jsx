@@ -15,7 +15,7 @@ export const ProductsCart = ({ product }) => {
                <p className={`${product?.sale ? 'line-through' : ''} opacity-60`}>$ {product?.price}</p>
                <p className='opacity-60'>{product?.sale && `$ ${(+product?.price * product?.discount) / 100}`}</p>
             </div>
-            <p className='text-base'>{product?.description}</p>
+            <p className='text-base line-clamp-3'>{product?.description}</p>
             <LinkButton variant='primary' to={`/product/${product?._id}`}>
                See more
             </LinkButton>

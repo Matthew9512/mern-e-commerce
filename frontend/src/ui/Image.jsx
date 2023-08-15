@@ -4,5 +4,7 @@ export const Image = ({ variant, product }) => {
       profile: 'rounded-full w-full h-full object-cover mix-blend-multiply',
    };
 
-   return <img className={`${styles[variant]} `} src={product?.image || '/cat.jpg'} alt={product?.title} />;
+   return (
+      <img className={`${styles[variant]} `} src={product?.image || '/cat.jpg'} alt={product?.name} loading='lazy' />
+   );
 };

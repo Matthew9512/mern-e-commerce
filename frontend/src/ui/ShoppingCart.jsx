@@ -3,6 +3,7 @@ import { ShoppingCartContext } from '../context/shoppingCartContex';
 import { Button } from './Button';
 import { ShoppingCartItem } from './ShoppingCartItem';
 import { closeIcon } from '../utils/icons';
+import { LinkButton } from '../ui/LinkButton';
 
 export const ShoppingCart = ({ shoppingCartVis, setShoppingCartVis }) => {
    const { storedValues, setStoredValues } = useContext(ShoppingCartContext);
@@ -34,7 +35,9 @@ export const ShoppingCart = ({ shoppingCartVis, setShoppingCartVis }) => {
             ))}
          </article>
          <p className='py-4 text-center font-semibold'>total: $ {totalPrice}</p>
-         <Button variant='primary'>Buy products</Button>
+         <LinkButton variant='primary' to='/shop'>
+            Buy products
+         </LinkButton>
       </aside>
    );
 };

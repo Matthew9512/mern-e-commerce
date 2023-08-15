@@ -6,37 +6,40 @@ import { TestiminalCart } from './components/TestiminalCart';
 import { Search } from './components/Search';
 import { ProductsList } from './components/ProductsList';
 import { useProducts } from '../../api/useProducts';
+import { Pagination } from './components/Pagination';
 
 export const Home = () => {
    const [searchParams] = useSearchParams();
+   const [page, setPage] = useState(1);
    const [endpoint, setEndpoint] = useState(() => {
       let params = searchParams.get('category') || 'all';
       if (params !== 'all') return (params = `/products/category/${params}`);
       else return '/products';
    });
-   console.log(endpoint);
+
    const sortByParams = searchParams.get('sortBy') || 'all';
 
-   const productsQuery = useProducts(endpoint);
-
-   // const productsQuery = useQuery({
-   //    queryKey: ['products', `${endpoint}`],
-   //    queryFn: () =>
-   //       fetchData({
-   //          url: endpoint,
-   //       }),
-   // });
+   const productsQuery = useProducts(endpoint, page);
 
    return (
       <>
          <Slider />
-         <Section variant='flexRow' header='Filter'>
+         <Section style='flex items-center justify-center flex-wrap' header='Filters'>
             <Search setEndpoint={setEndpoint} />
          </Section>
-         <Section variant='gridAutoFit' header='Features List'>
+         <Section
+            style='py-24 grid place-items-center grid-cols-[repeat(auto-fill,minmax(16em,1fr))]'
+            header='Features List'
+            border={true}
+         >
             <ProductsList productsQuery={productsQuery} sortByParams={sortByParams} />
          </Section>
-         <Section variant='gridCols' header='Users comments'>
+         <Pagination page={page} setPage={setPage} />
+         <Section
+            style='py-24 grid place-items-center grid-cols-1 lg:grid-cols-3'
+            header='Users comments'
+            border={true}
+         >
             <TestiminalCart style='first' />
             <TestiminalCart style='second' />
             <TestiminalCart style='second' />

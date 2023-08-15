@@ -41,7 +41,7 @@ export const Register = () => {
    };
 
    return (
-      <Section variant='flexCol'>
+      <Section style='py-24 flex flex-col items-center justify-center flex-wrap'>
          <Form onHandleFn={verifyFrom} formRef={formRef} variant='default'>
             <Input label='username' type='text' placeholder='e.g. adam' variant='secondary' />
             {/* {error && <ErrorMessage>asdasdadadsasd</ErrorMessage>} */}

@@ -30,7 +30,73 @@ app.listen(PORT, () => {
 });
 
 // const productsModel = require('./models/productsModel');
-
+// productsModel.insertMany([
+//    {
+//       name: 'Dainese Impeto Motorcycle Gloves',
+//       price: '300',
+//       description:
+//          'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta, commodi. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta, commodi.',
+//       image: 'https://www.fc-moto.de/WebRoot/FCMotoDB/Shops/10207048/5D64/DB29/41E3/5DE7/21AB/AC1E/1405/4CA5/201815927_620_1_1.jpg',
+//       category: 'gloves',
+//       features: false,
+//       sale: false,
+//       sizesArr: [
+//          {
+//             size: 'XS',
+//             available: 8,
+//          },
+//          {
+//             size: 'S',
+//             available: 0,
+//          },
+//          {
+//             size: 'M',
+//             available: 6,
+//          },
+//          {
+//             size: 'L',
+//             available: 0,
+//          },
+//          {
+//             size: 'XL',
+//             available: 6,
+//          },
+//       ],
+//    },
+//    {
+//       name: 'dainese backpack',
+//       price: '100',
+//       description:
+//          'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta, commodi. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta, commodi.',
+//       image: 'https://www.motostyl.pl//pol_pl_Plecak-Dainese-D-Mach-Compact-czarny-2463_1.jpg',
+//       category: 'accessories',
+//       features: false,
+//       sale: false,
+//       sizesArr: [
+//          {
+//             size: 'XS',
+//             available: 3,
+//          },
+//          {
+//             size: 'S',
+//             available: 4,
+//          },
+//          {
+//             size: 'M',
+//             available: 0,
+//          },
+//          {
+//             size: 'L',
+//             available: 0,
+//          },
+//          {
+//             size: 'XL',
+//             available: 0,
+//          },
+//       ],
+//    },
+// ]);
+// =====================================
 // productsModel.insertMany([
 //    {
 //       name: 'dainese boots',
@@ -57,12 +123,12 @@ app.listen(PORT, () => {
 //       discount: true,
 //    },
 //    {
-//       name: 'dainese backpack',
-//       price: '100',
-//       description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta, commodi.',
-//       image: 'https://www.motostyl.pl//pol_pl_Plecak-Dainese-D-Mach-Compact-czarny-2463_1.jpg',
-//       category: 'accessories',
-//       discount: false,
+// name: 'dainese backpack',
+// price: '100',
+// description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta, commodi.',
+// image: 'https://www.motostyl.pl//pol_pl_Plecak-Dainese-D-Mach-Compact-czarny-2463_1.jpg',
+// category: 'accessories',
+// discount: false,
 //    },
 //    {
 //       name: 'dainese gloves',

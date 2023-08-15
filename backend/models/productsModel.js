@@ -11,7 +11,12 @@ const productsSchema = new Schema({
    features: Boolean,
    sale: Boolean,
    discount: Number,
-   size: String,
+   sizesArr: [
+      {
+         size: String,
+         available: Number,
+      },
+   ],
 });
 
 module.exports = mongoose.model('products', productsSchema);
