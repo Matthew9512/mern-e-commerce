@@ -8,8 +8,12 @@ import { categoryArr, sortArr } from '../../../utils/constants';
 import { useFilterParams } from '../../../api/useFilterParams';
 import { handleNameFilter } from '../../../api/filterBy';
 
-export const Search = ({ setEndpoint }) => {
-   const { searchParams, setSearchParams, clearFilters, handleSearchBy } = useFilterParams(setEndpoint);
+export const Search = ({ setEndpoint, reqType, setPage }) => {
+   const { searchParams, setSearchParams, clearFilters, handleSearchBy } = useFilterParams(
+      setEndpoint,
+      reqType,
+      setPage
+   );
 
    // debounce for search by name input
    const debounceFn = useMemo(

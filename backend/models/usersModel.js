@@ -8,8 +8,12 @@ const usersSchema = new Schema(
       email: String,
       orderHistory: [
          {
-            productName: String,
-            productPrice: String,
+            productID: String,
+            amount: Number,
+            price: String,
+            name: String,
+            size: String,
+            image: String,
             orderDate: { type: Date, default: Date.now },
          },
       ],

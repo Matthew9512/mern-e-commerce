@@ -1,6 +1,6 @@
 import { useSearchParams } from 'react-router-dom';
 
-export const useFilterParams = (setEndpoint) => {
+export const useFilterParams = (setEndpoint, reqType, setPage) => {
    const [searchParams, setSearchParams] = useSearchParams();
 
    // clear all params
@@ -12,6 +12,11 @@ export const useFilterParams = (setEndpoint) => {
    // handle filter params
    const handleSearchBy = (e) => {
       const click = e.target;
+
+      // disable loading next page
+      reqType.current = false;
+      // reset pages
+      setPage(1);
 
       if (!click.value) return;
 

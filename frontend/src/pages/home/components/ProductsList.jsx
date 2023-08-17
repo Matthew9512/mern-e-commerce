@@ -10,7 +10,7 @@ export const ProductsList = ({ productsQuery, sortByParams }) => {
    return (
       <>
          {productsQuery.isLoading && <LoadingSpinner />}
-         {productsQuery.error && <ErrorMessage>no products yet</ErrorMessage>}
+         {productsQuery.error && <ErrorMessage>{productsQuery.error}</ErrorMessage>}
          {productsQuery.data ? ( // length?!?!
             filteredData.map((product) => <ProductsCart key={product._id} product={product} />)
          ) : (

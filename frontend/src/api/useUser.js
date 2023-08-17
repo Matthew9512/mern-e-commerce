@@ -8,11 +8,10 @@ export const useUsers = () => {
 
    const usersQuery = useQuery({
       queryKey: ['users'],
-      queryFn: async () => {
-         return await fetchData({
+      queryFn: () =>
+         fetchData({
             url: `/users/${id}`,
-         });
-      },
+         }),
    });
 
    return usersQuery;

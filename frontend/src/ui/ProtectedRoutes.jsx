@@ -6,8 +6,7 @@ export const ProtectedRoutes = ({ children }) => {
    const token = JSON.parse(localStorage.getItem('access__token')) || null;
 
    useEffect(() => {
-      console.log(token);
-      if (token === null) return navigate('/');
+      if (!token) return navigate('/');
    }, [token]);
 
    return children;

@@ -5,7 +5,7 @@ export const UsersNavbar = () => {
    const { pathname } = useLocation();
 
    return (
-      <div className='flex gap-3'>
+      <div className='flex mx-auto gap-3'>
          <LinkButton to='/user' variant={pathname === '/user' ? 'primary' : 'navLink'}>
             My profile
          </LinkButton>

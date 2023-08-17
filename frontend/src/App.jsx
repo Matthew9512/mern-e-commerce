@@ -23,12 +23,26 @@ export const App = () => {
                      <Route path='register' element={<Register />} />
                      <Route path='product/:id' element={<Product />} />
                      <Route path='shop' element={<Shop />} />
-                     <Route element={<ProtectedRoutes />}>
-                        <Route path='user' element={<User />} />
-                        <Route path='user/order-history' element={<OrderHistory />} />
-                     </Route>
+                     <Route
+                        path='user'
+                        element={
+                           <ProtectedRoutes>
+                              <User />
+                           </ProtectedRoutes>
+                        }
+                     ></Route>
+                     <Route
+                        path='user/order-history'
+                        element={
+                           <ProtectedRoutes>
+                              <OrderHistory />
+                           </ProtectedRoutes>
+                        }
+                     ></Route>
                   </Route>
-
+                  {/* <Route path='user' element={<User />} />
+                        <Route path='user/order-history' element={<OrderHistory />} />
+                     </Route> */}
                   <Route path='*' element={<PageNotFound />} />
                </Routes>
             </BrowserRouter>

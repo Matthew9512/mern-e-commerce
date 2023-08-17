@@ -25,14 +25,18 @@ export const ShoppingCart = ({ shoppingCartVis, setShoppingCartVis }) => {
             {closeIcon}
          </Button>
          <article className='flex overflow-y-auto h-4/5 flex-col divide-y divide-primaryBlack/20 gap-4 py-16 '>
-            {storedValues.map((product) => (
-               <ShoppingCartItem
-                  key={product?._id}
-                  product={product}
-                  storedValues={storedValues}
-                  setStoredValues={setStoredValues}
-               />
-            ))}
+            {storedValues.length > 0 ? (
+               storedValues.map((product) => (
+                  <ShoppingCartItem
+                     key={product?._id}
+                     product={product}
+                     storedValues={storedValues}
+                     setStoredValues={setStoredValues}
+                  />
+               ))
+            ) : (
+               <p className='uppercase text-center'>No products in store</p>
+            )}
          </article>
          <p className='py-4 text-center font-semibold'>total: $ {totalPrice}</p>
          <LinkButton variant='primary' to='/shop'>

@@ -16,17 +16,24 @@ export const User = () => {
    };
 
    return (
-      <Section variant='flexCol'>
+      <Section style='py-3 flex flex-col items-center justify-center flex-wrap'>
          <UsersNavbar />
-         {!usersQuery.data && <LoadingSpinner />}
-         <div className='text-center'>
-            <p>username: {usersQuery.data?.username}</p>
-            <p>email: {usersQuery.data?.email}</p>
-            <p>joined: {new Date(usersQuery.data?.createdAt).toLocaleDateString('en-GB')}</p>
-         </div>
-         <Button variant='primary' onHandleFn={logOut}>
-            Log out
-         </Button>
+         {usersQuery.isLoading && <LoadingSpinner />}
+         {usersQuery.error && <p>asdasd</p>}
+         {usersQuery.data ? (
+            <>
+               <div className='text-center'>
+                  <p>username: {usersQuery.data?.username}</p>
+                  <p>email: {usersQuery.data?.email}</p>
+                  <p>joined: {new Date(usersQuery.data?.createdAt).toLocaleDateString('en-GB')}</p>
+               </div>
+               <Button variant='primary' onHandleFn={logOut}>
+                  Log out
+               </Button>
+            </>
+         ) : (
+            <p>No user data</p>
+         )}
       </Section>
    );
 };

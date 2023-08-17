@@ -60,4 +60,22 @@ const getUser = async function (req, res, next) {
    }
 };
 
-module.exports = { register, login, getUser };
+const buyProducts = async function (req, res, next) {
+   try {
+      const data = req.body;
+      const id = '64d149230aa7be0b8446818f';
+      const update = await usersModel.findByIdAndUpdate(
+         { _id: id },
+         {
+            $push: { orderHistory: data },
+         },
+         { new: true }
+      );
+
+      res.status(200).json(update);
+   } catch (error) {
+      next(error.message);
+   }
+};
+
+module.exports = { register, login, getUser, buyProducts };

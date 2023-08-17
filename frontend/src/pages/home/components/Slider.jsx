@@ -20,7 +20,7 @@ export const Slider = () => {
             <h2>Active Sale hurry up dont miss a chance</h2>
          </SplideSlide>
          <SplideSlide>
-            <div className='h-full w-full bg-no-repeat bg-center bg-cover bg-[url("../../../../public/kangaroo.jpg")] relative'>
+            {/* <div className='h-full w-full bg-no-repeat bg-center bg-cover bg-[url("../../../../public/kangaroo.jpg")] relative'>
                <div className='absolute bottom-20 right-20 flex flex-col gap-4'>
                   <h2 className='text-primaryWhite'>Shop perks</h2>
                   <p className='text-primaryWhite'>
@@ -28,7 +28,7 @@ export const Slider = () => {
                   </p>
                   <Button variant='primary'>See full offer</Button>
                </div>
-            </div>
+            </div> */}
          </SplideSlide>
       </Splide>
    );

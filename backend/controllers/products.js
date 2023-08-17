@@ -1,20 +1,25 @@
 const productsModel = require('../models/productsModel');
+
 const _resLimit = 2;
+
 // handle sale
 const saleHandler = async function (req, res, next) {
    await productsModel.updateMany({ category: 'helmets' }, { sale: true, discount: 50 }, { new: true });
 };
 
-const featuresProducts = async function (req, res, next) {
+const getProducts = async function (req, res, next) {
    try {
       //    await saleHandler();
       const { page } = req.params;
-      const findProducts = await productsModel
+
+      const pagesAmount = Math.ceil((await productsModel.countDocuments()) / _resLimit);
+
+      const products = await productsModel
          .find()
          .limit(_resLimit)
          .skip((page - 1) * _resLimit);
 
-      res.status(200).json(findProducts);
+      res.status(200).json({ products, pagesAmount });
    } catch (error) {
       next(error.message);
    }
@@ -26,11 +31,11 @@ const categoryProducts = async function (req, res, next) {
 
       if (!category) return res.status(404).json({ message: 'No data provided' });
 
-      let findProducts;
-      if (category === 'all') findProducts = await productsModel.find();
-      else findProducts = await productsModel.find({ category });
+      let products;
+      if (category === 'all') products = await productsModel.find();
+      else products = await productsModel.find({ category });
 
-      res.status(200).json(findProducts);
+      res.status(200).json({ products });
    } catch (error) {
       next(error.message);
    }
@@ -42,15 +47,15 @@ const searchByName = async (req, res, next) => {
 
       const productRegex = new RegExp(name, 'i');
 
-      const findProducts = await productsModel.find({ name: productRegex });
+      const products = await productsModel.find({ name: productRegex });
 
-      res.status(200).json(findProducts);
+      res.status(200).json({ products });
    } catch (error) {
       next(error.message);
    }
 };
 
-const getProduct = async (req, res, next) => {
+const getProductByID = async (req, res, next) => {
    try {
       const { id } = req.params;
 
@@ -61,4 +66,4 @@ const getProduct = async (req, res, next) => {
       next(error.message);
    }
 };
-module.exports = { saleHandler, featuresProducts, categoryProducts, searchByName, getProduct };
+module.exports = { saleHandler, getProducts, categoryProducts, searchByName, getProductByID };
