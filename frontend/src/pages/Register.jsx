@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { useRef, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { useMutation } from '@tanstack/react-query';
@@ -8,6 +7,7 @@ import { Input } from '../ui/Input';
 import { LoadingButton } from '../ui/LoadingButton';
 import { fetchData } from '../api/fetchData';
 import { Form } from '../ui/Form';
+import { LinkButton } from '../ui/LinkButton';
 
 export const Register = () => {
    const [disabledBtn, setDisabledBtn] = useState(true);
@@ -57,12 +57,12 @@ export const Register = () => {
                </Button>
             )}
          </Form>
-         <Link to='/login'>
+         <LinkButton to='/login'>
             <p className='opacity-70'>
                Have an account?
                <span className='ml-2 underline'>Log in</span>
             </p>
-         </Link>
+         </LinkButton>
       </Section>
    );
 };

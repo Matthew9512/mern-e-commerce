@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useRef, useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast';
@@ -8,6 +8,7 @@ import { Section } from '../ui/Section';
 import { fetchData } from '../api/fetchData';
 import { LoadingButton } from '../ui/LoadingButton';
 import { Form } from '../ui/Form';
+import { LinkButton } from '../ui/LinkButton';
 
 export const Login = () => {
    const [disabledBtn, setDisabledBtn] = useState(true);
@@ -53,12 +54,12 @@ export const Login = () => {
                </Button>
             )}
          </Form>
-         <Link to='/register'>
+         <LinkButton to='/register'>
             <p className='opacity-70'>
                Don&apos;t have an account?
                <span className='ml-2 underline'>Sign Up</span>
             </p>
-         </Link>
+         </LinkButton>
       </Section>
    );
 };

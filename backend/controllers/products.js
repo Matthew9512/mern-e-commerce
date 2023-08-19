@@ -9,7 +9,7 @@ const saleHandler = async function (req, res, next) {
 
 const getProducts = async function (req, res, next) {
    try {
-      //    await saleHandler();
+      // await saleHandler();
       const { page } = req.params;
 
       const pagesAmount = Math.ceil((await productsModel.countDocuments()) / _resLimit);

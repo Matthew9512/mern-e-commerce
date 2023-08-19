@@ -14,9 +14,9 @@ export const User = () => {
 
       navigate('/');
    };
-
+   // items-center justify-center
    return (
-      <Section style='py-3 flex flex-col items-center justify-center flex-wrap'>
+      <Section style='py-3 flex flex-col  flex-wrap'>
          <UsersNavbar />
          {usersQuery.isLoading && <LoadingSpinner />}
          {usersQuery.error && <p>asdasd</p>}

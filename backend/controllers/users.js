@@ -1,4 +1,5 @@
 const usersModel = require('../models/usersModel');
+const productsModel = require('../models/productsModel');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -62,17 +63,34 @@ const getUser = async function (req, res, next) {
 
 const buyProducts = async function (req, res, next) {
    try {
-      const data = req.body;
-      const id = '64d149230aa7be0b8446818f';
-      const update = await usersModel.findByIdAndUpdate(
-         { _id: id },
+      const { userID, ...orderArr } = req.body;
+
+      const usersOrder = await usersModel.findByIdAndUpdate(
+         { _id: userID },
          {
-            $push: { orderHistory: data },
+            $push: { orderHistory: orderArr },
          },
          { new: true }
       );
 
-      res.status(200).json(update);
+      const { order } = orderArr;
+
+      const productData = order.map((product) => {
+         return {
+            productID: product.productID,
+            productSize: product.size,
+            productAmount: product.amount,
+         };
+      });
+
+      productData.forEach(async (product) => {
+         await productsModel.updateOne(
+            { _id: product.productID, 'sizesArr.size': product.productSize },
+            { $inc: { 'sizesArr.$.available': -product.productAmount } }
+         );
+      });
+
+      res.status(200).json(usersOrder);
    } catch (error) {
       next(error.message);
    }

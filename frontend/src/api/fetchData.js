@@ -12,6 +12,7 @@ export const fetchData = async (options) => {
       return data;
    } catch (error) {
       console.log(error);
+      if (error.request.status === 0) return (window.location.href = '/server-down');
       throw new Error(error.response.data.message);
    }
 };

@@ -12,8 +12,8 @@ export const ProductsCart = ({ product }) => {
          <div className='flex flex-col justify-center gap-4 text-lg'>
             <p className='font-semibold uppercase'>{product?.name}</p>
             <div className='flex justify-between'>
-               <p className={`${product?.sale ? 'line-through' : ''} opacity-60`}>$ {product?.price}</p>
-               <p className='opacity-60'>{product?.sale && `$ ${(+product?.price * product?.discount) / 100}`}</p>
+               <p className={`${product?.sale ? 'line-through opacity-60' : ''}`}>$ {product?.price}</p>
+               {product?.sale && <p>$ {(+product?.price * product?.discount) / 100}</p>}
             </div>
             <p className='text-base line-clamp-3'>{product?.description}</p>
             <LinkButton variant='primary' to={`/product/${product?._id}`}>

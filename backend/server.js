@@ -32,18 +32,18 @@ app.listen(PORT, () => {
 // const productsModel = require('./models/productsModel');
 // productsModel.insertMany([
 //    {
-//       name: 'Dainese Impeto Motorcycle Gloves',
+//       name: 'Dainese Laguna Seca 4 – 4Ride',
 //       price: '300',
 //       description:
 //          'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta, commodi. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta, commodi.',
-//       image: 'https://www.fc-moto.de/WebRoot/FCMotoDB/Shops/10207048/5D64/DB29/41E3/5DE7/21AB/AC1E/1405/4CA5/201815927_620_1_1.jpg',
-//       category: 'gloves',
+//       image: 'https://4ride.pl/data/gfx/pictures/medium/8/2/67428_1.png',
+//       category: 'leather-suits',
 //       features: false,
 //       sale: false,
 //       sizesArr: [
 //          {
 //             size: 'XS',
-//             available: 8,
+//             available: 0,
 //          },
 //          {
 //             size: 'S',
@@ -51,7 +51,7 @@ app.listen(PORT, () => {
 //          },
 //          {
 //             size: 'M',
-//             available: 6,
+//             available: 0,
 //          },
 //          {
 //             size: 'L',
@@ -59,10 +59,12 @@ app.listen(PORT, () => {
 //          },
 //          {
 //             size: 'XL',
-//             available: 6,
+//             available: 0,
 //          },
 //       ],
 //    },
+// ]);
+// ======================================
 //    {
 //       name: 'dainese backpack',
 //       price: '100',
@@ -97,6 +99,7 @@ app.listen(PORT, () => {
 //    },
 // ]);
 // =====================================
+// const productsModel = require('./models/productsModel');
 // productsModel.insertMany([
 //    {
 //       name: 'dainese boots',
@@ -105,6 +108,32 @@ app.listen(PORT, () => {
 //       image: 'https://www.4motos.pl/userdata/public/gfx/31722/Buty-Dainese-TORQUE-3-OUT.jpg',
 //       category: 'boots',
 //       discount: true,
+//       sizesArr: [
+//          {
+//             size: 'XS',
+//             available: 8,
+//          },
+//          {
+//             size: 'S',
+//             available: 0,
+//          },
+//          {
+//             size: 'X',
+//             available: 10,
+//          },
+//          {
+//             size: 'M',
+//             available: 6,
+//          },
+//          {
+//             size: 'L',
+//             available: 0,
+//          },
+//          {
+//             size: 'XL',
+//             available: 6,
+//          },
+//       ],
 //    },
 //    {
 //       name: 'dainese leather suit',
@@ -113,6 +142,32 @@ app.listen(PORT, () => {
 //       image: 'https://www.4motos.pl/userdata/public/gfx/37393/Kombinezon-Dainese-Laguna-Seca-5-1PC.jpg',
 //       category: 'leather-suits',
 //       discount: false,
+//       sizesArr: [
+//          {
+//             size: 'XS',
+//             available: 8,
+//          },
+//          {
+//             size: 'S',
+//             available: 0,
+//          },
+//          {
+//             size: 'X',
+//             available: 10,
+//          },
+//          {
+//             size: 'M',
+//             available: 6,
+//          },
+//          {
+//             size: 'L',
+//             available: 0,
+//          },
+//          {
+//             size: 'XL',
+//             available: 6,
+//          },
+//       ],
 //    },
 //    {
 //       name: 'dainese jacket',
@@ -121,14 +176,66 @@ app.listen(PORT, () => {
 //       image: 'https://lagunaseca.pl/pol_pl_Kurtka-motocyklowa-tekstylna-Dainese-Avro-D2-Tex-bialo-czarno-czerwona-85222_1.png',
 //       category: 'jackets',
 //       discount: true,
+//       sizesArr: [
+//          {
+//             size: 'XS',
+//             available: 8,
+//          },
+//          {
+//             size: 'S',
+//             available: 0,
+//          },
+//          {
+//             size: 'X',
+//             available: 10,
+//          },
+//          {
+//             size: 'M',
+//             available: 6,
+//          },
+//          {
+//             size: 'L',
+//             available: 0,
+//          },
+//          {
+//             size: 'XL',
+//             available: 6,
+//          },
+//       ],
 //    },
 //    {
-// name: 'dainese backpack',
-// price: '100',
-// description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta, commodi.',
-// image: 'https://www.motostyl.pl//pol_pl_Plecak-Dainese-D-Mach-Compact-czarny-2463_1.jpg',
-// category: 'accessories',
-// discount: false,
+//       name: 'dainese backpack',
+//       price: '100',
+//       description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta, commodi.',
+//       image: 'https://www.motostyl.pl//pol_pl_Plecak-Dainese-D-Mach-Compact-czarny-2463_1.jpg',
+//       category: 'accessories',
+//       discount: false,
+//       sizesArr: [
+//          {
+//             size: 'XS',
+//             available: 8,
+//          },
+//          {
+//             size: 'S',
+//             available: 0,
+//          },
+//          {
+//             size: 'X',
+//             available: 10,
+//          },
+//          {
+//             size: 'M',
+//             available: 6,
+//          },
+//          {
+//             size: 'L',
+//             available: 0,
+//          },
+//          {
+//             size: 'XL',
+//             available: 6,
+//          },
+//       ],
 //    },
 //    {
 //       name: 'dainese gloves',
@@ -137,6 +244,32 @@ app.listen(PORT, () => {
 //       image: 'https://immotion.pl/7169-big_photo/dainese-rekawiczki-hg-caddo.jpg',
 //       category: 'gloves',
 //       discount: false,
+//       sizesArr: [
+//          {
+//             size: 'XS',
+//             available: 8,
+//          },
+//          {
+//             size: 'S',
+//             available: 0,
+//          },
+//          {
+//             size: 'X',
+//             available: 10,
+//          },
+//          {
+//             size: 'M',
+//             available: 6,
+//          },
+//          {
+//             size: 'L',
+//             available: 0,
+//          },
+//          {
+//             size: 'XL',
+//             available: 6,
+//          },
+//       ],
 //    },
 //    {
 //       name: 'dainese helmets',
@@ -145,6 +278,32 @@ app.listen(PORT, () => {
 //       image: 'https://wrosport.pl/img/cms/DAINESE/Kask%20DAINESE%20Linea%2001%20Mips%20Bia%C5%82y%2010.jpg',
 //       category: 'helmets',
 //       discount: false,
+//       sizesArr: [
+//          {
+//             size: 'XS',
+//             available: 8,
+//          },
+//          {
+//             size: 'S',
+//             available: 0,
+//          },
+//          {
+//             size: 'X',
+//             available: 10,
+//          },
+//          {
+//             size: 'M',
+//             available: 6,
+//          },
+//          {
+//             size: 'L',
+//             available: 0,
+//          },
+//          {
+//             size: 'XL',
+//             available: 6,
+//          },
+//       ],
 //    },
 // ]);
 // =========================

@@ -1,8 +1,10 @@
 import { useContext, useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { NavbarItem } from './NavbarItem';
 import { shoppingCartOutlineIcon, userIcon } from '../utils/icons';
 import { ShoppingCartContext } from '../context/shoppingCartContex';
 import { ShoppingCart } from './ShoppingCart';
+import { Button } from './Button';
 
 /**
  * @todo update icon when user logs in
@@ -14,11 +16,18 @@ export const Navbar = () => {
    const navRef = useRef();
    const [navbarVis, setNavbarVis] = useState(true);
    const [shoppingCartVis, setShoppingCartVis] = useState(true);
-   const [isLogged, setIsLogged] = useState(() => {
+   const navigate = useNavigate();
+
+   let red = useRef(false);
+
+   const onRedirect = () => {
       const token = localStorage.getItem('access__token') || null;
-      if (token === null) return false;
-      return true;
-   });
+
+      if (!token) return navigate('/login');
+      navigate('/user');
+      // if (!token) return (red.current = '/login');
+      // red.current = '/user';
+   };
 
    // toggle navbar visibility
    const toggleNavbar = (e) => {
@@ -59,7 +68,7 @@ export const Navbar = () => {
             <ul className={`navbar__items-wrapper ${navbarVis ? 'show' : 'hide'}`}>
                <NavbarItem redirect='offer'>Offer</NavbarItem>
                <NavbarItem redirect='about'>About</NavbarItem>
-               <NavbarItem redirect={`${isLogged ? '/user' : '/login'}`}>{isLogged ? userIcon : 'Login'}</NavbarItem>
+               <Button onHandleFn={onRedirect}>{userIcon}</Button>
                <NavbarItem textSize='xl' onHandleFn={() => setShoppingCartVis(!shoppingCartVis)}>
                   <span className='absolute -right-4 -top-3 h-6 w-6 rounded-full bg-primaryBlue text-center text-base text-primaryWhite'>
                      {storedValues.length}

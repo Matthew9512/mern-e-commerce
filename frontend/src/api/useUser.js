@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
-import { fetchData } from './fetchData';
 import jwtDecode from 'jwt-decode';
+import { fetchData } from './fetchData';
 
 export const useUsers = () => {
-   const token = localStorage.getItem('access__token') || null;
+   const token = JSON.parse(localStorage.getItem('access__token')) || null;
    const { id } = jwtDecode(token);
 
    const usersQuery = useQuery({

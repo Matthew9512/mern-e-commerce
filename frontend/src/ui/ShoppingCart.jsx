@@ -39,7 +39,7 @@ export const ShoppingCart = ({ shoppingCartVis, setShoppingCartVis }) => {
             )}
          </article>
          <p className='py-4 text-center font-semibold'>total: $ {totalPrice}</p>
-         <LinkButton variant='primary' to='/shop'>
+         <LinkButton disabled={!storedValues.length} variant='primary' to='/shop'>
             Buy products
          </LinkButton>
       </aside>

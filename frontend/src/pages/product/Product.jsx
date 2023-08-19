@@ -19,23 +19,20 @@ export const Product = () => {
          {productsQuery.error && <p>{productsQuery.error.message}</p>}
          <article className='flex flex-col lg:flex-row justify-center items-center gap-8'>
             <div className='flex flex-col justify-center items-center lg:w-[400px] w-4/5'>
-               {/* <div className='flex flex-col justify-center items-center lg:w-1/2 w-4/5'> */}
                <div className='h-96 w-80 overflow-hidden flex items-center justify-center'>
                   <Image variant='primary' product={productsQuery.data} />
                </div>
                <p className='text-center'>{productsQuery.data?.description}</p>
             </div>
             <div className='flex flex-col justify-center items-center gap-8 lg:w-[400px] w-4/5'>
-               {/* <div className='flex flex-col justify-center items-center gap-8 lg:w-1/2 w-4/5'> */}
                <p className='font-semibold uppercase'>{productsQuery.data?.name}</p>
-               <div className='flex justify-between'>
-                  <p className={`${productsQuery.data?.sale ? 'line-through' : ''} opacity-60`}>
+               <div className='flex justify-around w-3/4'>
+                  <p className={`${productsQuery.data?.sale ? 'line-through opacity-60' : ''}`}>
                      price: $ {productsQuery.data?.price}
                   </p>
-                  <p className='opacity-60'>
-                     {productsQuery.data?.sale &&
-                        `price: $ ${(+productsQuery.data?.price * productsQuery.data?.discount) / 100}`}
-                  </p>
+                  {productsQuery.data?.sale && (
+                     <p>price: $ {(+productsQuery.data?.price * productsQuery.data?.discount) / 100}</p>
+                  )}
                </div>
                <ProductAside productsQuery={productsQuery} id={id} />
             </div>

@@ -15,16 +15,20 @@ export const ProductAside = ({ productsQuery, id }) => {
    return (
       <>
          <div className='flex items-center justify-center w-4/5 flex-wrap gap-1'>
-            {productsQuery.data?.sizesArr.map((size) => (
-               <Button
-                  key={size?._id}
-                  onHandleFn={(e) => currentSize(e, productSize)}
-                  variant='navLink'
-                  customClass={!size?.available ? 'line-through pointer-events-none' : ''}
-               >
-                  {size?.size}
-               </Button>
-            ))}
+            {productsQuery.data?.sizesArr.every((product) => product.available === 0) ? (
+               <p>Product temporary unavailable</p>
+            ) : (
+               productsQuery.data?.sizesArr.map((size) => (
+                  <Button
+                     key={size?._id}
+                     onHandleFn={(e) => currentSize(e, productSize)}
+                     variant='navLink'
+                     customClass={!size?.available ? 'line-through pointer-events-none' : ''}
+                  >
+                     {size?.size}
+                  </Button>
+               ))
+            )}
          </div>
          <Input variant='primary' inputRef={inputRef} defValue={1} type='number' placeholder='e.g. 2' label='Amount' />
          <Button

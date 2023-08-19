@@ -1,3 +1,4 @@
+import jwtDecode from 'jwt-decode';
 import { useMutation } from '@tanstack/react-query';
 import { useContext } from 'react';
 import { ShoppingCartContext } from '../../context/shoppingCartContex';
@@ -19,21 +20,27 @@ export const Shop = () => {
       setStoredValues(filteredLs);
    };
 
+   const token = JSON.parse(localStorage.getItem('access__token'));
+   const { id } = jwtDecode(token);
+
    const order = useMutation({
       mutationFn: () =>
          fetchData({
             url: `/users/buy`,
             method: 'POST',
-            data: storedValues.map((product) => {
-               return {
-                  productID: product?._id,
-                  name: product?.name,
-                  amount: product?.amount,
-                  price: product?.price,
-                  size: product?.size,
-                  image: product?.image,
-               };
-            }),
+            data: {
+               userID: id,
+               order: storedValues.map((product) => {
+                  return {
+                     productID: product?._id,
+                     name: product?.name,
+                     amount: product?.amount,
+                     price: product?.price,
+                     size: product?.size,
+                     image: product?.image,
+                  };
+               }),
+            },
          }),
 
       onSuccess: () => setStoredValues([]),
