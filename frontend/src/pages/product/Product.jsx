@@ -40,32 +40,3 @@ export const Product = () => {
       </Section>
    );
 };
-// const currentSize = (e) => {
-//    const click = e.target;
-//    const childrenEle = [...e.target.parentElement.children];
-
-//    // store choosen product size
-//    const size = e.target.textContent;
-//    productSize.current = size;
-
-//    // add effect to clicked size btn
-//    childrenEle.forEach((product) => product.classList.remove('activeSize'));
-//    click.classList.add('activeSize');
-// };
-
-// const handleShoppingCartItems = (product) => {
-//    // add to ls and shop
-//    if (!lsItems) {
-//       if (!productSize.current) return toast.error(`Please choose correct size`);
-//       setStoredValues((prev) => [
-//          ...prev,
-//          { ...product, amount: +inputRef.current.value, size: productSize.current },
-//       ]);
-//       toast.success(`Product added to shopping cart`);
-//    } else {
-//       // remove from ls and shop
-//       const filteredLs = storedValues.filter((lsItem) => lsItem !== lsItems);
-//       setStoredValues(filteredLs);
-//       toast.success(`Product removed from shopping cart`);
-//    }
-// };

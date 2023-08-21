@@ -12,6 +12,9 @@ export const UsersNavbar = () => {
          <LinkButton to='/user/order-history' variant={pathname === '/user/order-history' ? 'primary' : 'navLink'}>
             Order history
          </LinkButton>
+         <LinkButton to='/user/users-data' variant={pathname === '/user/users-data' ? 'primary' : 'navLink'}>
+            My data
+         </LinkButton>
       </div>
    );
 };

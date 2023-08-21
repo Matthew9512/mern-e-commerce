@@ -1,4 +1,4 @@
-export const Button = ({ children, variant, disabled, onHandleFn, customClass, dataType }) => {
+export const Button = ({ children, btnRef, variant, disabled, onHandleFn, customClass, dataType }) => {
    const mainStyle = `bg-primaryBlack text-primaryWhite flex justify-center items-center hover:bg-primaryBlack/90 active:bg-primaryBlack/90 border-primaryBlack/80 disabled:bg-secondaryWhite disabled:cursor-not-allowed`;
    const styles = {
       primary: `${mainStyle} w-fit mx-auto rounded-2xl py-2 px-4`,
@@ -9,6 +9,7 @@ export const Button = ({ children, variant, disabled, onHandleFn, customClass, d
 
    return (
       <button
+         ref={btnRef}
          onClick={onHandleFn}
          disabled={disabled}
          className={customClass ? `${customClass} ${styles[variant]}` : styles[variant]}

@@ -17,6 +17,20 @@ const usersSchema = new Schema(
             orderDate: { type: Date, default: Date.now },
          },
       ],
+      usersData: {
+         name: { type: String, default: '' },
+         surname: { type: String, default: '' },
+         adress: { type: String, default: '' },
+         city: { type: String, default: '' },
+         zipcode: { type: String, default: '' },
+      },
+      // usersData: {
+      //    name: String,
+      //    surname: String,
+      //    adress: String,
+      //    city: String,
+      //    zipcode: String,
+      // },
    },
    {
       timestamps: true,

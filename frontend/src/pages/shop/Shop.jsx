@@ -1,12 +1,12 @@
 import jwtDecode from 'jwt-decode';
-import { useMutation } from '@tanstack/react-query';
 import { useContext } from 'react';
+import { toast } from 'react-hot-toast';
 import { ShoppingCartContext } from '../../context/shoppingCartContex';
 import { Section } from '../../ui/Section';
 import { Image } from '../../ui/Image';
 import { Button } from '../../ui/Button';
 import { deleteIcon } from '../../utils/icons';
-import { fetchData } from '../../api/fetchData';
+import { useMutationOrder } from '../../api/useProducts';
 
 /**
  * @todo stripe
@@ -20,31 +20,25 @@ export const Shop = () => {
       setStoredValues(filteredLs);
    };
 
-   const token = JSON.parse(localStorage.getItem('access__token'));
-   const { id } = jwtDecode(token);
+   const productsOrderMutation = useMutationOrder();
 
-   const order = useMutation({
-      mutationFn: () =>
-         fetchData({
-            url: `/users/buy`,
-            method: 'POST',
-            data: {
-               userID: id,
-               order: storedValues.map((product) => {
-                  return {
-                     productID: product?._id,
-                     name: product?.name,
-                     amount: product?.amount,
-                     price: product?.price,
-                     size: product?.size,
-                     image: product?.image,
-                  };
-               }),
-            },
-         }),
+   const completeOrder = () => {
+      const token = JSON.parse(localStorage.getItem('access__token')) || null;
 
-      onSuccess: () => setStoredValues([]),
-   });
+      if (!token) return toast.error(`Please log in to complete order`);
+
+      const { id } = jwtDecode(token);
+
+      productsOrderMutation.mutate(storedValues, id, {
+         onSuccess: (data) => {
+            toast.success(data?.message);
+            setStoredValues([]);
+         },
+         onError: (err) => {
+            toast.error(err?.message);
+         },
+      });
+   };
 
    return (
       <Section style='flex flex-wrap items-center justify-center'>
@@ -82,10 +76,9 @@ export const Shop = () => {
                <p className='uppercase text-center'>No products in store</p>
             )}
          </div>
-         <div className='md:w-2/5 w-full bg-primaryBlue'>
+         <div className='md:w-2/5 w-full bg-primaryBlue rounded-xl text-center'>
             STRIPE
-            {/* <Button variant='primary' onHandleFn={move}> */}
-            <Button variant='primary' onHandleFn={order.mutate}>
+            <Button variant='primary' disabled={!storedValues.length} onHandleFn={completeOrder}>
                Order
             </Button>
          </div>

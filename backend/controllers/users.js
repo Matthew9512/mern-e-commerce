@@ -1,7 +1,8 @@
+const jwt = require('jsonwebtoken');
 const usersModel = require('../models/usersModel');
 const productsModel = require('../models/productsModel');
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+const usersUtils = require('../utils/usersFn');
 
 const register = async function (req, res, next) {
    try {
@@ -15,13 +16,25 @@ const register = async function (req, res, next) {
 
       const bcryptPassword = await bcrypt.hash(password, 10);
 
-      await usersModel.create({
+      const user = await usersModel.create({
          username,
          email,
          password: bcryptPassword,
       });
 
-      res.status(200).json({ message: `Account successfully created, welcome ${username}` });
+      res.status(200).json({ message: `Account successfully created, welcome ${username}`, id: user.id });
+   } catch (error) {
+      next(error.message);
+   }
+};
+
+const usersPersonalData = async function (req, res, next) {
+   try {
+      const { id, user } = req.body;
+
+      const findUser = await usersModel.findByIdAndUpdate({ _id: id }, { usersData: user }, { new: true });
+
+      res.status(200).json({ findUser, message: `Data successfully saved` });
    } catch (error) {
       next(error.message);
    }
@@ -53,7 +66,9 @@ const getUser = async function (req, res, next) {
    try {
       const { id } = req.params;
 
-      const user = await usersModel.findById(id).select('_id username email orderHistory createdAt');
+      const user = await usersModel.findById(id).select('_id username email orderHistory createdAt usersData');
+
+      if (!user) return res.status(404).json({ message: 'User not found' });
 
       res.status(200).json(user);
    } catch (error) {
@@ -65,13 +80,18 @@ const buyProducts = async function (req, res, next) {
    try {
       const { userID, ...orderArr } = req.body;
 
-      const usersOrder = await usersModel.findByIdAndUpdate(
-         { _id: userID },
-         {
-            $push: { orderHistory: orderArr },
-         },
-         { new: true }
-      );
+      // check if user send personal data
+      usersUtils.checkUsersData(userID, res);
+
+      const usersOrder = await usersModel
+         .findByIdAndUpdate(
+            { _id: userID },
+            {
+               $push: { orderHistory: orderArr },
+            },
+            { new: true }
+         )
+         .select('_id username email orderHistory createdAt');
 
       const { order } = orderArr;
 
@@ -90,10 +110,24 @@ const buyProducts = async function (req, res, next) {
          );
       });
 
-      res.status(200).json(usersOrder);
+      await usersUtils.sendNotifications(usersOrder, order, res, next);
+
+      res.status(200).json({ usersOrder, message: `Product purchase correctly` });
    } catch (error) {
       next(error.message);
    }
 };
 
-module.exports = { register, login, getUser, buyProducts };
+const deleteAcc = async function (req, res, next) {
+   try {
+      const { id } = req.body;
+
+      const findUser = await usersModel.findOneAndDelete(id);
+
+      res.status(200).json({ message: `Account successfully deleted` });
+   } catch (error) {
+      next(error.message);
+   }
+};
+
+module.exports = { register, usersPersonalData, login, getUser, buyProducts, deleteAcc };

@@ -1,4 +1,4 @@
-export const Input = ({ variant, label, type, placeholder, onHandleFn, inputRef, defValue }) => {
+export const Input = ({ variant, label, type, placeholder, onHandleFn, inputRef, defValue, disabled }) => {
    const mainStyle = 'rounded-md px-4 py-2 outline-0';
    const styles = {
       primary: `${mainStyle} w-56`,
@@ -17,6 +17,7 @@ export const Input = ({ variant, label, type, placeholder, onHandleFn, inputRef,
             placeholder={placeholder}
             name={label}
             id={label}
+            disabled={disabled}
          />
       </div>
    );

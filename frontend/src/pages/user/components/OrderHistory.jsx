@@ -7,23 +7,6 @@ import { Image } from '../../../ui/Image';
 export const OrderHistory = () => {
    const usersQuery = useUsers();
 
-   // let orderHis;
-   // orderHis = usersQuery.data?.orderHistory || [];
-
-   // const userHistory = useQueries({
-   //    queries: orderHis.map((order) => {
-   //       return {
-   //          queryKey: ['user', order.productID],
-   //          queryFn: () =>
-   //             fetchData({
-   //                url: `/products/${order.productID}`,
-   //             }),
-   //       };
-   //    }),
-   // });
-
-   // console.log(userHistory);
-
    return (
       <Section style='py-3 flex flex-col flex-wrap'>
          <UsersNavbar />

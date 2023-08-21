@@ -1,4 +1,5 @@
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import jwtDecode from 'jwt-decode';
 import { fetchData } from './fetchData';
 
 export const useProducts = (endpoint, page, reqType = false) => {
@@ -14,22 +15,32 @@ export const useProducts = (endpoint, page, reqType = false) => {
 
    return productsQuery;
 };
-// import { useQuery } from '@tanstack/react-query';
-// import { fetchData } from './fetchData';
 
-// export const useProducts = (endpoint) => {
-//    // export const useProducts = (endpoint, page) => {
-//    // let _reqURL;
-//    // if (page > 1) _reqURL = `products/page/${page}`;
-//    // else _reqURL = endpoint;
-//    // console.log(_reqURL);
-//    const productsQuery = useQuery({
-//       queryKey: ['products', `${endpoint}`],
-//       queryFn: () =>
-//          fetchData({
-//             url: endpoint,
-//          }),
-//    });
+export const useMutationOrder = () => {
+   const productsOrderMutation = useMutation({
+      mutationFn: (storedValues) => {
+         const token = JSON.parse(localStorage.getItem('access__token'));
+         const { id } = jwtDecode(token);
 
-//    return productsQuery;
-// };
+         return fetchData({
+            url: `/users/buy`,
+            method: 'POST',
+            data: {
+               userID: id,
+               order: storedValues.map((product) => {
+                  return {
+                     productID: product?._id,
+                     name: product?.name,
+                     amount: product?.amount,
+                     price: product?.price,
+                     size: product?.size,
+                     image: product?.image,
+                  };
+               }),
+            },
+         });
+      },
+   });
+
+   return productsOrderMutation;
+};

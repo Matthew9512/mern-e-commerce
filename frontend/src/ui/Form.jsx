@@ -1,4 +1,4 @@
-export const Form = ({ children, onHandleFn, formRef, variant }) => {
+export const Form = ({ children, onHandleFn, onSubmitFn, formRef, variant }) => {
    const mainStyle = 'mx-auto flex w-fit flex-col gap-8 rounded-md p-6 bg-secondaryWhite/50';
 
    const styles = {
@@ -6,7 +6,8 @@ export const Form = ({ children, onHandleFn, formRef, variant }) => {
    };
 
    return (
-      <form onChange={onHandleFn} ref={formRef} className={styles[variant]}>
+      // <form onSubmit={onHandleFn} ref={formRef} className={styles[variant]}>
+      <form onChange={onHandleFn} onSubmit={onSubmitFn} ref={formRef} className={styles[variant]}>
          <p className='text-center py-4 uppercase'>Dainese store</p>
          {children}
       </form>
