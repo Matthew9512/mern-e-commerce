@@ -54,7 +54,16 @@ const login = async function (req, res, next) {
 
       if (!bcryptPassword) return res.status(401).json({ message: `Wrong email or password` });
 
-      const accessToken = jwt.sign({ email, id: user._id }, process.env.ACCESS_TOKEN, { expiresIn: '15m' });
+      const accessToken = jwt.sign({ email, id: user._id }, process.env.ACCESS_TOKEN, { expiresIn: '7s' });
+
+      const refreshToken = jwt.sign({ email, id: user._id }, process.env.REFRESH_TOKEN, { expiresIn: '1d' });
+
+      res.cookie('jwt', refreshToken, {
+         httpOnly: true,
+         secure: true,
+         sameSite: 'None',
+         maxAge: 7 * 24 * 60 * 60 * 1000,
+      });
 
       res.status(200).json({ accessToken, message: `Login successful, welcome back ${user.username}` });
    } catch (error) {
@@ -70,6 +79,11 @@ const getUser = async function (req, res, next) {
 
       if (!user) return res.status(404).json({ message: 'User not found' });
 
+      // jwt decoded user info
+      const { id: userID, email } = req.user;
+
+      if (id !== userID) return res.status(403).json({ message: `You are not authorized to access this information` });
+
       res.status(200).json(user);
    } catch (error) {
       next(error.message);
@@ -83,17 +97,18 @@ const buyProducts = async function (req, res, next) {
       // check if user send personal data
       usersUtils.checkUsersData(userID, res);
 
+      // users order data
+      const { order } = orderArr;
+
       const usersOrder = await usersModel
          .findByIdAndUpdate(
             { _id: userID },
             {
-               $push: { orderHistory: orderArr },
+               $push: { orderHistory: order },
             },
             { new: true }
          )
          .select('_id username email orderHistory createdAt');
-
-      const { order } = orderArr;
 
       const productData = order.map((product) => {
          return {
@@ -118,11 +133,25 @@ const buyProducts = async function (req, res, next) {
    }
 };
 
+const logOut = (req, res) => {
+   const cookies = req.cookies;
+
+   if (!cookies?.jwt) return res.sendStatus(204);
+
+   res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true });
+
+   res.status(200).json({ message: `Logout successful` });
+};
+
 const deleteAcc = async function (req, res, next) {
    try {
       const { id } = req.body;
 
-      const findUser = await usersModel.findOneAndDelete(id);
+      const user = await usersModel.findByIdAndDelete(id);
+
+      if (!user) return res.status(404).json({ message: `User not found` });
+
+      res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true });
 
       res.status(200).json({ message: `Account successfully deleted` });
    } catch (error) {
@@ -130,4 +159,4 @@ const deleteAcc = async function (req, res, next) {
    }
 };
 
-module.exports = { register, usersPersonalData, login, getUser, buyProducts, deleteAcc };
+module.exports = { register, usersPersonalData, login, getUser, buyProducts, logOut, deleteAcc };

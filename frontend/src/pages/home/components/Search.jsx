@@ -28,7 +28,7 @@ export const Search = ({ setEndpoint, reqType, setPage }) => {
    return (
       <>
          {searchParams?.size > 0 && (
-            <Button variant='primary' onHandleFn={clearFilters}>
+            <Button variant='primary' customClass={'lg:mx-0'} onHandleFn={clearFilters}>
                Clear filters
             </Button>
          )}
@@ -40,7 +40,7 @@ export const Search = ({ setEndpoint, reqType, setPage }) => {
          />
          <SearchSelect onHandleFn={handleSearchBy} options={sortArr} label='Filter by' category='filter' />
          <Input onHandleFn={debounceFn} type='text' label='Product name' placeholder='e.g. gloves' variant='primary' />
-         <MultiRangeSlider onHandleFn={handleSearchBy} min={0} max={3000} />
+         {/* <MultiRangeSlider onHandleFn={handleSearchBy} min={0} max={3000} /> */}
       </>
    );
 };

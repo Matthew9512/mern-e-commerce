@@ -11,7 +11,7 @@ export const ShoppingCartItem = ({ product, storedValues, setStoredValues }) => 
    return (
       <div key={product?._id} className='flex gap-4 pt-2 relative'>
          <div className='w-16 h-16'>
-            <Image variant='profile' product={product} />
+            <Image variant='profile' image={product?.image} alt={product?.name} />
          </div>
          <div className='flex flex-col'>
             <p className='font-semibold uppercase'>{product?.name}</p>

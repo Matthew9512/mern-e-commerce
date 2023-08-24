@@ -4,6 +4,8 @@ import { LoadingSpinner } from '../../ui/LoadingSpinner';
 import { UsersNavbar } from './components/UsersNavbar';
 import { useMutateDeleteUser, useUsers } from '../../api/useUser';
 import { Button } from '../../ui/Button';
+import { LoadingButton } from '../../ui/LoadingButton';
+import { ErrorMessage } from '../../ui/ErrorMessage';
 
 export const User = () => {
    const usersQuery = useUsers();
@@ -23,12 +25,11 @@ export const User = () => {
       navigate('/');
    };
 
-   // items-center justify-center
    return (
       <Section style='py-3 flex flex-col  flex-wrap'>
          <UsersNavbar />
          {usersQuery.isLoading && <LoadingSpinner />}
-         {usersQuery.error && <p>asdasd</p>}
+         {usersQuery.error && <ErrorMessage style='py-4'>{usersQuery.error?.message}</ErrorMessage>}
          {usersQuery.data ? (
             <>
                <div className='text-center'>
@@ -36,15 +37,19 @@ export const User = () => {
                   <p>email: {usersQuery.data?.email}</p>
                   <p>joined: {new Date(usersQuery.data?.createdAt).toLocaleDateString('en-GB')}</p>
                </div>
-               <Button variant='primary' onHandleFn={removeAcc}>
-                  Delete account
-               </Button>
+               {usersMutationDel.isLoading ? (
+                  <LoadingButton />
+               ) : (
+                  <Button variant='primary' onHandleFn={removeAcc}>
+                     Delete account
+                  </Button>
+               )}
                <Button variant='primary' onHandleFn={logOut}>
                   Log out
                </Button>
             </>
          ) : (
-            <p>No user data</p>
+            <p>No users data available</p>
          )}
       </Section>
    );

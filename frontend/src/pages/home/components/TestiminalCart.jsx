@@ -1,4 +1,4 @@
-import { Image } from '../../../ui/Image';
+import { userIcon } from '../../../utils/icons';
 
 export const TestiminalCart = ({ style }) => {
    const styles = {
@@ -11,8 +11,8 @@ export const TestiminalCart = ({ style }) => {
       <div
          className={`w-full ${styles[style]} flex justify-center gap-4 rounded-md border-t border-primaryBlack/40 bg-secondaryWhite p-3`}
       >
-         <div className='my-auto h-12 w-12 flex-none'>
-            <Image variant='profile' />
+         <div className='my-auto flex-none'>
+            <p className='rounded-full p-2 border'>{userIcon}</p>
          </div>
          <div className='flex flex-col'>
             <p>lorem lorem</p>

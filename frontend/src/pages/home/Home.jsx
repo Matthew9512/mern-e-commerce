@@ -37,10 +37,11 @@ export const Home = () => {
    return (
       <>
          <Slider />
-         <Section style='flex items-center justify-center flex-wrap' header='Filters'>
+         <Section style='flex items-center justify-center md:flex-row flex-col gap-8' header='Filters'>
             <Search setEndpoint={setEndpoint} setPage={setPage} reqType={reqType} />
          </Section>
          <Section
+            id='productsList'
             style='py-24 grid place-items-center grid-cols-[repeat(auto-fill,minmax(16em,1fr))]'
             header='Features List'
             border={true}

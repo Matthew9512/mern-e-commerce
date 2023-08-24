@@ -1,6 +1,6 @@
 const productsModel = require('../models/productsModel');
 
-const _resLimit = 2;
+const _resLimit = 8;
 
 // handle sale
 const saleHandler = async function (req, res, next) {

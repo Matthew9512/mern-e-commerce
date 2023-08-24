@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { useMutateUser, useUsers } from '../../../api/useUser';
 import { Section } from '../../../ui/Section';
 import { LoadingSpinner } from '../../../ui/LoadingSpinner';
@@ -5,8 +7,7 @@ import { Form } from '../../../ui/Form';
 import { Input } from '../../../ui/Input';
 import { UsersNavbar } from './UsersNavbar';
 import { Button } from '../../../ui/Button';
-import { useState } from 'react';
-import { toast } from 'react-hot-toast';
+import { LoadingButton } from '../../../ui/LoadingButton';
 
 export const UsersPersonalData = () => {
    const [edit, setEdit] = useState(false);
@@ -41,7 +42,18 @@ export const UsersPersonalData = () => {
                {Object.entries(usersQuery.data.usersData).map(([key, value]) => (
                   <Input key={key} type='text' variant='secondary' disabled={!edit} label={key} defValue={value} />
                ))}
-               <Button variant='primary'>{!edit ? 'Edit' : 'Save'}</Button>
+               <div className='flex gap-2 mx-auto'>
+                  {usersMutation.isLoading ? (
+                     <LoadingButton />
+                  ) : (
+                     <Button variant='primary'>{!edit ? 'Edit' : 'Save'}</Button>
+                  )}
+                  {edit && (
+                     <Button onHandleFn={() => setEdit(false)} variant='primary'>
+                        Cancel
+                     </Button>
+                  )}
+               </div>
             </Form>
          )}
       </Section>

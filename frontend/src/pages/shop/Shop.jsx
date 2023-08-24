@@ -1,10 +1,10 @@
-import jwtDecode from 'jwt-decode';
 import { useContext } from 'react';
 import { toast } from 'react-hot-toast';
 import { ShoppingCartContext } from '../../context/shoppingCartContex';
 import { Section } from '../../ui/Section';
 import { Image } from '../../ui/Image';
 import { Button } from '../../ui/Button';
+import { LoadingButton } from '../../ui/LoadingButton';
 import { deleteIcon } from '../../utils/icons';
 import { useMutationOrder } from '../../api/useProducts';
 
@@ -22,14 +22,13 @@ export const Shop = () => {
 
    const productsOrderMutation = useMutationOrder();
 
-   const completeOrder = () => {
+   const completeOrder = async () => {
       const token = JSON.parse(localStorage.getItem('access__token')) || null;
 
       if (!token) return toast.error(`Please log in to complete order`);
 
-      const { id } = jwtDecode(token);
-
-      productsOrderMutation.mutate(storedValues, id, {
+      // productsOrderMutation.mutate(storedValues);
+      productsOrderMutation.mutate(storedValues, {
          onSuccess: (data) => {
             toast.success(data?.message);
             setStoredValues([]);
@@ -47,9 +46,9 @@ export const Shop = () => {
                storedValues.map((product) => (
                   <div key={product._id}>
                      <p className='uppercase font-semibold '>{product.name}</p>
-                     <div className='flex gap-10  relative'>
+                     <div className='flex lg:gap-10 gap-2 relative'>
                         <div className='w-28 h-28 flex justify-center items-center'>
-                           <Image variant='primary' product={product} />
+                           <Image variant='primary' image={product.image} alt={product.name} />
                         </div>
                         <div className='flex flex-col items-center justify-center'>
                            <p>price:</p>
@@ -78,9 +77,13 @@ export const Shop = () => {
          </div>
          <div className='md:w-2/5 w-full bg-primaryBlue rounded-xl text-center'>
             STRIPE
-            <Button variant='primary' disabled={!storedValues.length} onHandleFn={completeOrder}>
-               Order
-            </Button>
+            {productsOrderMutation.isLoading ? (
+               <LoadingButton />
+            ) : (
+               <Button variant='primary' disabled={!storedValues.length} onHandleFn={completeOrder}>
+                  Order
+               </Button>
+            )}
          </div>
       </Section>
    );

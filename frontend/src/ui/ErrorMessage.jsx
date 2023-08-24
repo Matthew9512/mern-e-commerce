@@ -1,3 +1,3 @@
-export const ErrorMessage = ({ children }) => {
-  return <p className="text-red-500">{children}</p>;
+export const ErrorMessage = ({ children, style }) => {
+   return <p className={`text-center text-lg ${style}`}>{children}</p>;
 };

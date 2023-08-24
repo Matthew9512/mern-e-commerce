@@ -1,12 +1,16 @@
 import axios from 'axios';
 
-const axiosInstance = axios.create({
-   baseURL: 'http://localhost:8000',
-});
+const _URL = `http://localhost:8000`;
 
-export const fetchData = async (options) => {
+axios.defaults.baseURL = _URL;
+axios.defaults.withCredentials = true;
+
+export const axiosCredentials = axios.create();
+
+export const fetchData = async (options, auth = false) => {
+   const axiosOptions = auth ? axiosCredentials : axios;
    try {
-      const res = await axiosInstance.request(options);
+      const res = await axiosOptions.request(options);
       const data = await res.data;
       console.log(data);
       return data;
