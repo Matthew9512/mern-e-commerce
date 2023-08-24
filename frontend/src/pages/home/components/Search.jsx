@@ -28,7 +28,7 @@ export const Search = ({ setEndpoint, reqType, setPage }) => {
    return (
       <>
          {searchParams?.size > 0 && (
-            <Button variant='primary' customClass={'lg:mx-0'} onHandleFn={clearFilters}>
+            <Button variant='primary' customClass='lg:mx-0' onHandleFn={clearFilters}>
                Clear filters
             </Button>
          )}

@@ -11,7 +11,7 @@ export const Slider = () => {
    return (
       <Splide
          options={{
-            // autoplay: true,
+            autoplay: true,
             interval: 3000,
             type: 'loop',
             height: '70vh',
@@ -22,38 +22,38 @@ export const Slider = () => {
          aria-label='React Splide'
       >
          <SplideSlide>
-            <div className='h-full w-full relative'>
-               <Image image='/b.jpg' variant='primary' customClass='w-full h-[815px]' />
-               <div className='absolute top-20 right-20 flex flex-col gap-8 text-primaryWhite'>
-                  <h2 className=' uppercase font-semibold tracking-widest text-lg'>Shop perks</h2>
-                  <p className=''>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-                  <Button variant='primary' onHandleFn={scrollToProducts} customClass='mx-0'>
-                     See full offer
-                  </Button>
-               </div>
-            </div>
-         </SplideSlide>
-         <SplideSlide>
-            <div className='h-full w-full relative'>
-               <Image image='/a.jpg' variant='primary' customClass='w-full h-[815px]' />
-               <div className='absolute top-20 right-20 flex flex-col gap-8 text-primaryWhite'>
-                  <h2 className=' uppercase font-semibold tracking-widest text-lg'>Shop perks</h2>
-                  <p className=''>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-                  <Button variant='primary' customClass='mx-0'>
-                     See full offer
-                  </Button>
-               </div>
-            </div>
-         </SplideSlide>
-         <SplideSlide>
-            <div className='h-full w-full relative'>
+            <div className='h-full w-full relative bg-primaryBlack/30'>
                <Image image='/moto.jpg' variant='primary' customClass='w-full h-[815px]' />
-               <div className='absolute top-20 right-20 flex flex-col gap-8 text-primaryWhite'>
-                  <h2 className=' uppercase font-semibold tracking-widest text-lg'>Shop perks</h2>
-                  <p className=''>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-                  <Button variant='primary' customClass='mx-0'>
+               <div className='absolute lg:top-20 lg:right-20 bottom-10 left-10 flex flex-col gap-6 text-primaryWhite'>
+                  <p className=' uppercase font-semibold tracking-widest text-2xl'>Lorem ipsum</p>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                  <p>Lorem ipsum dolor sit amet.</p>
+                  <Button variant='primary' onHandleFn={scrollToProducts} customClass='lg:mx-0 ml-0'>
                      See full offer
                   </Button>
+               </div>
+            </div>
+         </SplideSlide>
+         <SplideSlide>
+            <div className='h-full w-full relative bg-primaryBlack/30'>
+               <Image image='/b.jpg' variant='primary' customClass='w-full h-[815px]' />
+               <div className='absolute lg:top-20 lg:right-20 top-10 left-10 flex flex-col items gap-6 text-primaryWhite'>
+                  <p className=' uppercase font-semibold tracking-widest text-2xl'>Lorem ipsum</p>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                  <p>Lorem ipsum dolor sit amet.</p>
+               </div>
+            </div>
+         </SplideSlide>
+         <SplideSlide>
+            <div className='h-full w-full relative bg-primaryBlack/30'>
+               <Image image='/a.jpg' variant='primary' customClass='w-full h-[815px]' />
+               <div className='absolute lg:top-20 lg:right-20 top-10 left-10 flex flex-col gap-6 text-primaryWhite'>
+                  <p className=' uppercase font-semibold tracking-widest text-2xl'>Lorem ipsum</p>
+                  <p className='lg:w-1/2 w-3/5'>
+                     Lorem ipsum dolor sit amet consectetur adipisicing.
+                     <br />
+                     Lorem ipsum dolor sit amet.
+                  </p>
                </div>
             </div>
          </SplideSlide>
