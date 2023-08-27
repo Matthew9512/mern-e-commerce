@@ -54,9 +54,9 @@ const login = async function (req, res, next) {
 
       if (!bcryptPassword) return res.status(401).json({ message: `Wrong email or password` });
 
-      const accessToken = jwt.sign({ email, id: user._id }, process.env.ACCESS_TOKEN, { expiresIn: '7s' });
+      const accessToken = jwt.sign({ email, id: user._id }, process.env.ACCESS_TOKEN, { expiresIn: '1d' });
 
-      const refreshToken = jwt.sign({ email, id: user._id }, process.env.REFRESH_TOKEN, { expiresIn: '1d' });
+      const refreshToken = jwt.sign({ email, id: user._id }, process.env.REFRESH_TOKEN, { expiresIn: '7d' });
 
       res.cookie('jwt', refreshToken, {
          httpOnly: true,
@@ -80,7 +80,7 @@ const getUser = async function (req, res, next) {
       if (!user) return res.status(404).json({ message: 'User not found' });
 
       // jwt decoded user info
-      const { id: userID, email } = req.user;
+      const { id: userID } = req.user;
 
       if (id !== userID) return res.status(403).json({ message: `You are not authorized to access this information` });
 
@@ -125,7 +125,7 @@ const buyProducts = async function (req, res, next) {
          );
       });
 
-      await usersUtils.sendNotifications(usersOrder, order, res, next);
+      await usersUtils.sendNotifications(usersOrder, order, next);
 
       res.status(200).json({ usersOrder, message: `Product purchase correctly` });
    } catch (error) {

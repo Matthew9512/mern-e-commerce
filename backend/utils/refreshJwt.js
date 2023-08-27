@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const usersModel = require('../models/usersModel');
 
-const refreshJwt = (req, res) => {
+const refreshJwt = async function (req, res) {
    const cookies = req.cookies;
 
    if (!cookies?.jwt) return res.status(401).json({ message: `You are not authorized to access this information` });
@@ -17,7 +17,7 @@ const refreshJwt = (req, res) => {
       if (!user) return res.status(401).json({ message: 'User not found' });
 
       const accessToken = jwt.sign({ email: user.email, id: user._id }, process.env.ACCESS_TOKEN, {
-         expiresIn: '7s',
+         expiresIn: '1d',
       });
 
       res.json({ accessToken });

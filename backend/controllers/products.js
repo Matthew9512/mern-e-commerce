@@ -1,14 +1,17 @@
 const productsModel = require('../models/productsModel');
 
+// products res limit per request
 const _resLimit = 8;
 
-// handle sale
-const saleHandler = async function (req, res, next) {
-   await productsModel.updateMany({ category: 'helmets' }, { sale: true, discount: 50 }, { new: true });
+// update products in db with sale
+// first remove old sale, by setting salse: false and discount to 0, then set new sale
+const saleHandler = async function () {
+   await productsModel.updateMany({ category: 'leather-suits' }, { sale: true, discount: 30 }, { new: true });
 };
 
 const getProducts = async function (req, res, next) {
    try {
+      // activate to set sale
       // await saleHandler();
       const { page } = req.params;
 
@@ -48,6 +51,11 @@ const searchByName = async (req, res, next) => {
       const productRegex = new RegExp(name, 'i');
 
       const products = await productsModel.find({ name: productRegex });
+
+      if (!products.length)
+         return res.status(404).json({
+            message: `Looks like we can't find products that you are looking for, please change your criteria or see our full offer ;)`,
+         });
 
       res.status(200).json({ products });
    } catch (error) {

@@ -31,18 +31,16 @@ const emailOptions = (email, username, order) => {
          ${clientTemplate}
          <p>Message generated automatically, please do not reply to it</p>`;
 
-   // change form .env to => email
-   // const recipientsOptionsArr = [{ email: email, html: html }];
-   const recipientsOptionsArr = [{ email: process.env.mail_reciver_user, html: html }];
+   const recipientsOptionsArr = [{ email: email, html: html }];
+   // const recipientsOptionsArr = [{ email: process.env.mail_reciver_user, html: html }];
 
    return recipientsOptionsArr;
 };
 
-const sendNotifications = async (usersOrder, order, res, next) => {
+const sendNotifications = async (usersOrder, order, next) => {
    // email adress and html template
 
    const recipientsOptionsArr = emailOptions(usersOrder.email, usersOrder.username, order);
-   //    return;
 
    // email account from where mails are send
    const transporter = nodemailer.createTransport({
@@ -62,8 +60,6 @@ const sendNotifications = async (usersOrder, order, res, next) => {
             to: value.email,
             html: value.html,
          });
-
-         // res.status(200).json({ usersOrder, message: `Product purchase correctly` });
       } catch (error) {
          next(error.message);
       }

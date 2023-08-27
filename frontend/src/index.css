@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+option[value=''] {
+   background-color: red;
+}
+
 /* ******************** */
 /* img { */
 /* object-fit: cover;

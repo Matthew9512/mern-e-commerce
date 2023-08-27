@@ -24,13 +24,6 @@ const usersSchema = new Schema(
          city: { type: String, default: '' },
          zipcode: { type: String, default: '' },
       },
-      // usersData: {
-      //    name: String,
-      //    surname: String,
-      //    adress: String,
-      //    city: String,
-      //    zipcode: String,
-      // },
    },
    {
       timestamps: true,

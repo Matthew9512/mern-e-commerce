@@ -1,39 +1,86 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
-import jwtDecode from 'jwt-decode';
 import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { fetchData } from './fetchData';
+import { removeToken, jwtDecodeToken } from '../utils/axiosHelpers';
 
+// register user
+export const useMutateRegister = (setRegister) => {
+   const registerMutation = useMutation({
+      mutationFn: async ({ e, formRef }) => {
+         e.preventDefault();
+         return await fetchData({
+            method: 'POST',
+            url: '/users/register',
+            data: {
+               password: `${formRef.current.password.value}`,
+               email: `${formRef.current.email.value}`,
+               username: `${formRef.current.username.value}`,
+            },
+         });
+      },
+      onSuccess: (data) => {
+         setTimeout(() => {
+            setRegister(true);
+         }, 1000);
+         toast.success(data?.message);
+      },
+      onError: (err) => toast.error(err.message),
+   });
+
+   return registerMutation;
+};
+
+// login user
+export const useMutateLogin = () => {
+   const navigate = useNavigate();
+
+   const loginMutation = useMutation({
+      mutationFn: async ({ e, formRef }) => {
+         console.log(formRef);
+         e.preventDefault();
+         return await fetchData({
+            method: 'POST',
+            url: '/users/login',
+            data: {
+               password: `${formRef.current.password.value}`,
+               email: `${formRef.current.email.value}`,
+            },
+         });
+      },
+      onSuccess: (data) => {
+         localStorage.setItem('access__token', JSON.stringify(data?.accessToken));
+         toast.success(data?.message);
+         navigate('/');
+      },
+      onError: (err) => toast.error(err.message),
+   });
+
+   return loginMutation;
+};
+
+// get user
 export const useUsers = () => {
-   const token = JSON.parse(localStorage.getItem('access__token')) || null;
-
-   const { id } = jwtDecode(token);
    const usersQuery = useQuery({
       queryKey: ['users'],
-      queryFn: () =>
-         fetchData(
+      queryFn: () => {
+         const decoded = jwtDecodeToken();
+         console.log(decoded);
+         return fetchData(
             {
-               // url: 64e4fd341b993f757108c977, // ewa
-               // url: `/users/64e3ad1c5aabeb46c0857e04`, // mm
-               url: `/users/${id}`,
-               withCredentials: true,
+               url: `/users/${decoded.id}`,
             },
             true
-         ),
-
-      retry: 1,
-      useErrorBoundary: (err) => {
-         toast.error(err?.message);
-         // setTimeout(() => {
-         //    window.location = '/';
-         // }, 2000);
+         );
       },
    });
 
    return usersQuery;
 };
 
+// post users personal data like name, adress...
 export const useMutateUser = (id) => {
-   const usersMutation = useMutation({
+   const usersDataMutation = useMutation({
       mutationFn: (formData) =>
          fetchData(
             {
@@ -48,9 +95,10 @@ export const useMutateUser = (id) => {
          ),
    });
 
-   return usersMutation;
+   return usersDataMutation;
 };
 
+// delete acc
 export const useMutateDeleteUser = (id) => {
    const usersMutationDel = useMutation({
       mutationFn: () =>
@@ -65,7 +113,10 @@ export const useMutateDeleteUser = (id) => {
             true
          ),
 
-      onSuccess: (data) => toast.success(data?.message),
+      onSuccess: (data) => {
+         removeToken();
+         toast.success(data?.message);
+      },
       onError: (err) => toast.error(err?.message),
    });
 

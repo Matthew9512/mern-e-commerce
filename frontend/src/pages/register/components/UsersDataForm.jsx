@@ -1,4 +1,5 @@
 import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { Form } from '../../../ui/Form';
 import { Input } from '../../../ui/Input';
 import { Button } from '../../../ui/Button';
@@ -6,15 +7,21 @@ import { useMutateUser } from '../../../api/useUser';
 import { LoadingButton } from '../../../ui/LoadingButton';
 
 export const UsersDataForm = ({ registerMutation }) => {
-   const usersMutation = useMutateUser(registerMutation.data.id);
+   const usersDataMutation = useMutateUser(registerMutation.data.id);
+   const navigate = useNavigate();
 
    const saveUsersData = (e) => {
       e.preventDefault();
       const form = new FormData(e.currentTarget);
       const formData = Object.fromEntries(form);
 
-      usersMutation.mutate(formData, {
-         onSuccess: (data) => toast.success(data?.message),
+      // usersDataMutation.mutate(formData)
+
+      usersDataMutation.mutate(formData, {
+         onSuccess: (data) => {
+            toast.success(data?.message);
+            navigate('/');
+         },
          onError: (err) => toast.error(err?.message),
       });
    };
@@ -26,7 +33,7 @@ export const UsersDataForm = ({ registerMutation }) => {
          <Input label='adress' type='text' placeholder='e.g. wierzbowa 4' variant='secondary' />
          <Input label='city' type='text' placeholder='e.g. adam' variant='secondary' />
          <Input label='zipcode' type='text' placeholder='e.g. 58-578' variant='secondary' />
-         {usersMutation.isLoading ? <LoadingButton /> : <Button variant='primary'>Save</Button>}
+         {usersDataMutation.isLoading ? <LoadingButton /> : <Button variant='primary'>Save</Button>}
       </Form>
    );
 };

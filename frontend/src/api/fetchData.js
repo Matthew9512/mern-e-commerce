@@ -7,7 +7,7 @@ axios.defaults.withCredentials = true;
 
 export const axiosCredentials = axios.create();
 
-export const fetchData = async (options, auth = false) => {
+export async function fetchData(options, auth = false) {
    const axiosOptions = auth ? axiosCredentials : axios;
    try {
       const res = await axiosOptions.request(options);
@@ -19,4 +19,4 @@ export const fetchData = async (options, auth = false) => {
       if (error.request.status === 0) return (window.location.href = '/server-down');
       throw new Error(error.response.data.message);
    }
-};
+}

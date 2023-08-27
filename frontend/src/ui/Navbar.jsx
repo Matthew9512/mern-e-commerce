@@ -8,7 +8,7 @@ import { Button } from './Button';
 
 export const Navbar = () => {
    const { storedValues } = useContext(ShoppingCartContext);
-   const [shoppingCartVis, setShoppingCartVis] = useState(true);
+   const [shoppingCartVis, setShoppingCartVis] = useState(false);
    const navigate = useNavigate();
 
    const onRedirect = () => {

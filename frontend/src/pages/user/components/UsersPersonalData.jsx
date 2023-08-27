@@ -12,7 +12,7 @@ import { LoadingButton } from '../../../ui/LoadingButton';
 export const UsersPersonalData = () => {
    const [edit, setEdit] = useState(false);
    const usersQuery = useUsers();
-   const usersMutation = useMutateUser(usersQuery.data?._id);
+   const usersDataMutation = useMutateUser(usersQuery.data?._id);
 
    const handlePersonalDataForm = (e) => {
       e.preventDefault();
@@ -22,7 +22,7 @@ export const UsersPersonalData = () => {
       const form = new FormData(e.currentTarget);
       const formData = Object.fromEntries(form);
 
-      usersMutation.mutate(formData, {
+      usersDataMutation.mutate(formData, {
          onSuccess: (data) => {
             toast.success(data?.message);
             setEdit(false);
@@ -43,7 +43,7 @@ export const UsersPersonalData = () => {
                   <Input key={key} type='text' variant='secondary' disabled={!edit} label={key} defValue={value} />
                ))}
                <div className='flex gap-2 mx-auto'>
-                  {usersMutation.isLoading ? (
+                  {usersDataMutation.isLoading ? (
                      <LoadingButton />
                   ) : (
                      <Button variant='primary'>{!edit ? 'Edit' : 'Save'}</Button>

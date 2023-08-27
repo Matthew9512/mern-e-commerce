@@ -1,6 +1,6 @@
 import { toast } from 'react-hot-toast';
 
-export const currentSize = (e, productSize) => {
+export const currentSize = (e, productSize, product, inputRef) => {
    const click = e.target;
    const childrenEle = [...e.target.parentElement.children];
 
@@ -11,6 +11,10 @@ export const currentSize = (e, productSize) => {
    // add effect to clicked size btn
    childrenEle.forEach((product) => product.classList.remove('activeSize'));
    click.classList.add('activeSize');
+
+   // reset input value and set max value
+   inputRef.current.value = 1;
+   inputRef.current.max = product.available;
 };
 
 export const handleShoppingCartItems = (product, lsItems, productSize, storedValues, setStoredValues, inputRef) => {

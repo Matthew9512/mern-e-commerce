@@ -7,6 +7,7 @@ import { Button } from '../../ui/Button';
 import { LoadingButton } from '../../ui/LoadingButton';
 import { deleteIcon } from '../../utils/icons';
 import { useMutationOrder } from '../../api/useProducts';
+import { jwtDecodeToken } from '../../utils/axiosHelpers';
 
 /**
  * @todo stripe
@@ -14,29 +15,18 @@ import { useMutationOrder } from '../../api/useProducts';
 
 export const Shop = () => {
    const { storedValues, setStoredValues } = useContext(ShoppingCartContext);
+   const productsOrderMutation = useMutationOrder(storedValues, setStoredValues);
 
    const handleRemoveShoppingCartItem = (id) => {
       const filteredLs = storedValues.filter((product) => product._id !== id);
       setStoredValues(filteredLs);
    };
 
-   const productsOrderMutation = useMutationOrder();
-
    const completeOrder = async () => {
-      const token = JSON.parse(localStorage.getItem('access__token')) || null;
+      const decoded = jwtDecodeToken();
+      if (!decoded) return toast.error(`Please log in to complete order`);
 
-      if (!token) return toast.error(`Please log in to complete order`);
-
-      // productsOrderMutation.mutate(storedValues);
-      productsOrderMutation.mutate(storedValues, {
-         onSuccess: (data) => {
-            toast.success(data?.message);
-            setStoredValues([]);
-         },
-         onError: (err) => {
-            toast.error(err?.message);
-         },
-      });
+      productsOrderMutation.mutate();
    };
 
    return (

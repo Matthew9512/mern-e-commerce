@@ -1,5 +1,6 @@
 import jwtDecode from 'jwt-decode';
 import { axiosCredentials, fetchData } from '../api/fetchData';
+import { Navigate } from 'react-router-dom';
 
 axiosCredentials.interceptors.request.use(
    async (config) => {
@@ -8,7 +9,6 @@ axiosCredentials.interceptors.request.use(
          config.headers.Authorization = `Bearer ${token}`;
       } else {
          const newToken = await refreshAccessToken();
-         console.log(newToken);
          config.headers.Authorization = `Bearer ${newToken}`;
       }
       return config;
@@ -18,7 +18,7 @@ axiosCredentials.interceptors.request.use(
    }
 );
 
-export const getToken = () => {
+export function getToken() {
    const token = JSON.parse(localStorage.getItem('access__token'));
    if (token) {
       const { exp } = jwtDecode(token);
@@ -29,13 +29,13 @@ export const getToken = () => {
       }
    }
    return token;
-};
+}
 
-export const removeToken = () => {
+export function removeToken() {
    localStorage.removeItem('access__token');
-};
+}
 
-const refreshAccessToken = async () => {
+async function refreshAccessToken() {
    try {
       const res = await fetchData({
          url: `/users/refresh`,
@@ -49,4 +49,19 @@ const refreshAccessToken = async () => {
    } catch (error) {
       console.log(error);
    }
-};
+}
+
+export function jwtDecodeToken() {
+   const token = JSON.parse(localStorage.getItem('access__token')) || null;
+   let decoded;
+
+   try {
+      decoded = jwtDecode(token);
+      console.log(decoded);
+   } catch (error) {
+      // window.location = '/';
+      console.log(error.message);
+   }
+
+   return decoded;
+}

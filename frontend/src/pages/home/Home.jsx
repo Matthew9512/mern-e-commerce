@@ -56,10 +56,10 @@ export const Home = () => {
             header='Users comments'
             border={true}
          >
-            <TestiminalCart style='first' />
-            <TestiminalCart style='second' />
-            <TestiminalCart style='second' />
-            <TestiminalCart style='third' />
+            <TestiminalCart style='lg:col-start-1 lg:row-span-3' />
+            <TestiminalCart style='lg:col-start-2' />
+            <TestiminalCart style='lg:col-start-2' />
+            <TestiminalCart style='lg:col-start-3 lg:row-start-1 lg:row-span-3' />
          </Section>
       </>
    );

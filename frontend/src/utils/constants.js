@@ -3,4 +3,4 @@ export const categoryArr = ['all', 'accessories', 'boots', 'gloves', 'helmets', 
 
 export const sortArr = ['price-up', 'price-down', 'name', 'discount'];
 
-export const sizesArr = ['XS', 'S', 'M', 'L', 'XL'];
+// export const sizesArr = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];

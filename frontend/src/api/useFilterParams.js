@@ -6,6 +6,7 @@ export const useFilterParams = (setEndpoint, reqType, setPage) => {
    // clear all params
    const clearFilters = () => {
       setSearchParams(searchParams.set('', ''));
+      document.querySelectorAll('#searchSelect').forEach((select) => (select.value = ''));
       setEndpoint(`/products`);
    };
 
@@ -21,11 +22,17 @@ export const useFilterParams = (setEndpoint, reqType, setPage) => {
       if (!click.value) return;
 
       if (click.dataset.category === 'category') {
+         // reset inputs and selects
+         document.querySelectorAll('#searchSelect').forEach((select) => {
+            if (select === click) return;
+
+            select.value = '';
+         });
+
          searchParams.set('category', click.value);
          setEndpoint(`/products/category/${click.value}`);
          searchParams.delete('sortBy');
       } else searchParams.set('sortBy', click.value);
-
       setSearchParams(searchParams);
    };
 

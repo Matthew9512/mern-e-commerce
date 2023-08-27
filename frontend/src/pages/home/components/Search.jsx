@@ -33,13 +33,29 @@ export const Search = ({ setEndpoint, reqType, setPage }) => {
             </Button>
          )}
          <SearchSelect
+            id='searchSelect'
             onHandleFn={handleSearchBy}
             options={categoryArr}
             label='Search by category'
             category='category'
+            placeholder='e.g. boots'
          />
-         <SearchSelect onHandleFn={handleSearchBy} options={sortArr} label='Filter by' category='filter' />
-         <Input onHandleFn={debounceFn} type='text' label='Product name' placeholder='e.g. gloves' variant='primary' />
+         <SearchSelect
+            id='searchSelect'
+            onHandleFn={handleSearchBy}
+            options={sortArr}
+            label='Filter by'
+            category='filter'
+            placeholder='e.g. price-up'
+         />
+         <Input
+            onHandleFn={debounceFn}
+            type='text'
+            label='Product name'
+            placeholder='e.g. gloves'
+            variant='primary'
+            id='searchSelect'
+         />
          {/* <MultiRangeSlider onHandleFn={handleSearchBy} min={0} max={3000} /> */}
       </>
    );

@@ -6,6 +6,7 @@ import { useMutateDeleteUser, useUsers } from '../../api/useUser';
 import { Button } from '../../ui/Button';
 import { LoadingButton } from '../../ui/LoadingButton';
 import { ErrorMessage } from '../../ui/ErrorMessage';
+import { removeToken } from '../../utils/axiosHelpers';
 
 export const User = () => {
    const usersQuery = useUsers();
@@ -13,13 +14,15 @@ export const User = () => {
    const usersMutationDel = useMutateDeleteUser(usersQuery.data?._id);
 
    const logOut = () => {
+      removeToken();
       localStorage.removeItem('access__token');
 
       navigate('/');
    };
-
+   console.log(usersQuery);
    const removeAcc = () => {
       usersMutationDel.mutate();
+      removeToken();
       localStorage.removeItem('access__token');
 
       navigate('/');
@@ -29,7 +32,7 @@ export const User = () => {
       <Section style='py-3 flex flex-col  flex-wrap'>
          <UsersNavbar />
          {usersQuery.isLoading && <LoadingSpinner />}
-         {usersQuery.error && <ErrorMessage style='py-4'>{usersQuery.error?.message}</ErrorMessage>}
+         {/* {usersQuery.error && <ErrorMessage style='py-4'>{usersQuery.error?.message}</ErrorMessage>} */}
          {usersQuery.data ? (
             <>
                <div className='text-center'>
