@@ -28,6 +28,7 @@ const getProducts = async function (req, res, next) {
       if (saleInfo)
          res.cookie('saleInfo', saleInfo, {
             secure: true,
+            httpOnly: true,
             sameSite: 'None',
             domain: 'https://justride.vercel.app',
          });
