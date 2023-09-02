@@ -6,7 +6,7 @@ export const ServerDown = () => {
          <img className='w-fill h-full object-cover' src='/500-com.jpg' alt='server-down-img' />
          <div className='w-4/5 text-center lg:w-1/3'>
             <div className='flex flex-col pb-12 items-center'>
-               <LinkButton className='btn w-32 mb-4' to={'/'}>
+               <LinkButton variant='primary' customClass='mb-8' to={'/'}>
                   Go Back
                </LinkButton>
                <p>

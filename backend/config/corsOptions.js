@@ -1,4 +1,9 @@
-const whitelist = ['https://mern-bank-account.netlify.app', 'http://127.0.0.1:5173', 'http://localhost:8000'];
+const whitelist = [
+   'https://mern-bank-account.netlify.app',
+   'http://127.0.0.1:5173',
+   'http://localhost:8000',
+   'http://localhost:5173',
+];
 const corsOptions = {
    credentials: true,
    optionsSuccessState: 200,

@@ -1,7 +1,6 @@
 import debounce from 'lodash.debounce';
 import { useMemo } from 'react';
 import { Input } from '../../../ui/Input';
-import { MultiRangeSlider } from '../../../ui/MultiRangeSlider';
 import { SearchSelect } from '../../../ui/SearchSelect';
 import { Button } from '../../../ui/Button';
 import { categoryArr, sortArr } from '../../../utils/constants';
@@ -38,7 +37,7 @@ export const Search = ({ setEndpoint, reqType, setPage }) => {
             options={categoryArr}
             label='Search by category'
             category='category'
-            placeholder='e.g. boots'
+            placeholder='Choose from list'
          />
          <SearchSelect
             id='searchSelect'
@@ -46,17 +45,16 @@ export const Search = ({ setEndpoint, reqType, setPage }) => {
             options={sortArr}
             label='Filter by'
             category='filter'
-            placeholder='e.g. price-up'
+            placeholder='Choose from list'
          />
          <Input
             onHandleFn={debounceFn}
             type='text'
             label='Product name'
-            placeholder='e.g. gloves'
+            placeholder='Write product name'
             variant='primary'
             id='searchSelect'
          />
-         {/* <MultiRangeSlider onHandleFn={handleSearchBy} min={0} max={3000} /> */}
       </>
    );
 };

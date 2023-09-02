@@ -1,6 +1,5 @@
 import jwtDecode from 'jwt-decode';
 import { axiosCredentials, fetchData } from '../api/fetchData';
-import { Navigate } from 'react-router-dom';
 
 axiosCredentials.interceptors.request.use(
    async (config) => {

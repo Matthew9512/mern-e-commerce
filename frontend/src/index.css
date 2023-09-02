@@ -2,56 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-option[value=''] {
-   background-color: red;
-}
-
-/* ******************** */
-/* img { */
-/* object-fit: cover;
-   width: 100%;
-   height: 850px; */
-/* display: block;
-   max-width: 2030px;
-   max-height: 815px;
-   width: auto;
-   height: auto; */
-/* } */
 .load {
    @apply animate-pulse shadow-md;
-   /* @apply animate-pulse rounded-xl bg-primaryWhite shadow-md; */
 }
 
 .activeSize {
    @apply bg-primaryBlack text-primaryWhite;
 }
-/* ******************** */
 
-/* ********page transition********* */
-.slide-in {
-   position: fixed;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100vh;
-   background-color: #0f0f0f;
-   transform-origin: left;
+/* page transition */
+.transition {
+   animation: pageTransition 0.5s linear forwards;
+   /* animation: pageTransition 1.4s ease forwards; */
 }
-.slide-out {
-   position: fixed;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100vh;
-   opacity: 0;
-   background-color: #848484;
-   /* transform-origin: right; */
+
+@keyframes pageTransition {
+   0% {
+      opacity: 0;
+      transform: translateY(30px);
+   }
+   100% {
+      opacity: 1;
+      transform: translateY(0);
+   }
 }
-/* ********page transition********* */
 
 .loader {
    width: 50px;
-   padding: 8px;
+   padding: 6px;
    aspect-ratio: 1;
    border-radius: 50%;
    background: #242929;
@@ -66,44 +44,6 @@ option[value=''] {
    to {
       transform: rotate(1turn);
    }
-}
-
-/* multirange slider */
-.slider {
-   position: relative;
-   width: 14rem;
-}
-.slider__track,
-.slider__range,
-.slider__left-value,
-.slider__right-value {
-   position: absolute;
-}
-.slider__track,
-.slider__range {
-   border-radius: 3px;
-   height: 5px;
-}
-.slider__track {
-   background-color: #ced4da;
-   width: 14rem;
-   z-index: 1;
-}
-.slider__range {
-   background-color: #3b82f6;
-   z-index: 2;
-}
-.slider__left-value,
-.slider__right-value {
-   color: #3b82f6;
-   font-size: 12px;
-   margin-top: 20px;
-}
-.slider__left-value {
-   left: 6px;
-}
-.slider__right-value {
-   right: -4px;
 }
 
 /* Removing the default appearance */

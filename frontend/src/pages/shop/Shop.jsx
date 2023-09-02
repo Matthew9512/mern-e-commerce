@@ -8,6 +8,7 @@ import { LoadingButton } from '../../ui/LoadingButton';
 import { deleteIcon } from '../../utils/icons';
 import { useMutationOrder } from '../../api/useProducts';
 import { jwtDecodeToken } from '../../utils/axiosHelpers';
+import { Stripe } from './components/Stripe';
 
 /**
  * @todo stripe
@@ -30,8 +31,8 @@ export const Shop = () => {
    };
 
    return (
-      <Section style='flex flex-wrap items-center justify-center'>
-         <div className='lg:w-1/2 md:w-3/5 w-full'>
+      <Section style='flex flex-wrap justify-center'>
+         <article className='lg:w-1/2 md:w-3/5 w-full flex flex-col gap-4'>
             {storedValues.length > 0 ? (
                storedValues.map((product) => (
                   <div key={product._id}>
@@ -62,11 +63,8 @@ export const Shop = () => {
                   </div>
                ))
             ) : (
-               <p className='uppercase text-center'>No products in store</p>
+               <p className='uppercase text-center text-lg font-semibold'>No products in store</p>
             )}
-         </div>
-         <div className='md:w-2/5 w-full bg-primaryBlue rounded-xl text-center'>
-            STRIPE
             {productsOrderMutation.isLoading ? (
                <LoadingButton />
             ) : (
@@ -74,7 +72,8 @@ export const Shop = () => {
                   Order
                </Button>
             )}
-         </div>
+         </article>
+         <Stripe />
       </Section>
    );
 };

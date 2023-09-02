@@ -10,6 +10,7 @@ export const Slider = () => {
 
    return (
       <Splide
+         className='transition'
          options={{
             autoplay: true,
             interval: 3000,
@@ -23,7 +24,7 @@ export const Slider = () => {
       >
          <SplideSlide>
             <div className='h-full w-full relative bg-primaryBlack/30'>
-               <Image image='/moto.jpg' variant='primary' customClass='w-full h-[815px]' />
+               <Image image='sliderImg3.jpg' variant='primary' customClass='w-full h-[815px]' />
                <div className='absolute lg:top-20 lg:right-20 bottom-10 left-10 flex flex-col gap-6 text-primaryWhite'>
                   <p className=' uppercase font-semibold tracking-widest text-2xl'>Lorem ipsum</p>
                   <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
@@ -36,7 +37,7 @@ export const Slider = () => {
          </SplideSlide>
          <SplideSlide>
             <div className='h-full w-full relative bg-primaryBlack/30'>
-               <Image image='/b.jpg' variant='primary' customClass='w-full h-[815px]' />
+               <Image image='sliderImg2.jpg' variant='primary' customClass='w-full h-[815px]' />
                <div className='absolute lg:top-20 lg:right-20 top-10 left-10 flex flex-col items gap-6 text-primaryWhite'>
                   <p className=' uppercase font-semibold tracking-widest text-2xl'>Lorem ipsum</p>
                   <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
@@ -46,7 +47,7 @@ export const Slider = () => {
          </SplideSlide>
          <SplideSlide>
             <div className='h-full w-full relative bg-primaryBlack/30'>
-               <Image image='/a.jpg' variant='primary' customClass='w-full h-[815px]' />
+               <Image image='sliderImg1.jpg' variant='primary' customClass='w-full h-[815px]' />
                <div className='absolute lg:top-20 lg:right-20 top-10 left-10 flex flex-col gap-6 text-primaryWhite'>
                   <p className=' uppercase font-semibold tracking-widest text-2xl'>Lorem ipsum</p>
                   <p className='lg:w-1/2 w-3/5'>

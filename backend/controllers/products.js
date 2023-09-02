@@ -4,15 +4,18 @@ const productsModel = require('../models/productsModel');
 const _resLimit = 8;
 
 // update products in db with sale
-// first remove old sale, by setting salse: false and discount to 0, then set new sale
+// ==> first remove old sale, by setting salse: false and discount to 0, then set new sale <==
 const saleHandler = async function () {
-   await productsModel.updateMany({ category: 'leather-suits' }, { sale: true, discount: 30 }, { new: true });
+   const saleInfo = 40;
+   await productsModel.updateMany({ category: 'leather-suits' }, { sale: true, discount: saleInfo }, { new: true });
+   return saleInfo;
 };
 
 const getProducts = async function (req, res, next) {
+   let saleInfo;
    try {
       // activate to set sale
-      // await saleHandler();
+      saleInfo = await saleHandler();
       const { page } = req.params;
 
       const pagesAmount = Math.ceil((await productsModel.countDocuments()) / _resLimit);
@@ -21,6 +24,12 @@ const getProducts = async function (req, res, next) {
          .find()
          .limit(_resLimit)
          .skip((page - 1) * _resLimit);
+
+      if (saleInfo)
+         res.cookie('saleInfo', saleInfo, {
+            // secure: true,
+            sameSite: 'Strict',
+         });
 
       res.status(200).json({ products, pagesAmount });
    } catch (error) {
