@@ -7,7 +7,7 @@ import { Login } from './pages/Login';
 import { Register } from './pages/register/Register';
 import { Product } from './pages/product/Product';
 import { User } from './pages/user/User';
-import { OrderHistory } from './pages/user/components/orderHistory';
+import { OrderHistory } from './pages/user/components/OrderHistory';
 import { ProtectedRoutes } from './ui/ProtectedRoutes';
 import { Shop } from './pages/shop/Shop';
 import { ServerDown } from './pages/ServerDown';
