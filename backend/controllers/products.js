@@ -37,7 +37,8 @@ const getProducts = async function (req, res, next) {
             // secure: true,
             // // httpOnly: true,
             // sameSite: 'None',
-            // path: 'https://justride.vercel.app',
+            path: 'https://justride.vercel.app',
+            domain: 'https://justride.vercel.app',
          });
 
       res.status(200).json({ products, pagesAmount });
