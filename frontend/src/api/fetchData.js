@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const _URL = `http://localhost:8000`;
+const _URL = `e-commerce-page-production.up.railway.app`;
 
 axios.defaults.baseURL = _URL;
 axios.defaults.withCredentials = true;
