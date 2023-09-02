@@ -1,5 +1,5 @@
 const whitelist = [
-   'https://justride.vercel.app/',
+   'https://justride.vercel.app',
    'http://127.0.0.1:5173',
    'http://localhost:8000',
    'http://localhost:5173',
