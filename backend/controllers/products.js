@@ -27,8 +27,8 @@ const getProducts = async function (req, res, next) {
 
       if (saleInfo)
          res.cookie('saleInfo', saleInfo, {
-            // secure: true,
-            sameSite: 'Strict',
+            secure: true,
+            sameSite: 'None',
          });
 
       res.status(200).json({ products, pagesAmount });
