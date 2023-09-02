@@ -27,10 +27,17 @@ const getProducts = async function (req, res, next) {
 
       if (saleInfo)
          res.cookie('saleInfo', saleInfo, {
+            sameSite: 'none',
+
             secure: true,
-            // httpOnly: true,
-            sameSite: 'None',
-            path: 'https://justride.vercel.app',
+
+            httpOnly: true,
+
+            maxAge: 1000 * 60 * 60 * 24 * 7,
+            // secure: true,
+            // // httpOnly: true,
+            // sameSite: 'None',
+            // path: 'https://justride.vercel.app',
          });
 
       res.status(200).json({ products, pagesAmount });
