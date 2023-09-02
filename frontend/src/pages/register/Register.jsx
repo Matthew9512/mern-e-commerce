@@ -5,7 +5,7 @@ import { Input } from '../../ui/Input';
 import { LoadingButton } from '../../ui/LoadingButton';
 import { Form } from '../../ui/Form';
 import { LinkButton } from '../../ui/LinkButton';
-import { UsersDataForm } from './components/usersDataForm';
+import { UsersDataForm } from './components/UsersDataForm';
 import { useMutateRegister } from '../../api/useUser';
 
 export const Register = () => {
