@@ -27,18 +27,13 @@ const getProducts = async function (req, res, next) {
 
       if (saleInfo)
          res.cookie('saleInfo', saleInfo, {
-            sameSite: 'none',
-
+            sameSite: 'None',
             secure: true,
-
-            httpOnly: true,
-
-            maxAge: 1000 * 60 * 60 * 24 * 7,
+            path: '/',
             // secure: true,
             // // httpOnly: true,
             // sameSite: 'None',
-            domain: 'https://mern-e-commerce-production.up.railway.app/',
-            path: 'https://justride.vercel.app',
+            // domain: 'https://mern-e-commerce-production.up.railway.app/',
          });
 
       res.status(200).json({ products, pagesAmount });
