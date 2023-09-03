@@ -1,14 +1,14 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
+import { toast } from 'react-hot-toast';
 import { fetchData } from './fetchData';
 import { jwtDecodeToken } from '../utils/axiosHelpers';
-import { toast } from 'react-hot-toast';
 
 export const useSale = () => {
    const saleQuery = useQuery({
       queryKey: ['products', `sale`],
       queryFn: () =>
          fetchData({
-            url: `products/sale`,
+            url: `/products/sale`,
          }),
    });
 
