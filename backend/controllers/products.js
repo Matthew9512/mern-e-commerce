@@ -7,7 +7,7 @@ const _resLimit = 8;
 const getSaleInfo = async function (req, res, next) {
    let saleInfo;
    // activate to set sale, sale: false and discount to 0
-   // saleInfo = await saleHandler();
+   saleInfo = await saleHandler();
 
    if (saleInfo) return res.status(200).json({ sale: saleInfo });
 
