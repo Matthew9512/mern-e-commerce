@@ -29,11 +29,7 @@ const getProducts = async function (req, res, next) {
          res.cookie('saleInfo', saleInfo, {
             sameSite: 'None',
             secure: true,
-            path: '/',
-            // secure: true,
-            // // httpOnly: true,
-            // sameSite: 'None',
-            // domain: 'https://mern-e-commerce-production.up.railway.app/',
+            domain: 'justride.vercel.app',
          });
 
       res.status(200).json({ products, pagesAmount });
