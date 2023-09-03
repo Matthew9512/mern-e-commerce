@@ -12,14 +12,14 @@ export const ShoppingCart = ({ shoppingCartVis, setShoppingCartVis }) => {
 
    return (
       <aside
-         className={`w-96 h-screen overflow-hidden fixed right-0 bottom-0 z-50 bg-primaryGrey p-8 duration-500 ${
+         className={`w-96 h-screen overflow-hidden fixed right-0 bottom-0 z-50 bg-primaryGrey p-8 duration-500 py-16 ${
             shoppingCartVis ? 'translate-x-0' : 'translate-x-[100%]'
          } `}
       >
          <p className='text-center font-semibold tracking-wider text-lg uppercase'>My cart</p>
          <Button
             variant='rounded'
-            customClass='absolute top-2 right-2 navbar__btn'
+            customClass='absolute top-8 right-8 navbar__btn'
             onHandleFn={() => setShoppingCartVis(!shoppingCartVis)}
          >
             {closeIcon}

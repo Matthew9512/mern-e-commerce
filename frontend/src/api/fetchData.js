@@ -12,10 +12,8 @@ export async function fetchData(options, auth = false) {
    try {
       const res = await axiosOptions.request(options);
       const data = await res.data;
-      console.log(data);
       return data;
    } catch (error) {
-      console.log(error);
       if (error.request.status === 0) return (window.location.href = '/server-down');
       throw new Error(error.response.data.message);
    }

@@ -12,14 +12,17 @@ export const ProductAside = ({ productsQuery, id }) => {
    // display proper text based on ls
    const lsItems = storedValues.find((lsItems) => lsItems._id === id);
 
+   const productSizes = productsQuery.data?.sizesArr.every((product) => product.available === 0);
+
+   // typed number bigger than max => reset value to max
    const checkTypedNumber = (e) => {
-      if (+e.target.max < +e.key) e.target.value = e.target.max;
+      if (+e.target.max < +e.target.value) e.target.value = e.target.max;
    };
 
    return (
       <>
          <div className='flex items-center justify-center w-4/5 flex-wrap gap-1'>
-            {productsQuery.data?.sizesArr.every((product) => product.available === 0) ? (
+            {productSizes ? (
                <p>Product temporary unavailable</p>
             ) : (
                productsQuery.data?.sizesArr.map((size) => (
@@ -45,6 +48,7 @@ export const ProductAside = ({ productsQuery, id }) => {
                label='Amount'
                min={1}
                max={inputRef.current}
+               disabled={productSizes}
             />
          </div>
          <Button
@@ -58,6 +62,7 @@ export const ProductAside = ({ productsQuery, id }) => {
                   inputRef
                )
             }
+            disabled={productSizes}
             variant='primary'
          >
             {lsItems ? 'Remove from cart' : 'Add to cart'}

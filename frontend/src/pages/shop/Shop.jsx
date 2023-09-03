@@ -38,7 +38,8 @@ export const Shop = () => {
                   <div key={product._id}>
                      <p className='uppercase font-semibold '>{product.name}</p>
                      <div className='flex lg:gap-10 gap-2 relative'>
-                        <div className='w-28 h-28 flex justify-center items-center'>
+                        <div className='w-40 h-40 flex justify-center items-center'>
+                           {/* <div className='w-28 h-28 flex justify-center items-center'> */}
                            <Image variant='primary' image={product.image} alt={product.name} />
                         </div>
                         <div className='flex flex-col items-center justify-center'>
@@ -53,13 +54,13 @@ export const Shop = () => {
                            <p>total:</p>
                            <p>$ {product.amount * product.price}</p>
                         </div>
-                        <Button
-                           onHandleFn={() => handleRemoveShoppingCartItem(product._id)}
-                           customClass='absolute top-2 right-2'
-                        >
-                           {deleteIcon}
-                        </Button>
                      </div>
+                     <Button
+                        onHandleFn={() => handleRemoveShoppingCartItem(product._id)}
+                        customClass='absolute top-2 right-2'
+                     >
+                        {deleteIcon}
+                     </Button>
                   </div>
                ))
             ) : (
