@@ -30,6 +30,7 @@ const getProducts = async function (req, res, next) {
             sameSite: 'None',
             secure: true,
             domain: '.vercel.app',
+            maxAge: 7 * 24 * 60 * 60 * 1000,
          });
       // https://justride.vercel.app/
       res.status(200).json({ products, pagesAmount });
