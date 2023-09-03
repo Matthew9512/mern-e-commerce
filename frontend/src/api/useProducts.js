@@ -3,6 +3,18 @@ import { fetchData } from './fetchData';
 import { jwtDecodeToken } from '../utils/axiosHelpers';
 import { toast } from 'react-hot-toast';
 
+export const useSale = () => {
+   const saleQuery = useQuery({
+      queryKey: ['products', `sale`],
+      queryFn: () =>
+         fetchData({
+            url: `products/sale`,
+         }),
+   });
+
+   return saleQuery;
+};
+
 export const useProducts = (endpoint, page, reqType = false) => {
    let _reqURL = reqType.current ? `products/page/${page}` : endpoint;
 

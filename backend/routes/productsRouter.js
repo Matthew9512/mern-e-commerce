@@ -7,5 +7,6 @@ router.get('/page/:page', products.getProducts);
 router.get('/category/:category', products.categoryProducts);
 router.get('/q', products.searchByName);
 router.get('/:id', products.getProductByID);
+router.get('/sale', products.getSaleInfo);
 
 module.exports = router;

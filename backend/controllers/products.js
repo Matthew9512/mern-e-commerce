@@ -3,6 +3,17 @@ const productsModel = require('../models/productsModel');
 // products res limit per request
 const _resLimit = 8;
 
+// send sale info
+const getSaleInfo = async (req, res, next) => {
+   let saleInfo;
+   // activate to set sale
+   // saleInfo = await saleHandler();
+
+   if (saleInfo) res.status(200).json({ sale: saleInfo });
+
+   res.status(200).json({ sale: saleInfo });
+};
+
 // update products in db with sale
 // ==> first remove old sale, by setting salse: false and discount to 0, then set new sale <==
 const saleHandler = async function () {
@@ -12,10 +23,10 @@ const saleHandler = async function () {
 };
 
 const getProducts = async function (req, res, next) {
-   let saleInfo;
+   // let saleInfo;
    try {
       // activate to set sale
-      saleInfo = await saleHandler();
+      // saleInfo = await saleHandler();
       const { page } = req.params;
 
       const pagesAmount = Math.ceil((await productsModel.countDocuments()) / _resLimit);
@@ -25,14 +36,6 @@ const getProducts = async function (req, res, next) {
          .limit(_resLimit)
          .skip((page - 1) * _resLimit);
 
-      if (saleInfo)
-         res.cookie('saleInfo', saleInfo, {
-            sameSite: 'None',
-            secure: true,
-            domain: '.vercel.app',
-            maxAge: 7 * 24 * 60 * 60 * 1000,
-         });
-      // https://justride.vercel.app/
       res.status(200).json({ products, pagesAmount });
    } catch (error) {
       next(error.message);
@@ -85,4 +88,5 @@ const getProductByID = async (req, res, next) => {
       next(error.message);
    }
 };
-module.exports = { saleHandler, getProducts, categoryProducts, searchByName, getProductByID };
+
+module.exports = { saleHandler, getProducts, categoryProducts, searchByName, getProductByID, getSaleInfo };

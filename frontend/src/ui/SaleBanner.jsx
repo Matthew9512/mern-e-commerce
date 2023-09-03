@@ -1,20 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useSale } from '../api/useProducts';
 
 export const SaleBanner = () => {
-   const [sale, setSale] = useState(false);
-
-   useEffect(() => {
-      const saleCookie = document.cookie;
-      if (!saleCookie) return;
-
-      setSale(saleCookie.split('=').at(1));
-   }, []);
+   const saleQuery = useSale();
 
    return (
       <>
-         {sale && (
+         {saleQuery?.data?.sale && (
             <div className='bg-secondaryWhite'>
-               <p className='py-2 text-center'>Sale, now up to -{sale}%</p>
+               <p className='py-2 text-center'>Sale, now up to -{saleQuery?.data?.sale}%</p>
             </div>
          )}
       </>
