@@ -30,7 +30,7 @@ export const ProductAside = ({ productsQuery, id }) => {
                      key={size?._id}
                      onHandleFn={(e) => currentSize(e, productSize, size, inputRef)}
                      variant='navLink'
-                     customClass={!size?.available ? 'line-through pointer-events-none opacity-50' : ''}
+                     customClass={size?.available <= 0 ? 'line-through pointer-events-none opacity-50' : ''}
                   >
                      {size?.size}
                   </Button>

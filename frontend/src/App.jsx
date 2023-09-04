@@ -16,7 +16,7 @@ import { UsersPersonalData } from './pages/user/components/UsersPersonalData';
 export const App = () => {
    return (
       <>
-         <main className='text-slate-800 mx-auto min-h-screen max-w-screen-2xl bg-primaryWhite text-primaryBlack'>
+         <main className='text-slate-800 mx-auto min-h-screen max-w-screen-2xl relative pb-16 bg-primaryWhite text-primaryBlack'>
             <BrowserRouter>
                <Routes>
                   <Route element={<Layout />}>

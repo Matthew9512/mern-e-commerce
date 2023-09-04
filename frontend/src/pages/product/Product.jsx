@@ -11,8 +11,8 @@ export const Product = () => {
    const productsQuery = useProducts(`/products/${id}`);
 
    return (
-      <Section style='py-24 flex flex-col items-center justify-center flex-wrap'>
-         {productsQuery.isLoading && <LoadingSpinner />}
+      <Section style='py-24 flex flex-col items-center justify-center flex-wrap' loading={productsQuery.isLoading}>
+         {/* {productsQuery.isLoading && <LoadingSpinner />} */}
          {productsQuery.error && <ErrorMessage>{productsQuery.error.message}</ErrorMessage>}
          <article className='flex flex-col lg:flex-row justify-center items-center gap-8'>
             <div className='flex flex-col justify-center items-center lg:w-[400px] w-4/5'>
