@@ -12,7 +12,7 @@ export const ShoppingCart = ({ shoppingCartVis, setShoppingCartVis }) => {
 
    return (
       <aside
-         className={`w-96 h-screen overflow-hidden fixed right-0 bottom-0 z-50 bg-primaryGrey p-8 duration-500 py-16 ${
+         className={`md:w-96 w-full overflow-hidden fixed right-0 bottom-0 md:top-10 top-0 z-50 bg-primaryGrey p-8 duration-500 py-16 ${
             shoppingCartVis ? 'translate-x-0' : 'translate-x-[100%]'
          } `}
       >
