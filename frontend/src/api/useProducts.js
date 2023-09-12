@@ -60,7 +60,7 @@ export const useMutationOrder = (storedValues, setStoredValues) => {
          );
       },
       onSuccess: (data) => {
-         window.location = data?.url;
+         window.location = '/';
          toast.success(data?.message);
          setStoredValues([]);
       },
