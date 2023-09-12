@@ -25,8 +25,8 @@ const stripeConfig = async function (userID, order, res) {
                quantity: product?.amount,
             };
          }),
-         success_url: `http://127.0.0.1:5173/success`,
-         cancel_url: `http://127.0.0.1:5173/cancel`,
+         success_url: `http://127.0.0.1:5173`,
+         cancel_url: `http://127.0.0.1:5173`,
       });
 
       res.json({ url: stripeSession.url });
@@ -36,57 +36,76 @@ const stripeConfig = async function (userID, order, res) {
 };
 
 const stripeWebook = async function (req, res, next) {
-   const event = req.body;
+   const sig = req.headers['stripe-signature'];
 
-   console.log(`stripe webhook`);
+   try {
+      const event = stripe.webhooks.constructEvent(req.body, sig, process.env.STRIPE_KEY);
 
-   // Handle the event
-   switch (event.type) {
-      case 'payment_intent.succeeded':
+      // Handle the specific event you're interested in (payment_intent.succeeded)
+      if (event.type === 'payment_intent.succeeded') {
          const paymentIntent = event.data.object;
-         const usersOrder = await usersModel
-            .findByIdAndUpdate(
-               { _id: userID },
-               {
-                  $push: { orderHistory: order },
-               },
-               { new: true }
-            )
-            .select('_id username email orderHistory createdAt');
+         console.log('PaymentIntent succeeded:', paymentIntent.id);
+         // You can add your custom logic here, such as updating the order status, sending email notifications, etc.
+      }
 
-         const productData = order.map((product) => {
-            return {
-               productID: product.productID,
-               productSize: product.size,
-               productAmount: product.amount,
-            };
-         });
-
-         productData.forEach(async (product) => {
-            await productsModel.updateOne(
-               { _id: product.productID, 'sizesArr.size': product.productSize },
-               { $inc: { 'sizesArr.$.available': -product.productAmount } }
-            );
-         });
-
-         await usersUtils.sendNotifications(usersOrder, order, next);
-
-         res.status(200).json({ usersOrder, message: `Product purchase correctly` });
-         // Then define and call a method to handle the successful payment intent.
-         // handlePaymentIntentSucceeded(paymentIntent);
-         break;
-      case 'payment_method.attached':
-         const paymentMethod = event.data.object;
-         // Then define and call a method to handle the successful attachment of a PaymentMethod.
-         // handlePaymentMethodAttached(paymentMethod);
-         break;
-      // ... handle other event types
-      default:
-         console.log(`Unhandled event type ${event.type}`);
+      res.status(200).json({ message: `git` });
+   } catch (err) {
+      console.error(err);
+      next();
    }
-
-   // Return a response to acknowledge receipt of the event
-   res.json({ received: true });
 };
+// const stripeWebook = async function (req, res, next) {
+//    const event = req.body;
+
+//    console.log(`stripe webhook`);
+
+//    // Handle the event
+//    switch (event.type) {
+//       case 'payment_intent.succeeded':
+//          const paymentIntent = event.data.object;
+//          const usersOrder = await usersModel
+//             .findByIdAndUpdate(
+//                { _id: userID },
+//                {
+//                   $push: { orderHistory: order },
+//                },
+//                { new: true }
+//             )
+//             .select('_id username email orderHistory createdAt');
+
+//          const productData = order.map((product) => {
+//             return {
+//                productID: product.productID,
+//                productSize: product.size,
+//                productAmount: product.amount,
+//             };
+//          });
+
+//          productData.forEach(async (product) => {
+//             await productsModel.updateOne(
+//                { _id: product.productID, 'sizesArr.size': product.productSize },
+//                { $inc: { 'sizesArr.$.available': -product.productAmount } }
+//             );
+//          });
+
+//          await usersUtils.sendNotifications(usersOrder, order, next);
+
+//          res.status(200).json({ usersOrder, message: `Product purchase correctly` });
+//          // Then define and call a method to handle the successful payment intent.
+//          // handlePaymentIntentSucceeded(paymentIntent);
+//          break;
+//       case 'payment_method.attached':
+//          const paymentMethod = event.data.object;
+//          // Then define and call a method to handle the successful attachment of a PaymentMethod.
+//          // handlePaymentMethodAttached(paymentMethod);
+//          break;
+//       // ... handle other event types
+//       default:
+//          console.log(`Unhandled event type ${event.type}`);
+//    }
+
+//    // Return a response to acknowledge receipt of the event
+//    res.json({ received: true });
+// };
 
 module.exports = { stripeConfig, stripeWebook };
