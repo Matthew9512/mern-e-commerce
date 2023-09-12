@@ -5,8 +5,6 @@ const usersUtils = require('../utils/usersFn');
 const stripe = require('stripe')(process.env.STRIPE_KEY);
 
 const stripeConfig = async function (userID, order, res) {
-   console.log(userID, order);
-
    try {
       const stripeSession = await stripe.checkout.sessions.create({
          payment_method_types: ['card'],
@@ -38,7 +36,7 @@ const stripeConfig = async function (userID, order, res) {
 };
 
 const stripeWebook = async function (req, res, next) {
-   const event = request.body;
+   const event = req.body;
 
    console.log(`stripe webhook`);
 
