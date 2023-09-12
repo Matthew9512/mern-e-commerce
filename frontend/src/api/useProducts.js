@@ -2,6 +2,7 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast';
 import { fetchData } from './fetchData';
 import { jwtDecodeToken } from '../utils/axiosHelpers';
+import { Navigate } from 'react-router-dom';
 
 export const useSale = () => {
    const saleQuery = useQuery({
@@ -49,7 +50,7 @@ export const useMutationOrder = (storedValues, setStoredValues) => {
 
          return fetchData(
             {
-               url: `/users/buy`,
+               url: `/users/payment-session`,
                method: 'POST',
                data: {
                   userID: decoded.id,
@@ -60,11 +61,12 @@ export const useMutationOrder = (storedValues, setStoredValues) => {
          );
       },
       onSuccess: (data) => {
-         toast.success(data?.message);
-         setStoredValues([]);
+         window.location = data?.url;
+         // toast.success(data?.message);
+         // setStoredValues([]);
       },
       onError: (err) => {
-         toast.error(err?.message);
+         // toast.error(err?.message);
       },
    });
 

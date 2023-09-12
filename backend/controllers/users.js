@@ -3,6 +3,7 @@ const usersModel = require('../models/usersModel');
 const productsModel = require('../models/productsModel');
 const bcrypt = require('bcrypt');
 const usersUtils = require('../utils/usersFn');
+const stripeConfig = require('../config/stripe');
 
 const register = async function (req, res, next) {
    try {
@@ -100,6 +101,10 @@ const buyProducts = async function (req, res, next) {
       // users order data
       const { order } = orderArr;
 
+      // stripe payment
+      stripeConfig(userID, order, res);
+      // stripe payment
+      return;
       const usersOrder = await usersModel
          .findByIdAndUpdate(
             { _id: userID },
