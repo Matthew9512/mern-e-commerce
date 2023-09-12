@@ -60,9 +60,11 @@ export const useMutationOrder = (storedValues, setStoredValues) => {
          );
       },
       onSuccess: (data) => {
-         window.location = '/';
          toast.success(data?.message);
          setStoredValues([]);
+          setTimeout(() => {
+            window.location = '/';
+         }, 2000);
       },
       onError: (err) => {
          toast.error(err?.message);
