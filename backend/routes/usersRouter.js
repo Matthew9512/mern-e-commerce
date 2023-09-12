@@ -10,7 +10,7 @@ router.post('/login', usersController.login);
 router.post('/register-data', verifyJwt, usersController.usersPersonalData);
 router.get('/:id', verifyJwt, usersController.getUser);
 router.post('/payment-session', verifyJwt, usersController.buyProducts);
-router.post('/payment-webhook', stripe.stripeWebook);
+router.post('/payment-webhook', express.json({ type: 'application/json' }), stripe.stripeWebook);
 router.post('/logout', verifyJwt, usersController.logOut);
 router.delete('/delete-acc', verifyJwt, usersController.deleteAcc);
 router.post('/refresh', refreshJwt);
