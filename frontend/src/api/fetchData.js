@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-const _URL = `http://localhost:8000`;
-// const _URL = `https://mern-e-commerce-production.up.railway.app/`;
+const _URL = `https://mern-e-commerce-production.up.railway.app/`;
 
 axios.defaults.baseURL = _URL;
 axios.defaults.withCredentials = true;
