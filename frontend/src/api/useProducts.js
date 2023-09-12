@@ -2,6 +2,7 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast';
 import { fetchData } from './fetchData';
 import { jwtDecodeToken } from '../utils/axiosHelpers';
+import { Navigate } from 'react-router-dom';
 
 export const useSale = () => {
    const saleQuery = useQuery({
@@ -60,9 +61,11 @@ export const useMutationOrder = (storedValues, setStoredValues) => {
          );
       },
       onSuccess: (data) => {
-         window.location = '/';
          toast.success(data?.message);
          setStoredValues([]);
+         setTimeout(() => {
+            window.location = '/';
+         }, 2000);
       },
       onError: (err) => {
          toast.error(err?.message);
