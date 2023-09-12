@@ -6,7 +6,6 @@
    "scripts": {
       "dev": "nodemon server.js",
       "start": "node server.js",
-      "stripe listen": "--forward-to https://mern-e-commerce-production.up.railway.app/users/payment-webhook",
       "test": "echo \"Error: no test specified\" && exit 1"
    },
    "keywords": [],

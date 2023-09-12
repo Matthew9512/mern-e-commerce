@@ -101,10 +101,10 @@ const buyProducts = async function (req, res, next) {
       // users order data
       const { order } = orderArr;
 
-      // stripe payment
-      stripe.stripeConfig(userID, order, res);
-      // stripe payment
-      return;
+      // // stripe payment
+      // stripe.stripeConfig(userID, order, res);
+      // // stripe payment
+      // return;
       const usersOrder = await usersModel
          .findByIdAndUpdate(
             { _id: userID },
