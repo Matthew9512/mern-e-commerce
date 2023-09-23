@@ -21,7 +21,7 @@ export const Input = ({
 
    return (
       <div className='flex flex-col '>
-         <label htmlFor={label}>{label}:</label>
+         {label && <label htmlFor={label}>{label}:</label>}
          <input
             onKeyUp={onKeyDownHandle}
             onChange={onHandleFn}

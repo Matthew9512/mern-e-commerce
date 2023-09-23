@@ -10,8 +10,12 @@
    @apply bg-primaryBlack text-primaryWhite;
 }
 
+.tableRow {
+   @apply border-b border-primaryGrey h-16;
+}
+
 /* page transition */
-.transition {
+.pageTransition {
    animation: pageTransition 0.3s linear forwards;
 }
 

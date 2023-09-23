@@ -12,6 +12,15 @@ import { ProtectedRoutes } from './ui/ProtectedRoutes';
 import { Shop } from './pages/shop/Shop';
 import { ServerDown } from './pages/ServerDown';
 import { UsersPersonalData } from './pages/user/components/UsersPersonalData';
+import { AdminLayout } from './pages/admin/components/AdminLayout';
+import { DashboardAdmin } from './pages/admin/DashboardAdmin';
+import { UsersAdmin } from './pages/admin/UsersAdmin';
+import { ProductsAdmin } from './pages/admin/ProductsAdmin';
+import { OrdersAdmin } from './pages/admin/OrdersAdmin';
+
+/**
+ * @todo admin protected routes!
+ */
 
 export const App = () => {
    return (
@@ -33,6 +42,14 @@ export const App = () => {
                   </Route>
                   <Route path='*' element={<PageNotFound />} />
                   <Route path='server-down' element={<ServerDown />} />
+                  {/*  */}
+                  <Route element={<AdminLayout />}>
+                     <Route path='admin/dashboard' element={<DashboardAdmin />} />
+                     <Route path='admin/users' element={<UsersAdmin />} />
+                     <Route path='admin/products' element={<ProductsAdmin />} />
+                     <Route path='admin/orders' element={<OrdersAdmin />} />
+                  </Route>
+                  {/*  */}
                </Routes>
             </BrowserRouter>
          </main>

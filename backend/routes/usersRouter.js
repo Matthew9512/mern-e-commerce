@@ -7,7 +7,7 @@ const refreshJwt = require('../utils/refreshJwt');
 
 router.post('/register', usersController.register);
 router.post('/login', usersController.login);
-router.post('/register-data', verifyJwt, usersController.usersPersonalData);
+router.post('/register-data', usersController.usersPersonalData);
 router.get('/:id', verifyJwt, usersController.getUser);
 router.post('/payment-session', verifyJwt, usersController.buyProducts);
 // router.post('/payment-webhook', express.json({ type: 'application/json' }), stripe.stripeWebook);

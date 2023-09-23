@@ -21,6 +21,7 @@ connectDB();
 
 app.use('/products', require('./routes/productsRouter'));
 app.use('/users', require('./routes/usersRouter'));
+app.use('/admin', require('./routes/adminRouter'));
 
 app.use(errorHandler);
 
