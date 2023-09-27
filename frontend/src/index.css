@@ -5,15 +5,14 @@
 .load {
    @apply animate-pulse shadow-md;
 }
-
 .activeSize {
    @apply bg-primaryBlack text-primaryWhite;
 }
-
-.tableRow {
-   @apply border-b border-primaryGrey h-16;
+td,
+th {
+   text-align: left;
+   padding-inline: 1.4em;
 }
-
 /* page transition */
 .pageTransition {
    animation: pageTransition 0.3s linear forwards;

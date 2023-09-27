@@ -2,7 +2,9 @@ export const TableHead = ({ headers }) => {
    return (
       <>
          {headers.map((value) => (
-            <th key={value}>{value}</th>
+            <th className='uppercase' key={value}>
+               {value}
+            </th>
          ))}
       </>
    );

@@ -49,7 +49,7 @@ export const Home = () => {
             <ProductsList productsQuery={productsQuery} sortByParams={sortByParams} />
          </Section>
          {productsQuery.data?.pagesAmount > 1 && (
-            <Pagination page={page} onHandleReq={onHandleReq} productsQuery={productsQuery} />
+            <Pagination page={page} onHandleReq={onHandleReq} fetchQuery={productsQuery} />
          )}
          <Section
             style='py-24 grid place-items-center grid-cols-1 lg:grid-cols-3'

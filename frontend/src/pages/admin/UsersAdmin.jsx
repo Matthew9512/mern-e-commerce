@@ -1,25 +1,31 @@
 import { useAdminUser } from '../../api/useAdmin';
-import { LoadingSpinner } from '../../ui/LoadingSpinner';
-import { ErrorMessage } from '../../ui/ErrorMessage';
+import { usePagination } from '../../api/usePagination';
 import { Table } from './components/Table';
-import { TableData } from './components/TableData';
+import { TableUsersData } from './components/TableUsersData';
+import { AdminSection } from './components/AdminSection';
 
 export const UsersAdmin = () => {
-   const usersHeaders = ['', 'Username', 'Email', 'Created', 'Users Id', 'Actions'];
-   const usersList = useAdminUser();
+   const usersHeaders = ['', 'username', 'email', 'created', 'users id', 'actions'];
+   const sortUsersArr = ['name', 'date'];
+   const { page, setPage, onHandleReq } = usePagination();
+   const usersList = useAdminUser(page);
 
    return (
-      <article className='p-12'>
-         <p className='uppercase font-semibold text-lg tracking-widest'>Users</p>
-         {usersList.isLoading && <LoadingSpinner />}
-         {usersList.error && <ErrorMessage />}
-         {usersList.data?.length ? (
-            <Table headers={usersHeaders} usersList={usersList.data}>
-               <TableData usersList={usersList.data} />
+      <AdminSection
+         fetchQuery={usersList}
+         header='Users'
+         page={page}
+         setPage={setPage}
+         onHandleReq={onHandleReq}
+         sortByList={sortUsersArr}
+      >
+         {usersList.data?.usersList?.length ? (
+            <Table headers={usersHeaders} usersList={usersList?.data?.usersList}>
+               <TableUsersData fetchQuery={usersList?.data?.usersList} page={page} setPage={setPage} />
             </Table>
          ) : (
-            <p>No users yet</p>
+            <td>No users data available</td>
          )}
-      </article>
+      </AdminSection>
    );
 };

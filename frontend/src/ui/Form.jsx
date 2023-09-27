@@ -5,11 +5,12 @@ export const Form = ({ children, onHandleFn, onSubmitFn, formRef, variant }) => 
 
    const styles = {
       default: `${mainStyle}`,
+      secondary: `mx-auto w-4/5 rounded-md p-6 gap-8 flex flex-col justify-center items-center`,
    };
 
    return (
       <form onChange={onHandleFn} onSubmit={onSubmitFn} ref={formRef} className={styles[variant]}>
-         <p className='text-center py-8 uppercase flex mx-auto gap-4'>{logoIcon}Dainese store</p>
+         <p className='text-center py-8 flex mx-auto gap-4'>{logoIcon}JustRide</p>
          {children}
       </form>
    );

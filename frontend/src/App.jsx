@@ -17,6 +17,10 @@ import { DashboardAdmin } from './pages/admin/DashboardAdmin';
 import { UsersAdmin } from './pages/admin/UsersAdmin';
 import { ProductsAdmin } from './pages/admin/ProductsAdmin';
 import { OrdersAdmin } from './pages/admin/OrdersAdmin';
+import { UsersDetailsAdmin } from './pages/admin/UsersDetailsAdmin';
+import { AddNewProduct } from './pages/admin/AddNewProduct';
+import { AddNewUser } from './pages/admin/AddNewUser';
+import { EditProduct } from './pages/admin/EditProduct';
 
 /**
  * @todo admin protected routes!
@@ -46,7 +50,11 @@ export const App = () => {
                   <Route element={<AdminLayout />}>
                      <Route path='admin/dashboard' element={<DashboardAdmin />} />
                      <Route path='admin/users' element={<UsersAdmin />} />
+                     <Route path='admin/users-details/:id' element={<UsersDetailsAdmin />} />
                      <Route path='admin/products' element={<ProductsAdmin />} />
+                     <Route path='admin/products/:id/edit' element={<EditProduct />} />
+                     <Route path='admin/products-new' element={<AddNewProduct />} />
+                     <Route path='admin/users-new' element={<AddNewUser />} />
                      <Route path='admin/orders' element={<OrdersAdmin />} />
                   </Route>
                   {/*  */}
