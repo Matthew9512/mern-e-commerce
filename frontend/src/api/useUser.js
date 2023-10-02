@@ -37,7 +37,6 @@ export const useMutateLogin = () => {
 
    const loginMutation = useMutation({
       mutationFn: async ({ e, formRef }) => {
-         console.log(formRef);
          e.preventDefault();
          return await fetchData({
             method: 'POST',

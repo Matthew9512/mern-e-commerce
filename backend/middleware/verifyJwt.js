@@ -10,6 +10,7 @@ const verifyJwt = (req, res, next) => {
    jwt.verify(accessToken, process.env.ACCESS_TOKEN, (err, decodedInfo) => {
       if (err) return res.status(403).json({ message: `You are not authorized to access this information` });
       req.user = decodedInfo;
+      req.role = decodedInfo.roles;
       next();
    });
 };

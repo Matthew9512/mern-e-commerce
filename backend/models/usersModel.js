@@ -6,6 +6,7 @@ const usersSchema = new Schema(
       username: String,
       password: String,
       email: String,
+      roles: { type: String, default: 'user' },
       orderHistory: [
          {
             productID: String,

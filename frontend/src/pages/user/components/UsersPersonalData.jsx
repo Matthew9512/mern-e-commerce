@@ -36,7 +36,7 @@ export const UsersPersonalData = () => {
          <UsersNavbar />
          {usersQuery.isLoading && <LoadingSpinner />}
          {!usersQuery.data ? (
-            <p>asd</p>
+            <p>No data available</p>
          ) : (
             <Form onSubmitFn={handlePersonalDataForm} variant='default'>
                {Object.entries(usersQuery.data.usersData).map(([key, value]) => (

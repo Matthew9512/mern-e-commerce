@@ -20,7 +20,7 @@ export const UsersAdmin = () => {
          sortByList={sortUsersArr}
       >
          {usersList.data?.usersList?.length ? (
-            <Table headers={usersHeaders} usersList={usersList?.data?.usersList}>
+            <Table headers={usersHeaders}>
                <TableUsersData fetchQuery={usersList?.data?.usersList} page={page} setPage={setPage} />
             </Table>
          ) : (

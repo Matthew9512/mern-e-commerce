@@ -64,7 +64,7 @@ export const useMutationOrder = (storedValues, setStoredValues) => {
          setStoredValues([]);
          setTimeout(() => {
             window.location = '/';
-         }, 2000);
+         }, 1200);
       },
       onError: (err) => {
          toast.error(err?.message);

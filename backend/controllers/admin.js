@@ -1,5 +1,6 @@
 const usersModel = require('../models/usersModel');
 const productsModel = require('../models/productsModel');
+const ordersModel = require('../models/ordersModel');
 
 const _resLimit = 10;
 
@@ -107,8 +108,9 @@ const editProduct = async function (req, res, next) {
             available: value,
          };
       });
-      console.log(req.body.formData);
+
       await productsModel.findByIdAndUpdate(id, { name, price, image, category, description, sizesArr });
+
       res.status(200).json({ message: `Product successfully updated` });
    } catch (error) {
       next(error.message);
@@ -117,7 +119,63 @@ const editProduct = async function (req, res, next) {
 
 const getOrders = async function (req, res, next) {
    try {
-      res.status(200).json({ message: `orders` });
+      const { page } = req.params;
+
+      const pagesAmount = Math.ceil((await ordersModel.countDocuments()) / _resLimit);
+
+      const ordersList = await ordersModel
+         .find()
+         .limit(_resLimit)
+         .skip((page - 1) * _resLimit);
+
+      res.status(200).json({ ordersList, pagesAmount });
+   } catch (error) {
+      next(error.message);
+   }
+};
+
+const getStatistics = async function (req, res, next) {
+   // ===
+   // const currentDate = new Date(2023, 8, 1); // September
+   // const futureDate = new Date(2023, 9, 1);
+   // ===
+   const date = new Date();
+   const currentDate = new Date(date.getFullYear(), date.getMonth(), 1);
+   const futureDate = new Date(date.getFullYear(), date.getMonth() + 1, 1);
+
+   try {
+      const totalOrders = await ordersModel.countDocuments();
+      const totalUsers = await usersModel.countDocuments();
+      const totalIncomes = (await ordersModel.find().select('price amount')).reduce(
+         (acc, order) => acc + +(order?.price * order?.amount),
+         0
+      );
+
+      const monthlyUsers = await usersModel.aggregate([
+         {
+            $match: {
+               createdAt: {
+                  $gte: currentDate,
+                  $lt: futureDate,
+               },
+            },
+         },
+      ]);
+
+      const monthlyOrders = await ordersModel
+         .aggregate([
+            {
+               $match: {
+                  createdAt: {
+                     $gte: currentDate,
+                     $lt: futureDate,
+                  },
+               },
+            },
+         ])
+         .sort({ createdAt: -1 });
+
+      res.status(200).json({ monthlyUsers: monthlyUsers.length, monthlyOrders, totalOrders, totalUsers, totalIncomes });
    } catch (error) {
       next(error.message);
    }
@@ -132,4 +190,5 @@ module.exports = {
    deleteProduct,
    editProduct,
    getOrders,
+   getStatistics,
 };

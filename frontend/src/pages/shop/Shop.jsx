@@ -33,10 +33,11 @@ export const Shop = () => {
    return (
       <Section style='flex flex-wrap justify-center'>
          <article className='lg:w-1/2 md:w-3/5 w-full flex flex-col gap-4'>
+            <p className='text-xl uppercase font-bold'>Your products:</p>
             {storedValues.length > 0 ? (
                storedValues.map((product) => (
                   <div key={product._id}>
-                     <p className='uppercase font-semibold '>{product.name}</p>
+                     <p className='uppercase font-semibold'>{product.name}</p>
                      <div className='flex lg:gap-10 gap-2 relative'>
                         <div className='w-40 h-40 flex justify-center items-center'>
                            {/* <div className='w-28 h-28 flex justify-center items-center'> */}

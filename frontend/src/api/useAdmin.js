@@ -8,9 +8,12 @@ export const useAdminUser = (page) => {
    const usersList = useQuery({
       queryKey: ['admin', `users`, page],
       queryFn: () =>
-         fetchData({
-            url: `admin/users/page/${page}`,
-         }),
+         fetchData(
+            {
+               url: `admin/users/page/${page}`,
+            },
+            true
+         ),
    });
 
    return usersList;
@@ -151,3 +154,17 @@ export const useAdminOrders = (page) => {
    return ordersList;
 };
 // ORDER
+
+// STATISTICS
+export const useAdminStatistics = () => {
+   const statistics = useQuery({
+      queryKey: ['admin', 'statistics'],
+      queryFn: () =>
+         fetchData({
+            url: `/admin/statistics`,
+         }),
+   });
+
+   return statistics;
+};
+// STATISTICS

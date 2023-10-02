@@ -20,7 +20,7 @@ export const ProductsAdmin = () => {
          sortByList={sortProductsArr}
       >
          {productsList.data?.productsList?.length ? (
-            <Table headers={productsHeaders} usersList={productsList?.data?.productsList}>
+            <Table headers={productsHeaders}>
                <TableProductsData fetchQuery={productsList?.data?.productsList} page={page} setPage={setPage} />
             </Table>
          ) : (

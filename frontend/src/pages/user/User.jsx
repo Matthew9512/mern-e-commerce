@@ -15,7 +15,6 @@ export const User = () => {
 
    const logOut = () => {
       removeToken();
-      localStorage.removeItem('access__token');
 
       navigate('/');
    };
@@ -23,7 +22,6 @@ export const User = () => {
    const removeAcc = () => {
       usersMutationDel.mutate();
       removeToken();
-      localStorage.removeItem('access__token');
 
       navigate('/');
    };

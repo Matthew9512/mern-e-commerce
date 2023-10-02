@@ -16,7 +16,7 @@ const refreshJwt = async function (req, res) {
       const user = await usersModel.findOne({ _id: decodedInfo.id });
       if (!user) return res.status(401).json({ message: 'User not found' });
 
-      const accessToken = jwt.sign({ email: user.email, id: user._id }, process.env.ACCESS_TOKEN, {
+      const accessToken = jwt.sign({ email: user.email, id: user._id, roles: user.roles }, process.env.ACCESS_TOKEN, {
          expiresIn: '1d',
       });
 

@@ -17,6 +17,7 @@ import { HiOutlineShoppingCart, HiShoppingCart } from 'react-icons/hi';
 import { GiFullMotorcycleHelmet, GiClothes } from 'react-icons/gi';
 import { FiUsers } from 'react-icons/fi';
 import { BsReverseListColumnsReverse, BsArrowUp, BsArrowDown } from 'react-icons/bs';
+import { MdOutlineAdminPanelSettings } from 'react-icons/md';
 
 export const githubIcon = <AiOutlineGithub />;
 export const linkedInIcon = <AiOutlineLinkedin />;
@@ -38,3 +39,4 @@ export const arrowUpIcon = <BsArrowUp style={{ height: '18px', width: '18px' }} 
 export const arrowDownIcon = <BsArrowDown style={{ height: '18px', width: '18px' }} />;
 export const eyeIcon = <AiOutlineEye />;
 export const editIcon = <AiOutlineEdit />;
+export const adminIcon = <MdOutlineAdminPanelSettings style={{ height: '24px', width: '24px' }} />;

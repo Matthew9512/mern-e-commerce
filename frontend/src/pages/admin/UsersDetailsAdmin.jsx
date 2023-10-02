@@ -6,14 +6,20 @@ import { Table } from './components/Table';
 import { usePagination } from '../../api/usePagination';
 
 export const UsersDetailsAdmin = () => {
+   const usersHeaders = ['', 'image', 'name', 'price', 'amount', 'product id', 'size', 'order date'];
+   const sortProductsArr = ['name', 'price', 'date'];
    const { id } = useParams();
    const { page, onHandleReq } = usePagination();
    const usersDetails = useAdminUserDetails(id, page);
-   console.log(usersDetails);
-   const usersHeaders = ['', 'image', 'name', 'price', 'amount', 'product id', 'size', 'order date'];
 
    return (
-      <AdminSection fetchQuery={usersDetails} header='Users details' page={page} onHandleReq={onHandleReq}>
+      <AdminSection
+         fetchQuery={usersDetails}
+         header='Users details'
+         page={page}
+         onHandleReq={onHandleReq}
+         sortByList={sortProductsArr}
+      >
          {usersDetails?.data?.orderHistory.length ? (
             <Table headers={usersHeaders}>
                {usersDetails?.data?.orderHistory.map((order, i) => (

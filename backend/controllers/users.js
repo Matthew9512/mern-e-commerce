@@ -4,6 +4,7 @@ const productsModel = require('../models/productsModel');
 const bcrypt = require('bcrypt');
 const usersUtils = require('../utils/usersFn');
 const stripe = require('../config/stripe');
+const saveOrderStatistics = require('../utils/saveOrderStatistics');
 
 const register = async function (req, res, next) {
    try {
@@ -55,7 +56,9 @@ const login = async function (req, res, next) {
 
       if (!bcryptPassword) return res.status(401).json({ message: `Wrong email or password` });
 
-      const accessToken = jwt.sign({ email, id: user._id }, process.env.ACCESS_TOKEN, { expiresIn: '1d' });
+      const accessToken = jwt.sign({ email, id: user._id, roles: user.roles }, process.env.ACCESS_TOKEN, {
+         expiresIn: '1d',
+      });
 
       const refreshToken = jwt.sign({ email, id: user._id }, process.env.REFRESH_TOKEN, { expiresIn: '7d' });
 
@@ -130,7 +133,10 @@ const buyProducts = async function (req, res, next) {
          );
       });
 
-      await usersUtils.sendNotifications(usersOrder, order, next);
+      // save order id db for statistics
+      saveOrderStatistics(order, usersOrder.username);
+
+      // await usersUtils.sendNotifications(usersOrder, order, next);
 
       res.status(200).json({ usersOrder, message: `Product purchase correctly` });
    } catch (error) {
