@@ -28,7 +28,7 @@ export const TableProductsData = ({ fetchQuery, page, setPage }) => {
          {fetchQuery.map((product, i) => (
             <tr key={product?._id} className='tableRow hover:bg-secondaryWhite'>
                <td>{i + 1}</td>
-               <td className='w-12 h-12'>
+               <td className='w-12 h-16'>
                   <Image variant='profile' image={product?.image} alt={product?.name} />
                </td>
                <td>{product?.name}</td>
@@ -38,6 +38,7 @@ export const TableProductsData = ({ fetchQuery, page, setPage }) => {
                <td className=''>{product?.sale ? checkIcon : falseIcon}</td>
                <td className='flex items-center justify-center h-16 gap-6 w-min' id='action'>
                   <LinkButton
+                     customClass='gap-2'
                      to={`/admin/products/${product?._id}/edit`}
                      variant='primary'
                      onHandleFn={() => setProduct(product?._id)}
@@ -50,6 +51,7 @@ export const TableProductsData = ({ fetchQuery, page, setPage }) => {
                         setDisplay((prev) => !prev);
                      }}
                      variant='primary'
+                     customClass='gap-2'
                   >
                      {deleteIcon} Delete
                   </Button>

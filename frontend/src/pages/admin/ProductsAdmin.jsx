@@ -1,3 +1,4 @@
+import { useLocation } from 'react-router-dom';
 import { useAdminProducts } from '../../api/useAdmin';
 import { Table } from './components/Table';
 import { TableProductsData } from './components/TableProductsData';
@@ -8,7 +9,8 @@ export const ProductsAdmin = () => {
    const productsHeaders = ['', 'image', 'name', 'category', 'price', 'discount', 'sale', 'actions'];
    const sortProductsArr = ['name', 'price', 'sale', 'discount'];
    const { page, setPage, onHandleReq } = usePagination();
-   const productsList = useAdminProducts(page);
+   const location = useLocation();
+   const productsList = useAdminProducts(page, location.search);
 
    return (
       <AdminSection

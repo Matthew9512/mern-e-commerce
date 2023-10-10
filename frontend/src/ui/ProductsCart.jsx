@@ -4,8 +4,8 @@ import { SaleDiscount } from './SaleDiscount';
 
 export const ProductsCart = ({ product }) => {
    return (
-      <div className='group flex max-w-[16em] flex-col'>
-         <div className='relative flex h-80 items-center justify-center overflow-hidden'>
+      <div className='group h-[460px] flex max-w-[16em] flex-col'>
+         <div className='relative flex h-60 items-center justify-center overflow-hidden'>
             {product?.sale && <SaleDiscount product={product} />}
             <Image variant='primary' image={product?.image} alt={product?.name} />
          </div>
@@ -13,9 +13,9 @@ export const ProductsCart = ({ product }) => {
             <p className='font-semibold uppercase'>{product?.name}</p>
             <div className='flex justify-between'>
                <p className={`${product?.sale ? 'line-through opacity-60' : ''}`}>$ {product?.price}</p>
-               {product?.sale && <p>$ {(+product?.price * product?.discount) / 100}</p>}
+               {product?.sale && <p>$ {product?.price - (product?.price * product?.discount) / 100}</p>}
             </div>
-            <p className='text-base line-clamp-3'>{product?.description}</p>
+            <p className='h-[78px] text-base line-clamp-3'>{product?.description}</p>
             <LinkButton variant='primary' to={`/product/${product?._id}`}>
                See more
             </LinkButton>

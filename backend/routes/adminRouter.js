@@ -7,18 +7,25 @@ const verifyRoles = require('../middleware/verifyRoles');
 // user
 router.get('/users/page/:page', verifyJwt, verifyRoles, admin.getUsers);
 router.get('/users-details/page/:page/:id', admin.getUsersDetails);
+router.get('/users-details/page/:page/:id/q', admin.sortUsersDetails);
 router.delete('/delete-account', admin.deleteUser);
+router.get('/users/page/:page/q', admin.sortUsers);
 
 // products
 router.get('/products/page/:page', admin.getProducts);
 router.post('/products/create', admin.createNewProducts);
 router.put('/products/:id/edit', admin.editProduct);
 router.delete('/delete-product', admin.deleteProduct);
+router.get('/products/page/:page/q', admin.sortProducts);
 
 // orders
 router.get('/orders/page/:page', admin.getOrders);
+router.get('/orders/page/:page/q', admin.sortOrders);
 
 // statistics
 router.get('/statistics', admin.getStatistics);
+
+// sale
+router.post('/manage-sale', admin.manageSale);
 
 module.exports = router;

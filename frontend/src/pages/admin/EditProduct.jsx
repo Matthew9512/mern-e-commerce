@@ -74,7 +74,7 @@ export const EditProduct = () => {
                {editProduct.isLoading ? <LoadingButton /> : <Button variant='primary'>Edit</Button>}
             </Form>
          ) : (
-            <p>product</p>
+            <p>Product data unavailable</p>
          )}
       </>
    );

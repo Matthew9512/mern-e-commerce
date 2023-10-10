@@ -21,7 +21,7 @@ export const AddNewProduct = () => {
 
    return (
       <Form variant='secondary' onSubmitFn={handleNewProduct}>
-         <div className='flex gap-24'>
+         <div className='flex md:flex-row flex-col gap-24'>
             <div className=' flex flex-col gap-6'>
                <Input label='name' type='text' placeholder='name' variant='secondary' />
                <Input label='price' type='text' placeholder='price' variant='secondary' />
@@ -35,7 +35,6 @@ export const AddNewProduct = () => {
                   cols='30'
                   rows='5'
                ></textarea>
-               {/* <Input label='category' type='text' placeholder='category' variant='secondary' /> */}
             </div>
             <div className='mx-auto flex flex-col gap-6'>
                <SearchSelect

@@ -6,8 +6,8 @@ export const TableOrdersData = ({ fetchQuery }) => {
       <>
          {fetchQuery.map((order, i) => (
             <tr key={order?._id} className='tableRow hover:bg-secondaryWhite'>
-               <td>{i + 1}</td>
-               <td className='w-12 h-12'>
+               <td className='p-4'>{i + 1}</td>
+               <td className='w-12 h-16'>
                   <Image variant='profile' image={order?.image} alt={order?.name} />
                </td>
                <td>{order?.username}</td>

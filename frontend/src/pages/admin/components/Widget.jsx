@@ -1,6 +1,6 @@
 import { LinkButton } from '../../../ui/LinkButton';
 
-export const Widget = ({ header, data, overall }) => {
+export const Widget = ({ header, data, to, overall }) => {
    return (
       <div className='border border-primaryBlack w-72 rounded-md p-4 space-y-4'>
          <p className='font-semibold text-lg'>{header}:</p>
@@ -9,7 +9,9 @@ export const Widget = ({ header, data, overall }) => {
             <span>|</span>
             <p>this month: {data}</p>
          </div>
-         <LinkButton to='/admin/users'>See all users</LinkButton>
+         <LinkButton customClass='underline' to={`${'/admin/' + to}`}>
+            See all {to}
+         </LinkButton>
       </div>
    );
 };

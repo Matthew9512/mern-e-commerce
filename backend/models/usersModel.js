@@ -11,7 +11,7 @@ const usersSchema = new Schema(
          {
             productID: String,
             amount: Number,
-            price: String,
+            price: Number,
             name: String,
             size: String,
             image: String,

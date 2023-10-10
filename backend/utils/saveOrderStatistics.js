@@ -11,12 +11,6 @@ const saveOrderStatistics = async function (order, username) {
          status: true,
       });
    });
-   // ===
-   // await ordersModel.insertMany({
-   //    username: username,
-   //    price: order.at(0).price,
-   //    product: order.at(0).name,
-   // });
 };
 
 module.exports = saveOrderStatistics;

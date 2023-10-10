@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const ordersSchema = new Schema(
    {
       username: String,
-      price: String,
+      price: Number,
       amount: {
          type: Number,
          default: 1,

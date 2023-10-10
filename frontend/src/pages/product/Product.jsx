@@ -28,7 +28,10 @@ export const Product = () => {
                      price: $ {productsQuery.data?.price}
                   </p>
                   {productsQuery.data?.sale && (
-                     <p>price: $ {(+productsQuery.data?.price * productsQuery.data?.discount) / 100}</p>
+                     <p>
+                        price: ${' '}
+                        {productsQuery.data?.price - (productsQuery.data?.price * productsQuery.data?.discount) / 100}
+                     </p>
                   )}
                </div>
                <ProductAside productsQuery={productsQuery} id={id} />

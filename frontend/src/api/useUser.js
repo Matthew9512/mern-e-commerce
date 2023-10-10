@@ -64,7 +64,6 @@ export const useUsers = () => {
       queryKey: ['users'],
       queryFn: () => {
          const decoded = jwtDecodeToken();
-         console.log(decoded);
          return fetchData(
             {
                url: `/users/${decoded.id}`,
@@ -72,6 +71,7 @@ export const useUsers = () => {
             true
          );
       },
+      refetchOnWindowFocus: false,
    });
 
    return usersQuery;

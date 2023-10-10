@@ -24,15 +24,15 @@ export const areaChart = (statistics) => {
          {
             label: 'incomes $',
             data: Object.values(sumByDate).reverse(),
-            backgroundColor: 'rgba(75,192,192,0.2)',
-            borderColor: 'rgba(75,192,192,1)',
+            backgroundColor: 'rgba(77, 212, 89,0.2)',
+            borderColor: 'rgba(77, 212, 89,1)',
          },
          // dummy random outcomes data
          {
             label: 'outcomes $',
-            data: Object.values(sumByDate).map((sum) => sum / Math.ceil(Math.random() * 8) + 1),
-            backgroundColor: 'rgba(175,62,72,0.2)',
-            borderColor: 'rgba(175,62,72,1)',
+            data: Object.values(sumByDate).map((sum) => (sum / Math.ceil(Math.random() * 8) + 1).toFixed(0)),
+            backgroundColor: 'rgba(0, 10, 89,0.2)',
+            borderColor: 'rgba(0, 10, 89,1)',
          },
       ],
    };
@@ -43,18 +43,18 @@ export const areaChart = (statistics) => {
 export const doughnutChart = (totalMonthlyIncomes) => {
    // dummy random outcomes data
    const doughnutChartData = {
-      labels: ['outcomes:', 'incomes:'],
+      labels: ['outcomes $:', 'incomes $:'],
       datasets: [
          {
             cutout: '80%',
-            data: [totalMonthlyIncomes / Math.ceil(Math.random() * 8) + 1, totalMonthlyIncomes || 1e-10],
-            backgroundColor: ['rgba(175,62,72,0.2)', 'rgba(0,176,148,0.2)'],
-            borderColor: ['rgba(175,62,72,1)', 'rgba(0,176,148,1)'],
-            borderWidth: 1,
+            data: [(totalMonthlyIncomes / Math.ceil(Math.random() * 8) + 1).toFixed(0), totalMonthlyIncomes || 1e-10],
+            backgroundColor: ['rgba(0, 10, 89,0.2)', 'rgba(7, 212, 89,0.2)'],
+            borderColor: ['rgba(0, 10, 89,1)', 'rgba(7, 212, 89,1)'],
+            spacing: 6,
          },
       ],
    };
-
+   // rgb(30, 233, 233)
    return doughnutChartData;
 };
 
@@ -63,6 +63,9 @@ export const chartOptions = {
    responsive: true,
    maintainAspectRatio: false,
    plugins: {
+      legend: {
+         display: false,
+      },
       tooltip: {
          displayColors: false,
       },

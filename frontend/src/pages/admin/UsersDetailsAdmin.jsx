@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { AdminSection } from './components/AdminSection';
 import { Image } from '../../ui/Image';
 import { useAdminUserDetails } from '../../api/useAdmin';
@@ -10,7 +10,8 @@ export const UsersDetailsAdmin = () => {
    const sortProductsArr = ['name', 'price', 'date'];
    const { id } = useParams();
    const { page, onHandleReq } = usePagination();
-   const usersDetails = useAdminUserDetails(id, page);
+   const location = useLocation();
+   const usersDetails = useAdminUserDetails(id, page, location.search);
 
    return (
       <AdminSection
@@ -24,8 +25,8 @@ export const UsersDetailsAdmin = () => {
             <Table headers={usersHeaders}>
                {usersDetails?.data?.orderHistory.map((order, i) => (
                   <tr key={order?._id} className='tableRow hover:bg-secondaryWhite'>
-                     <td>{i + 1}</td>
-                     <td className='w-12 h-12'>
+                     <td className='p-4'>{i + 1}</td>
+                     <td className='w-12 h-16'>
                         <Image variant='profile' image={order?.image} alt={order?.name} />
                      </td>
                      <td>{order?.name}</td>

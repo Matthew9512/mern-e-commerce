@@ -10,6 +10,7 @@ export const useSale = () => {
          fetchData({
             url: `/products/sale`,
          }),
+      refetchOnWindowFocus: false,
    });
 
    return saleQuery;

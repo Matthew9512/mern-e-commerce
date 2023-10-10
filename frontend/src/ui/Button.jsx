@@ -1,5 +1,5 @@
 export const Button = ({ children, btnRef, variant, disabled, onHandleFn, customClass, dataType }) => {
-   const mainStyle = `bg-primaryBlack text-primaryWhite flex justify-center items-center hover:bg-primaryBlack/90 active:bg-primaryBlack/90 border-primaryBlack/80 disabled:bg-secondaryWhite disabled:cursor-not-allowed`;
+   const mainStyle = `bg-primaryBlack text-primaryWhite flex justify-center items-center hover:bg-primaryBlack/90 active:bg-primaryBlack/90 border-primaryBlack/80 disabled:bg-primaryBlack/30 disabled:cursor-not-allowed`;
    const styles = {
       primary: `${mainStyle} lg:w-fit mx-auto rounded-2xl py-2 px-4`,
       // w-min

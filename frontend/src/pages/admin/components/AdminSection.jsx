@@ -5,10 +5,10 @@ import { SortTable } from './SortTable';
 
 export const AdminSection = ({ fetchQuery, header, page, onHandleReq, sortByList, children }) => {
    return (
-      <article className='px-12 py-4'>
+      <article className='lg:px-12 lg:py-4 px-6 py-2'>
          <div className='flex justify-between items-center'>
             <p className='uppercase font-semibold text-lg tracking-widest'>{header}</p>
-            <SortTable sortByList={sortByList} />
+            <SortTable sortByList={sortByList} fetchQuery={fetchQuery.refetch} />
          </div>
          {fetchQuery.isLoading && <LoadingSpinner />}
          {fetchQuery.error && <ErrorMessage />}

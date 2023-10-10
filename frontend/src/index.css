@@ -13,7 +13,7 @@ th {
    text-align: left;
    padding-inline: 1.4em;
 }
-/* page transition */
+
 .pageTransition {
    animation: pageTransition 0.3s linear forwards;
 }
@@ -28,7 +28,6 @@ th {
       transform: translateY(0);
    }
 }
-
 .loader {
    width: 50px;
    padding: 6px;
@@ -48,47 +47,20 @@ th {
    }
 }
 
-/* Removing the default appearance */
-.thumb,
-.thumb::-webkit-slider-thumb {
-   -webkit-appearance: none;
-   -webkit-tap-highlight-color: transparent;
+::-webkit-scrollbar {
+   width: 6px;
+   height: 6px;
 }
-.thumb {
-   pointer-events: none;
-   position: absolute;
-   height: 0;
-   width: 14rem;
-   outline: none;
+
+::-webkit-scrollbar-track {
+   background: #f1f1f1;
 }
-.thumb--left {
-   z-index: 3;
+
+::-webkit-scrollbar-thumb {
+   background: #888;
+   border-radius: 8px;
 }
-.thumb--right {
-   z-index: 4;
-}
-/* For Chrome browsers */
-.thumb::-webkit-slider-thumb {
-   background-color: white;
-   border: 4px solid #3b82f6;
-   border-radius: 50%;
-   cursor: pointer;
-   height: 18px;
-   width: 18px;
-   margin-top: 4px;
-   pointer-events: all;
-   position: relative;
-}
-/* For Firefox browsers */
-.thumb::-moz-range-thumb {
-   background-color: #f1f5f7;
-   border: none;
-   border-radius: 50%;
-   box-shadow: 0 0 1px 1px #ced4da;
-   cursor: pointer;
-   height: 18px;
-   width: 18px;
-   margin-top: 4px;
-   pointer-events: all;
-   position: relative;
+
+::-webkit-scrollbar-thumb:hover {
+   background: #555;
 }

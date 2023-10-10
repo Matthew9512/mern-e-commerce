@@ -1,31 +1,55 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-hot-toast';
-import { fetchData } from './fetchData';
 import { useNavigate } from 'react-router-dom';
+import { fetchData } from './fetchData';
 
-// USERS //
-export const useAdminUser = (page) => {
+export const useAdminSale = () => {
+   const sale = useMutation({
+      mutationFn: (data) =>
+         fetchData({
+            url: `admin/manage-sale`,
+            method: 'POST',
+            data,
+         }),
+
+      onSuccess: (data) => toast.success(data.message),
+   });
+
+   return sale;
+};
+
+export const useAdminUser = (page, queryParams) => {
    const usersList = useQuery({
-      queryKey: ['admin', `users`, page],
-      queryFn: () =>
-         fetchData(
+      queryKey: ['admin', `users`, page, queryParams],
+      queryFn: () => {
+         let url;
+
+         if (!queryParams) url = `/page/${page}`;
+         if (queryParams) url = `/page/${page}/q${queryParams}`;
+         return fetchData(
             {
-               url: `admin/users/page/${page}`,
+               url: `admin/users${url}`,
             },
             true
-         ),
+         );
+      },
    });
 
    return usersList;
 };
 
-export const useAdminUserDetails = (id, page) => {
+export const useAdminUserDetails = (id, page, queryParams) => {
    const usersDetails = useQuery({
-      queryKey: ['admin', `users-details`, id, page],
-      queryFn: () =>
-         fetchData({
-            url: `admin/users-details/page/${page}/${id}`,
-         }),
+      queryKey: ['admin', `users-details`, id, page, queryParams],
+      queryFn: () => {
+         let url;
+
+         if (!queryParams) url = `/page/${page}/${id}`;
+         if (queryParams) url = `/page/${page}/${id}/q${queryParams}`;
+         return fetchData({
+            url: `admin/users-details${url}`,
+         });
+      },
    });
 
    return usersDetails;
@@ -57,14 +81,18 @@ export const useAdminDeleteUser = (page, setPage) => {
 // USERS //
 
 // PRODUCTS //
-export const useAdminProducts = (page) => {
+export const useAdminProducts = (page, queryParams) => {
    const productsList = useQuery({
-      queryKey: ['admin', `products`, page],
-      queryFn: () =>
-         fetchData({
-            url: `admin/products/page/${page}`,
-            // url: `/admin/products`,
-         }),
+      queryKey: ['admin', `products`, page, queryParams],
+      queryFn: () => {
+         let url;
+
+         if (!queryParams) url = `/page/${page}`;
+         if (queryParams) url = `/page/${page}/q${queryParams}`;
+         return fetchData({
+            url: `admin/products${url}`,
+         });
+      },
    });
 
    return productsList;
@@ -142,13 +170,18 @@ export const useAdminEditProducts = (id) => {
 // PRODUCTS //
 
 // ORDER
-export const useAdminOrders = (page) => {
+export const useAdminOrders = (page, queryParams) => {
    const ordersList = useQuery({
-      queryKey: ['admin', 'orders', page],
-      queryFn: () =>
-         fetchData({
-            url: `/admin/orders/page/${page}`,
-         }),
+      queryKey: ['admin', 'orders', page, queryParams],
+      queryFn: () => {
+         let url;
+
+         if (!queryParams) url = `/page/${page}`;
+         if (queryParams) url = `/page/${page}/q${queryParams}`;
+         return fetchData({
+            url: `/admin/orders${url}`,
+         });
+      },
    });
 
    return ordersList;

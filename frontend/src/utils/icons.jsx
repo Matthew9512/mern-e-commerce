@@ -11,6 +11,7 @@ import {
    AiOutlineCloseCircle,
    AiOutlineEye,
    AiOutlineEdit,
+   AiOutlineMenu,
 } from 'react-icons/ai';
 
 import { HiOutlineShoppingCart, HiShoppingCart } from 'react-icons/hi';
@@ -40,3 +41,4 @@ export const arrowDownIcon = <BsArrowDown style={{ height: '18px', width: '18px'
 export const eyeIcon = <AiOutlineEye />;
 export const editIcon = <AiOutlineEdit />;
 export const adminIcon = <MdOutlineAdminPanelSettings style={{ height: '24px', width: '24px' }} />;
+export const menuIcon = <AiOutlineMenu style={{ height: '24px', width: '24px' }} />;
