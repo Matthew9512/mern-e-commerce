@@ -9,7 +9,6 @@ const refreshJwt = async function (req, res) {
 
    jwt.verify(refreshToken, process.env.REFRESH_TOKEN, async function (error, decodedInfo) {
       if (error) {
-         console.log(error);
          return res.status(403).json({ message: `You are not authorized to access this information` });
       }
 

@@ -5,6 +5,7 @@ const salesModel = require('../models/salesModel');
 
 const _resLimit = 10;
 
+// manage shop sale
 const manageSale = async function (req, res, next) {
    try {
       let { discount, category } = req.body;
@@ -35,6 +36,7 @@ const manageSale = async function (req, res, next) {
    }
 };
 
+// USERS
 const getUsers = async function (req, res, next) {
    try {
       const { page } = req.params;
@@ -134,6 +136,7 @@ const sortUsers = async function (req, res, next) {
       next(error.message);
    }
 };
+// USERS
 
 // PRODUCTS
 const getProducts = async function (req, res, next) {
@@ -225,7 +228,9 @@ const sortProducts = async function (req, res, next) {
       next(error.message);
    }
 };
+// PRODUCTS
 
+// ORDERS
 const getOrders = async function (req, res, next) {
    try {
       const { page } = req.params;
@@ -268,12 +273,10 @@ const sortOrders = async function (req, res, next) {
       next(error.message);
    }
 };
+// ORDERS
 
+// DASHBOARD STATISTICS
 const getStatistics = async function (req, res, next) {
-   // ===
-   // const currentDate = new Date(2023, 8, 1); // September
-   // const futureDate = new Date(2023, 9, 1);
-   // ===
    const date = new Date();
    const currentDate = new Date(date.getFullYear(), date.getMonth(), 1);
    const futureDate = new Date(date.getFullYear(), date.getMonth() + 1, 1);

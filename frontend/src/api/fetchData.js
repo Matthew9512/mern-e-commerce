@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-const _URL = `http://localhost:8000`;
-// const _URL = `https://mern-e-commerce-production.up.railway.app/`;
+const _URL = `https://mern-e-commerce-production.up.railway.app/`;
 
 axios.defaults.baseURL = _URL;
 axios.defaults.withCredentials = true;
@@ -13,7 +12,6 @@ export async function fetchData(options, auth = false) {
    try {
       const res = await axiosOptions.request(options);
       const data = await res.data;
-      console.log(data);
       return data;
    } catch (error) {
       if (error.request.status === 0) return (window.location.href = '/server-down');

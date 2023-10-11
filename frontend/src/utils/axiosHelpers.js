@@ -46,7 +46,7 @@ async function refreshAccessToken() {
       localStorage.setItem('access__token', JSON.stringify(newToken));
       return newToken;
    } catch (error) {
-      console.log(error);
+      window.location = '/';
    }
 }
 
@@ -58,7 +58,6 @@ export function jwtDecodeToken() {
       decoded = jwtDecode(token);
    } catch (error) {
       window.location = '/';
-      console.log(error.message);
    }
 
    return decoded;
