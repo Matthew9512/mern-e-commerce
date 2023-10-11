@@ -4,26 +4,26 @@ import { Suspense } from 'react';
 import { lazyLoad } from './utils/lazyLoad';
 import { LoadingSpinner } from './ui/LoadingSpinner';
 
-const AdminLayout = lazyLoad('../pages/admin/components/AdminLayout', 'AdminLayout');
-const DashboardAdmin = lazyLoad('../pages/admin/DashboardAdmin', 'DashboardAdmin');
-const UsersAdmin = lazyLoad('../pages/admin/UsersAdmin', 'UsersAdmin');
-const ProductsAdmin = lazyLoad('../pages/admin/ProductsAdmin', 'ProductsAdmin');
-const OrdersAdmin = lazyLoad('../pages/admin/OrdersAdmin', 'OrdersAdmin');
-const UsersDetailsAdmin = lazyLoad('../pages/admin/UsersDetailsAdmin', 'UsersDetailsAdmin');
-const AddNewProduct = lazyLoad('../pages/admin/AddNewProduct', 'AddNewProduct');
-const EditProduct = lazyLoad('../pages/admin/EditProduct', 'EditProduct');
-const Home = lazyLoad('../pages/home/Home', 'Home');
-const Layout = lazyLoad('../ui/Layout', 'Layout');
-const PageNotFound = lazyLoad('../pages/PageNotFound', 'PageNotFound');
-const Login = lazyLoad('../pages/Login', 'Login');
-const Register = lazyLoad('../pages/register/Register', 'Register');
-const Product = lazyLoad('../pages/product/Product', 'Product');
-const User = lazyLoad('../pages/user/User', 'User');
-const OrderHistory = lazyLoad('../pages/user/components/OrderHistory', 'OrderHistory');
-const ProtectedRoutes = lazyLoad('../ui/ProtectedRoutes', 'ProtectedRoutes');
-const Shop = lazyLoad('../pages/shop/Shop', 'Shop');
-const ServerDown = lazyLoad('../pages/ServerDown', 'ServerDown');
-const UsersPersonalData = lazyLoad('../pages/user/components/UsersPersonalData', 'UsersPersonalData');
+const AdminLayout = lazyLoad('../pages/admin/components/AdminLayout.jsx', 'AdminLayout');
+const DashboardAdmin = lazyLoad('../pages/admin/DashboardAdmin.jsx', 'DashboardAdmin');
+const UsersAdmin = lazyLoad('../pages/admin/UsersAdmin.jsx', 'UsersAdmin');
+const ProductsAdmin = lazyLoad('../pages/admin/ProductsAdmin.jsx', 'ProductsAdmin');
+const OrdersAdmin = lazyLoad('../pages/admin/OrdersAdmin.jsx', 'OrdersAdmin');
+const UsersDetailsAdmin = lazyLoad('../pages/admin/UsersDetailsAdmin.jsx', 'UsersDetailsAdmin');
+const AddNewProduct = lazyLoad('../pages/admin/AddNewProduct.jsx', 'AddNewProduct');
+const EditProduct = lazyLoad('../pages/admin/EditProduct.jsx', 'EditProduct');
+const Home = lazyLoad('../pages/home/Home.jsx', 'Home');
+const Layout = lazyLoad('../ui/Layout.jsx', 'Layout');
+const PageNotFound = lazyLoad('../pages/PageNotFound.jsx', 'PageNotFound');
+const Login = lazyLoad('../pages/Login.jsx', 'Login');
+const Register = lazyLoad('../pages/register/Register.jsx', 'Register');
+const Product = lazyLoad('../pages/product/Product.jsx', 'Product');
+const User = lazyLoad('../pages/user/User.jsx', 'User');
+const OrderHistory = lazyLoad('../pages/user/components/OrderHistory.jsx', 'OrderHistory');
+const ProtectedRoutes = lazyLoad('../ui/ProtectedRoutes.jsx', 'ProtectedRoutes');
+const Shop = lazyLoad('../pages/shop/Shop.jsx', 'Shop');
+const ServerDown = lazyLoad('../pages/ServerDown.jsx', 'ServerDown');
+const UsersPersonalData = lazyLoad('../pages/user/components/UsersPersonalData.jsx', 'UsersPersonalData');
 
 export const App = () => {
    return (
