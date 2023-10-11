@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import { Section } from '../../ui/Section';
 import { LoadingSpinner } from '../../ui/LoadingSpinner';
 import { UsersNavbar } from './components/UsersNavbar';
@@ -10,20 +9,17 @@ import { removeToken } from '../../utils/axiosHelpers';
 
 export const User = () => {
    const usersQuery = useUsers();
-   const navigate = useNavigate();
    const usersMutationDel = useMutateDeleteUser(usersQuery.data?._id);
 
    const logOut = () => {
       removeToken();
-
-      navigate('/');
+      window.location = '/';
    };
-   console.log(usersQuery);
+
    const removeAcc = () => {
       usersMutationDel.mutate();
       removeToken();
-
-      navigate('/');
+      window.location = '/';
    };
 
    return (

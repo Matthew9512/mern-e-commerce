@@ -107,7 +107,7 @@ const buyProducts = async function (req, res, next) {
       // // stripe payment
       // stripe.stripeConfig(userID, order, res);
       // // stripe payment
-      // return;
+
       const usersOrder = await usersModel
          .findByIdAndUpdate(
             { _id: userID },
@@ -136,7 +136,7 @@ const buyProducts = async function (req, res, next) {
       // save order id db for statistics
       saveOrderStatistics(order, usersOrder.username);
 
-      // await usersUtils.sendNotifications(usersOrder, order, next);
+      await usersUtils.sendNotifications(usersOrder, order, next);
 
       res.status(200).json({ usersOrder, message: `Product purchase correctly` });
    } catch (error) {

@@ -7,6 +7,9 @@ const compression = require('compression');
 const connectDB = require('./config/mongoDB');
 const corsOptions = require('./config/corsOptions');
 const errorHandler = require('./middleware/errorHandler');
+const verifyJwt = require('./middleware/verifyJwt');
+const verifyRoles = require('./middleware/verifyRoles');
+
 const PORT = process.env.PORT || 8000;
 const app = express();
 
@@ -21,7 +24,7 @@ connectDB();
 
 app.use('/products', require('./routes/productsRouter'));
 app.use('/users', require('./routes/usersRouter'));
-app.use('/admin', require('./routes/adminRouter'));
+app.use('/admin', verifyJwt, verifyRoles, require('./routes/adminRouter'));
 
 app.use(errorHandler);
 

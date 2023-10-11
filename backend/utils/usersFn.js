@@ -11,7 +11,6 @@ const checkUsersData = async function (userID, res) {
 };
 
 const emailOptions = (email, username, order) => {
-   //    return;
    const clientTemplate = order
       .map(
          (product) =>

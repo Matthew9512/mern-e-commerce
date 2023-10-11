@@ -56,9 +56,8 @@ export function jwtDecodeToken() {
 
    try {
       decoded = jwtDecode(token);
-      console.log(decoded);
    } catch (error) {
-      // window.location = '/';
+      window.location = '/';
       console.log(error.message);
    }
 

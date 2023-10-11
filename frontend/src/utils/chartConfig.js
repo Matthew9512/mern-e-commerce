@@ -54,7 +54,7 @@ export const doughnutChart = (totalMonthlyIncomes) => {
          },
       ],
    };
-   // rgb(30, 233, 233)
+
    return doughnutChartData;
 };
 

@@ -1,7 +1,7 @@
-import { useMemo } from 'react';
-import { Input } from '../../../ui/Input';
+// import { useMemo } from 'react';
+// import { Input } from '../../../ui/Input';
 import { calendarIcon, userIcon } from '../../../utils/icons';
-import debounce from 'lodash.debounce';
+// import debounce from 'lodash.debounce';
 
 export const Navbar = () => {
    const date = new Date();
@@ -14,13 +14,13 @@ export const Navbar = () => {
    };
    const dateFormat = new Intl.DateTimeFormat(browserLan, options).format(date);
 
-   const debounceFn = useMemo(
-      () =>
-         debounce((e) => {
-            console.log(`hi`);
-         }, 400),
-      []
-   );
+   // const debounceFn = useMemo(
+   //    () =>
+   //       debounce((e) => {
+   //          console.log(`hi`);
+   //       }, 400),
+   //    []
+   // );
 
    return (
       <nav className='flex items-center justify-between py-11 lg:px-12 px-6 w-full'>
@@ -29,7 +29,8 @@ export const Navbar = () => {
             <p className='font-semibold first-letter:uppercase'>{dateFormat}</p>
          </div>
          <div className='flex items-center gap-4'>
-            <Input type='text' placeholder='search' variant='primary' onHandleFn={debounceFn} />
+            Welcome
+            {/* <Input type='text' placeholder='search' variant='primary' onHandleFn={debounceFn} /> */}
             <span className='rounded-full border p-2'>{userIcon}</span>
          </div>
       </nav>

@@ -15,8 +15,6 @@ export const UsersDataForm = ({ registerMutation }) => {
       const form = new FormData(e.currentTarget);
       const formData = Object.fromEntries(form);
 
-      // usersDataMutation.mutate(formData)
-
       usersDataMutation.mutate(formData, {
          onSuccess: (data) => {
             toast.success(data?.message);

@@ -3,7 +3,6 @@ import { Input } from '../../../ui/Input';
 import { SearchSelect } from '../../../ui/SearchSelect';
 import { categoryArr } from '../../../utils/constants';
 import { useAdminSale } from '../../../api/useAdmin';
-import { LoadingButton } from '../../../ui/LoadingButton';
 import { Button } from '../../../ui/Button';
 
 export const ManageSale = () => {
@@ -29,17 +28,6 @@ export const ManageSale = () => {
    };
 
    return (
-      // <div className='w-56 mx-auto'>
-      //    <Input variant='primary' placeholder='% discount' inputRef={discountRef} />
-      //    <SearchSelect options={categoryArr} label='choose category' placeholder='choose category' id='categoryRef' />
-      //    <LoadingButton
-      //       text='Active sale'
-      //       loading={sale.isLoading}
-      //       customClass='my-4'
-      //       variant='primary'
-      //       onHandleFn={handleSale}
-      //    />
-      // </div>
       <div className='w-56 mx-auto' onChange={verifyInputs}>
          <Input variant='primary' placeholder='% discount' inputRef={discountRef} />
          <SearchSelect
@@ -50,10 +38,10 @@ export const ManageSale = () => {
             selectRef={categoryRef}
          />
          <div className='flex gap-2 h-24'>
-            <Button variant='primary' customClass='my-4' onHandleFn={handleActiveSale} disabled={!disabled}>
+            <Button variant='primary' customClass='my-4 px-2 h-12' onHandleFn={handleActiveSale} disabled={!disabled}>
                Active sale
             </Button>
-            <Button variant='primary' customClass='my-4' onHandleFn={() => sale.mutate()}>
+            <Button variant='primary' customClass='my-4 px-2 h-12' onHandleFn={() => sale.mutate()}>
                Remove Sale
             </Button>
          </div>

@@ -6,11 +6,14 @@ import { fetchData } from './fetchData';
 export const useAdminSale = () => {
    const sale = useMutation({
       mutationFn: (data) =>
-         fetchData({
-            url: `admin/manage-sale`,
-            method: 'POST',
-            data,
-         }),
+         fetchData(
+            {
+               url: `admin/manage-sale`,
+               method: 'POST',
+               data,
+            },
+            true
+         ),
 
       onSuccess: (data) => toast.success(data.message),
    });
@@ -46,9 +49,12 @@ export const useAdminUserDetails = (id, page, queryParams) => {
 
          if (!queryParams) url = `/page/${page}/${id}`;
          if (queryParams) url = `/page/${page}/${id}/q${queryParams}`;
-         return fetchData({
-            url: `admin/users-details${url}`,
-         });
+         return fetchData(
+            {
+               url: `admin/users-details${url}`,
+            },
+            true
+         );
       },
    });
 
@@ -59,11 +65,14 @@ export const useAdminDeleteUser = (page, setPage) => {
    const queryClient = useQueryClient();
    const deleteUser = useMutation({
       mutationFn: (id) =>
-         fetchData({
-            url: `/admin/delete-account`,
-            method: 'DELETE',
-            data: { id },
-         }),
+         fetchData(
+            {
+               url: `/admin/delete-account`,
+               method: 'DELETE',
+               data: { id },
+            },
+            true
+         ),
 
       onSuccess: (data) => {
          toast.success(data?.message);
@@ -89,9 +98,12 @@ export const useAdminProducts = (page, queryParams) => {
 
          if (!queryParams) url = `/page/${page}`;
          if (queryParams) url = `/page/${page}/q${queryParams}`;
-         return fetchData({
-            url: `admin/products${url}`,
-         });
+         return fetchData(
+            {
+               url: `admin/products${url}`,
+            },
+            true
+         );
       },
    });
 
@@ -103,11 +115,14 @@ export const useAdminNewProduct = () => {
    const navigate = useNavigate();
    const createNewProduct = useMutation({
       mutationFn: (formData) =>
-         fetchData({
-            url: `admin/products/create`,
-            method: 'POST',
-            data: { formData },
-         }),
+         fetchData(
+            {
+               url: `admin/products/create`,
+               method: 'POST',
+               data: { formData },
+            },
+            true
+         ),
 
       onSuccess: (data) => {
          queryClient.invalidateQueries({ queryKey: ['admin', 'products'] });
@@ -124,11 +139,14 @@ export const useAdminDeleteProducts = (page, setPage) => {
    const queryClient = useQueryClient();
    const deleteProducts = useMutation({
       mutationFn: (id) =>
-         fetchData({
-            url: `/admin/delete-product`,
-            method: 'DELETE',
-            data: { id },
-         }),
+         fetchData(
+            {
+               url: `/admin/delete-product`,
+               method: 'DELETE',
+               data: { id },
+            },
+            true
+         ),
 
       onSuccess: (data) => {
          toast.success(data?.message);
@@ -149,11 +167,14 @@ export const useAdminEditProducts = (id) => {
    const navigate = useNavigate();
    const editProduct = useMutation({
       mutationFn: (formData) =>
-         fetchData({
-            url: `/admin/products/${id}/edit`,
-            method: 'PUT',
-            data: { formData },
-         }),
+         fetchData(
+            {
+               url: `/admin/products/${id}/edit`,
+               method: 'PUT',
+               data: { formData },
+            },
+            true
+         ),
 
       onSuccess: (data) => {
          toast.success(data?.message);
@@ -178,9 +199,12 @@ export const useAdminOrders = (page, queryParams) => {
 
          if (!queryParams) url = `/page/${page}`;
          if (queryParams) url = `/page/${page}/q${queryParams}`;
-         return fetchData({
-            url: `/admin/orders${url}`,
-         });
+         return fetchData(
+            {
+               url: `/admin/orders${url}`,
+            },
+            true
+         );
       },
    });
 
@@ -193,9 +217,12 @@ export const useAdminStatistics = () => {
    const statistics = useQuery({
       queryKey: ['admin', 'statistics'],
       queryFn: () =>
-         fetchData({
-            url: `/admin/statistics`,
-         }),
+         fetchData(
+            {
+               url: `/admin/statistics`,
+            },
+            true
+         ),
    });
 
    return statistics;
