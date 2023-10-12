@@ -73,26 +73,26 @@ import { Suspense, lazy } from 'react';
 import { lazyLoad } from './utils/lazyLoad';
 import { LoadingSpinner } from './ui/LoadingSpinner';
 
-const AdminLayout = lazy(() => '../pages/admin/components/AdminLayout');
-const DashboardAdmin = lazy(() => '../pages/admin/DashboardAdmin');
-const UsersAdmin = lazy(() => '../pages/admin/UsersAdmin');
-const ProductsAdmin = lazy(() => '../pages/admin/ProductsAdmin');
-const OrdersAdmin = lazy(() => '../pages/admin/OrdersAdmin');
-const UsersDetailsAdmin = lazy(() => '../pages/admin/UsersDetailsAdmin');
-const AddNewProduct = lazy(() => '../pages/admin/AddNewProduct');
-const EditProduct = lazy(() => '../pages/admin/EditProduct');
-const Home = lazy(() => '../pages/home/Home');
-const Layout = lazy(() => '../ui/Layout');
-const PageNotFound = lazy(() => '../pages/PageNotFound');
-const Login = lazy(() => '../pages/Login');
-const Register = lazy(() => '../pages/register/Register');
-const Product = lazy(() => '../pages/product/Product');
-const User = lazy(() => '../pages/user/User');
-const OrderHistory = lazy(() => '../pages/user/components/OrderHistory');
-const ProtectedRoutes = lazy(() => '../ui/ProtectedRoutes');
-const Shop = lazy(() => '../pages/shop/Shop');
-const ServerDown = lazy(() => '../pages/ServerDown');
-const UsersPersonalData = lazy(() => '../pages/user/components/UsersPersonalData');
+const AdminLayout = lazy(() => '../pages/admin/components/AdminLayout.jsx');
+const DashboardAdmin = lazy(() => '../pages/admin/DashboardAdmin.jsx');
+const UsersAdmin = lazy(() => '../pages/admin/UsersAdmin.jsx');
+const ProductsAdmin = lazy(() => '../pages/admin/ProductsAdmin.jsx');
+const OrdersAdmin = lazy(() => '../pages/admin/OrdersAdmin.jsx');
+const UsersDetailsAdmin = lazy(() => '../pages/admin/UsersDetailsAdmin.jsx');
+const AddNewProduct = lazy(() => '../pages/admin/AddNewProduct.jsx');
+const EditProduct = lazy(() => '../pages/admin/EditProduct.jsx');
+const Home = lazy(() => '../pages/home/Home.jsx');
+const Layout = lazy(() => '../ui/Layout.jsx');
+const PageNotFound = lazy(() => '../pages/PageNotFound.jsx');
+const Login = lazy(() => '../pages/Login.jsx');
+const Register = lazy(() => '../pages/register/Register.jsx');
+const Product = lazy(() => '../pages/product/Product.jsx');
+const User = lazy(() => '../pages/user/User.jsx');
+const OrderHistory = lazy(() => '../pages/user/components/OrderHistory.jsx');
+const ProtectedRoutes = lazy(() => '../ui/ProtectedRoutes.jsx');
+const Shop = lazy(() => '../pages/shop/Shop.jsx');
+const ServerDown = lazy(() => '../pages/ServerDown.jsx');
+const UsersPersonalData = lazy(() => '../pages/user/components/UsersPersonalData.jsx');
 
 function App() {
    return (
