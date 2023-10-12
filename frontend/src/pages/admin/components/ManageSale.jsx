@@ -25,6 +25,7 @@ export const ManageSale = () => {
 
       discountRef.current.value = '';
       categoryRef.current.value = '';
+      setDisabled(false);
    };
 
    return (

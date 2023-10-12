@@ -17,6 +17,7 @@ import { Table } from './components/Table';
 import { TableOrdersData } from './components/TableOrdersData';
 import { areaChart, chartOptions, doughnutChart } from '../../utils/chartConfig';
 import { ManageSale } from './components/ManageSale';
+import { LoadingSpinner } from '../../ui/LoadingSpinner';
 
 export const DashboardAdmin = () => {
    ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Filler, ArcElement, Legend);
@@ -35,6 +36,7 @@ export const DashboardAdmin = () => {
 
    return (
       <article className='p-4'>
+         {statistics.isLoading && <LoadingSpinner />}
          <div className='flex flex-wrap gap-4'>
             <div className='lg:w-[900px] w-full'>
                <div className='flex flex-wrap justify-center gap-4'>

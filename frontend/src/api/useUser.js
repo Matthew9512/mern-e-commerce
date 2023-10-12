@@ -38,13 +38,36 @@ export const useMutateLogin = () => {
    const loginMutation = useMutation({
       mutationFn: async ({ e, formRef }) => {
          e.preventDefault();
+
+         const clickId = e.target.id;
+         let data = {};
+
+         if (!clickId) {
+            data = {
+               password: `${formRef.current.password.value}`,
+               email: `${formRef.current.email.value}`,
+            };
+         }
+         // testing values
+         if (clickId === 'user') {
+            data = {
+               password: import.meta.env.VITE_USER_PASSWORD,
+               email: import.meta.env.VITE_USER_EMAIL,
+            };
+         }
+         if (clickId === 'admin') {
+            data = {
+               password: import.meta.env.VITE_ADMIN_PASSWORD,
+               email: import.meta.env.VITE_ADMIN_EMAIL,
+            };
+         }
+         // testing values
+
+         e.preventDefault();
          return await fetchData({
             method: 'POST',
             url: '/users/login',
-            data: {
-               password: `${formRef.current.password.value}`,
-               email: `${formRef.current.email.value}`,
-            },
+            data,
          });
       },
       onSuccess: (data) => {

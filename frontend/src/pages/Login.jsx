@@ -20,6 +20,18 @@ export const Login = () => {
 
    return (
       <Section style='py-24 flex flex-col items-center justify-center flex-wrap'>
+         {/* testing values */}
+         <div className='flex flex-col gap-3 absolute top-0 right-0 border border-primaryBlack/30 rounded-lg p-4 shadow-lg'>
+            <p>Use default testing values:</p>
+            <Button onHandleFn={(e) => loginMutation.mutate({ e, formRef })} variant='primary' id='user'>
+               Login as user
+            </Button>
+            <Button onHandleFn={(e) => loginMutation.mutate({ e, formRef })} variant='primary' id='admin'>
+               Login as admin
+            </Button>
+         </div>
+         {/* testing values */}
+         <Button></Button>
          <Form onHandleFn={verifyFrom} formRef={formRef} variant='default'>
             <Input label='email' type='text' placeholder='e.g. adam@gmail.com' variant='secondary' />
             <Input label='password' type='password' placeholder='password' variant='secondary' />
