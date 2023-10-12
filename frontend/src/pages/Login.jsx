@@ -7,7 +7,7 @@ import { Form } from '../ui/Form';
 import { LinkButton } from '../ui/LinkButton';
 import { useMutateLogin } from '../api/useUser';
 
-export const Login = () => {
+function Login() {
    const [disabledBtn, setDisabledBtn] = useState(true);
    const formRef = useRef();
    const loginMutation = useMutateLogin();
@@ -55,4 +55,6 @@ export const Login = () => {
          </LinkButton>
       </Section>
    );
-};
+}
+
+export default Login;

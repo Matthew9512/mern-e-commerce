@@ -19,7 +19,7 @@ import { areaChart, chartOptions, doughnutChart } from '../../utils/chartConfig'
 import { ManageSale } from './components/ManageSale';
 import { LoadingSpinner } from '../../ui/LoadingSpinner';
 
-export const DashboardAdmin = () => {
+function DashboardAdmin() {
    ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Filler, ArcElement, Legend);
    const ordersHeaders = ['', 'image', 'username', 'product', 'amount', 'price', 'order id', 'date', 'status'];
    const statistics = useAdminStatistics();
@@ -87,4 +87,6 @@ export const DashboardAdmin = () => {
          )}
       </article>
    );
-};
+}
+
+export default DashboardAdmin;

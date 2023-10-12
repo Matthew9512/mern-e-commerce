@@ -7,7 +7,7 @@ import { LoadingButton } from '../../ui/LoadingButton';
 import { ErrorMessage } from '../../ui/ErrorMessage';
 import { removeToken } from '../../utils/axiosHelpers';
 
-export const User = () => {
+function User() {
    const usersQuery = useUsers();
    const usersMutationDel = useMutateDeleteUser(usersQuery.data?._id);
 
@@ -50,4 +50,6 @@ export const User = () => {
          )}
       </Section>
    );
-};
+}
+
+export default User;

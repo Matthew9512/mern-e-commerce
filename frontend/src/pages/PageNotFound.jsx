@@ -1,6 +1,6 @@
 import { LinkButton } from '../ui/LinkButton';
 
-export const PageNotFound = () => {
+function PageNotFound() {
    return (
       <section className='flex relative flex-col px-8 h-full justify-center items-center lg:flex-row lg:h-screen'>
          <img className='w-fill h-full object-cover mix-blend-multiply' src='/404-robot-com.jpg' alt='error-page-img' />
@@ -26,4 +26,6 @@ export const PageNotFound = () => {
          </div>
       </section>
    );
-};
+}
+
+export default PageNotFound;

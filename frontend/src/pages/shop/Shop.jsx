@@ -14,7 +14,7 @@ import { Stripe } from './components/Stripe';
  * @todo stripe
  */
 
-export const Shop = () => {
+function Shop() {
    const { storedValues, setStoredValues } = useContext(ShoppingCartContext);
    const productsOrderMutation = useMutationOrder(storedValues, setStoredValues);
 
@@ -77,4 +77,6 @@ export const Shop = () => {
          <Stripe />
       </Section>
    );
-};
+}
+
+export default Shop;
