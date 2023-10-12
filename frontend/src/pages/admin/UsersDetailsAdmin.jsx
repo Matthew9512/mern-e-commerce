@@ -5,7 +5,7 @@ import { useAdminUserDetails } from '../../api/useAdmin';
 import { Table } from './components/Table';
 import { usePagination } from '../../api/usePagination';
 
-function UsersDetailsAdmin() {
+export const UsersDetailsAdmin = () => {
    const usersHeaders = ['', 'image', 'name', 'price', 'amount', 'product id', 'size', 'order date'];
    const sortProductsArr = ['name', 'price', 'date'];
    const { id } = useParams();
@@ -45,6 +45,4 @@ function UsersDetailsAdmin() {
          )}
       </AdminSection>
    );
-}
-
-export default UsersDetailsAdmin;
+};

@@ -31,7 +31,7 @@ export const SortTable = ({ sortByList, fetchQuery }) => {
    return (
       <>
          <div className='flex md:gap-4 gap-1 items-end mb-6'>
-            {location.pathname === '/admin/products' || location.pathname === '/admin/users' ? (
+            {location.pathname === '/admin/products' ? (
                <LinkButton to={`${location.pathname}-new`} variant='primary' customClass='lg:text-base text-sm'>
                   + Add new
                </LinkButton>

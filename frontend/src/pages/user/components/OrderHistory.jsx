@@ -4,7 +4,7 @@ import { LoadingSpinner } from '../../../ui/LoadingSpinner';
 import { useUsers } from '../../../api/useUser';
 import { Image } from '../../../ui/Image';
 
-function OrderHistory() {
+export const OrderHistory = () => {
    const usersQuery = useUsers();
 
    return (
@@ -30,6 +30,4 @@ function OrderHistory() {
          </div>
       </Section>
    );
-}
-
-export default OrderHistory;
+};

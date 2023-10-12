@@ -9,7 +9,7 @@ import { UsersNavbar } from './UsersNavbar';
 import { Button } from '../../../ui/Button';
 import { LoadingButton } from '../../../ui/LoadingButton';
 
-function UsersPersonalData() {
+export const UsersPersonalData = () => {
    const [edit, setEdit] = useState(false);
    const usersQuery = useUsers();
    const usersDataMutation = useMutateUser(usersQuery.data?._id);
@@ -58,6 +58,4 @@ function UsersPersonalData() {
          )}
       </Section>
    );
-}
-
-export default UsersPersonalData;
+};

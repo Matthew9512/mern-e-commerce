@@ -6,7 +6,7 @@ import { Checkbox } from '../../ui/Checkbox';
 import { useAdminNewProduct } from '../../api/useAdmin';
 import { SearchSelect } from '../../ui/SearchSelect';
 
-function AddNewProduct() {
+export const AddNewProduct = () => {
    const createNewProduct = useAdminNewProduct();
    const categoryArr = ['accessories', 'boots', 'gloves', 'helmets', 'jackets', 'leather-suits'];
 
@@ -55,6 +55,4 @@ function AddNewProduct() {
          {createNewProduct.isLoading ? <LoadingButton /> : <Button variant='primary'>Create</Button>}
       </Form>
    );
-}
-
-export default AddNewProduct;
+};

@@ -8,7 +8,7 @@ import { LinkButton } from '../../ui/LinkButton';
 import { UsersDataForm } from './components/UsersDataForm';
 import { useMutateRegister } from '../../api/useUser';
 
-function Register() {
+export const Register = () => {
    const [disabledBtn, setDisabledBtn] = useState(true);
    const [register, setRegister] = useState(false);
    const formRef = useRef();
@@ -56,6 +56,4 @@ function Register() {
          )}
       </Section>
    );
-}
-
-export default Register;
+};

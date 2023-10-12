@@ -5,7 +5,7 @@ import { TableProductsData } from './components/TableProductsData';
 import { AdminSection } from './components/AdminSection';
 import { usePagination } from '../../api/usePagination';
 
-function ProductsAdmin() {
+export const ProductsAdmin = () => {
    const productsHeaders = ['', 'image', 'name', 'category', 'price', 'discount', 'sale', 'actions'];
    const sortProductsArr = ['name', 'price', 'sale', 'discount'];
    const { page, setPage, onHandleReq } = usePagination();
@@ -30,6 +30,4 @@ function ProductsAdmin() {
          )}
       </AdminSection>
    );
-}
-
-export default ProductsAdmin;
+};

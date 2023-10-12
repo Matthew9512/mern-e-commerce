@@ -3,7 +3,7 @@ import { Navbar } from './Navbar';
 import { Footer } from './Footer';
 import { SaleBanner } from './SaleBanner';
 
-function Layout() {
+export const Layout = () => {
    return (
       <>
          <SaleBanner />
@@ -12,6 +12,4 @@ function Layout() {
          <Footer />
       </>
    );
-}
-
-export default Layout;
+};

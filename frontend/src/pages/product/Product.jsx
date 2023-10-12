@@ -6,7 +6,7 @@ import { ErrorMessage } from '../../ui/ErrorMessage';
 import { useProducts } from '../../api/useProducts';
 import { ProductAside } from './components/ProductAside';
 
-function Product() {
+export const Product = () => {
    const { id } = useParams();
    const productsQuery = useProducts(`/products/${id}`);
 
@@ -39,6 +39,4 @@ function Product() {
          </article>
       </Section>
    );
-}
-
-export default Product;
+};

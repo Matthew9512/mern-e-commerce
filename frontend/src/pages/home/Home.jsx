@@ -8,7 +8,7 @@ import { ProductsList } from './components/ProductsList';
 import { useProducts } from '../../api/useProducts';
 import { Pagination } from './components/Pagination';
 
-function Home() {
+export const Home = () => {
    const [searchParams, setSearchParams] = useSearchParams();
    const [page, setPage] = useState(1);
    let reqType = useRef(false);
@@ -63,6 +63,4 @@ function Home() {
          </Section>
       </>
    );
-}
-
-export default Home;
+};

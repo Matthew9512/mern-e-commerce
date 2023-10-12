@@ -52,16 +52,3 @@ export const ConfirmModal = ({ display, setDisplay, fetchQuery, itemID, item }) 
       </div>
    );
 };
-// export const ConfirmModal = ({ display, children }) => {
-//    return (
-//       <div
-//          className={`absolute inset-0 bg-secondaryWhite/20 backdrop-blur-sm flex items-center justify-center flex-col text-primaryWhite ${
-//             !display && 'hidden'
-//          }`}
-//       >
-//          <div className='relative w-96 h-48 p-6 bg-primaryWhite text-primaryBlack shadow-2xl rounded-md overflow-auto flex gap-2 flex-col'>
-//             {children}
-//          </div>
-//       </div>
-//    );
-// };

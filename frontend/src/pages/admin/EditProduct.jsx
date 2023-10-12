@@ -5,7 +5,7 @@ import { Checkbox } from '../../ui/Checkbox';
 import { useAdminEditProducts } from '../../api/useAdmin';
 import { Button } from '../../ui/Button';
 
-function EditProduct() {
+export const EditProduct = () => {
    const product = JSON.parse(sessionStorage.getItem('admin-edit'));
    const editProduct = useAdminEditProducts(product?._id);
 
@@ -78,6 +78,4 @@ function EditProduct() {
          )}
       </>
    );
-}
-
-export default EditProduct;
+};

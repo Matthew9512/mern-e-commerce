@@ -4,7 +4,7 @@ import { Navbar } from './Navbar';
 import { Footer } from '../../../ui/Footer';
 import jwtDecode from 'jwt-decode';
 
-function AdminLayout() {
+export const AdminLayout = () => {
    const token = localStorage.getItem('access__token') || null;
    if (!token) return <Navigate to={'/'} />;
 
@@ -26,6 +26,4 @@ function AdminLayout() {
          )}
       </>
    );
-}
-
-export default AdminLayout;
+};

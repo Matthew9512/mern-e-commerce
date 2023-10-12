@@ -5,7 +5,7 @@ import { AdminSection } from './components/AdminSection';
 import { Table } from './components/Table';
 import { TableOrdersData } from './components/TableOrdersData';
 
-function OrdersAdmin() {
+export const OrdersAdmin = () => {
    const ordersHeaders = ['', 'image', 'username', 'product', 'amount', 'price', 'order id', 'date', 'status'];
    const sortOrdersArr = ['user', 'date', 'price'];
    const { page, setPage, onHandleReq } = usePagination();
@@ -30,6 +30,4 @@ function OrdersAdmin() {
          )}
       </AdminSection>
    );
-}
-
-export default OrdersAdmin;
+};
