@@ -1,9 +1,9 @@
 import { filterBy } from '../../../api/filterBy';
-import { ErrorMessage } from '../../../ui/ErrorMessage';
-import { LoadingSpinner } from '../../../ui/LoadingSpinner';
-import { ProductsCart } from '../../../ui/ProductsCart';
+import ErrorMessage from '../../../ui/ErrorMessage';
+import LoadingSpinner from '../../../ui/LoadingSpinner';
+import ProductsCart from '../../../ui/ProductsCart';
 
-export const ProductsList = ({ productsQuery, sortByParams }) => {
+function ProductsList({ productsQuery, sortByParams }) {
    // filtered data
    const filteredData = filterBy(sortByParams, productsQuery);
 
@@ -14,4 +14,6 @@ export const ProductsList = ({ productsQuery, sortByParams }) => {
          {productsQuery.data && filteredData.map((product) => <ProductsCart key={product._id} product={product} />)}
       </>
    );
-};
+}
+
+export default ProductsList;

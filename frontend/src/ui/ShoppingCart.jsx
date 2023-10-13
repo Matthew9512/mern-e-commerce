@@ -1,11 +1,11 @@
 import { useContext } from 'react';
 import { ShoppingCartContext } from '../context/shoppingCartContex';
-import { Button } from './Button';
-import { ShoppingCartItem } from './ShoppingCartItem';
+import Button from './Button';
+import ShoppingCartItem from './ShoppingCartItem';
 import { closeIcon } from '../utils/icons';
-import { LinkButton } from '../ui/LinkButton';
+import LinkButton from '../ui/LinkButton';
 
-export const ShoppingCart = ({ shoppingCartVis, setShoppingCartVis }) => {
+function ShoppingCart({ shoppingCartVis, setShoppingCartVis }) {
    const { storedValues, setStoredValues } = useContext(ShoppingCartContext);
 
    const totalPrice = storedValues.reduce((acc, product) => acc + product?.price * product?.amount, 0);
@@ -49,4 +49,6 @@ export const ShoppingCart = ({ shoppingCartVis, setShoppingCartVis }) => {
          </LinkButton>
       </aside>
    );
-};
+}
+
+export default ShoppingCart;

@@ -1,10 +1,10 @@
 import { useContext, useRef } from 'react';
-import { Button } from '../../../ui/Button';
-import { Input } from '../../../ui/Input';
+import Button from '../../../ui/Button';
+import Input from '../../../ui/Input';
 import { ShoppingCartContext } from '../../../context/shoppingCartContex';
 import { currentSize, handleShoppingCartItems } from '../../../utils/helperFn';
 
-export const ProductAside = ({ productsQuery, id }) => {
+function ProductAside({ productsQuery, id }) {
    const { storedValues, setStoredValues } = useContext(ShoppingCartContext);
    let inputRef = useRef();
    let productSize = useRef();
@@ -69,4 +69,6 @@ export const ProductAside = ({ productsQuery, id }) => {
          </Button>
       </>
    );
-};
+}
+
+export default ProductAside;

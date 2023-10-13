@@ -1,8 +1,8 @@
-import { Image } from './Image';
-import { LinkButton } from './LinkButton';
-import { SaleDiscount } from './SaleDiscount';
+import Image from './Image';
+import LinkButton from './LinkButton';
+import SaleDiscount from './SaleDiscount';
 
-export const ProductsCart = ({ product }) => {
+function ProductsCart({ product }) {
    return (
       <div className='group h-[460px] flex max-w-[16em] flex-col'>
          <div className='relative flex h-60 items-center justify-center overflow-hidden'>
@@ -22,4 +22,6 @@ export const ProductsCart = ({ product }) => {
          </div>
       </div>
    );
-};
+}
+
+export default ProductsCart;

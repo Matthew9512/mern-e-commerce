@@ -3,7 +3,7 @@
 import { calendarIcon, userIcon } from '../../../utils/icons';
 // import debounce from 'lodash.debounce';
 
-export const Navbar = () => {
+function Navbar() {
    const date = new Date();
    const browserLan = navigator.language;
    let options = {
@@ -35,4 +35,6 @@ export const Navbar = () => {
          </div>
       </nav>
    );
-};
+}
+
+export default Navbar;

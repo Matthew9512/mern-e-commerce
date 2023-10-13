@@ -1,4 +1,4 @@
-import { LinkButton } from '../ui/LinkButton';
+import LinkButton from '../ui/LinkButton';
 
 export const PageNotFound = () => {
    return (
@@ -27,3 +27,5 @@ export const PageNotFound = () => {
       </section>
    );
 };
+
+export default PageNotFound;

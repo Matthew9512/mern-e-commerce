@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom';
-import { LinkButton } from '../../../ui/LinkButton';
+import LinkButton from '../../../ui/LinkButton';
 
-export const AsideItem = ({ title, icon, setDisplay }) => {
+function AsideItem({ title, icon, setDisplay }) {
    const { pathname } = useLocation();
 
    return (
@@ -16,4 +16,6 @@ export const AsideItem = ({ title, icon, setDisplay }) => {
          {icon} {title}
       </LinkButton>
    );
-};
+}
+
+export default AsideItem;

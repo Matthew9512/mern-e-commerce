@@ -1,6 +1,6 @@
-import { LinkButton } from '../ui/LinkButton';
+import LinkButton from '../ui/LinkButton';
 
-export const ServerDown = () => {
+function ServerDown() {
    return (
       <section className='flex relative flex-col px-8 h-full justify-center items-center lg:flex-row lg:h-screen'>
          <img className='w-fill h-full object-cover mix-blend-multiply' src='/500-com.jpg' alt='server-down-img' />
@@ -26,4 +26,6 @@ export const ServerDown = () => {
          </div>
       </section>
    );
-};
+}
+
+export default ServerDown;

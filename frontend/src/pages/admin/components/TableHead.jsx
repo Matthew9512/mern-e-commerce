@@ -1,4 +1,4 @@
-export const TableHead = ({ headers }) => {
+function TableHead({ headers }) {
    return (
       <>
          {headers.map((value) => (
@@ -8,4 +8,6 @@ export const TableHead = ({ headers }) => {
          ))}
       </>
    );
-};
+}
+
+export default TableHead;

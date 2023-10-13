@@ -1,4 +1,4 @@
-export const Section = ({ children, style, border = false, header, id }) => {
+function Section({ children, style, border = false, header, id }) {
    return (
       <section className={`mx-auto max-w-screen-xl p-3 pageTransition mix-blend-multiply`} id={id && id}>
          {border && <div className='border-t border-primaryBlack/40 pt-7'></div>}
@@ -6,4 +6,6 @@ export const Section = ({ children, style, border = false, header, id }) => {
          <article className={`gap-6 lg:p-6 relative min-h-[20em] ${style}`}>{children}</article>
       </section>
    );
-};
+}
+
+export default Section;

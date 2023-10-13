@@ -1,13 +1,13 @@
 import { useRef, useState } from 'react';
-import { Input } from '../ui/Input';
-import { Button } from '../ui/Button';
-import { Section } from '../ui/Section';
-import { LoadingButton } from '../ui/LoadingButton';
-import { Form } from '../ui/Form';
-import { LinkButton } from '../ui/LinkButton';
+import Input from '../ui/Input';
+import Button from '../ui/Button';
+import Section from '../ui/Section';
+import LoadingButton from '../ui/LoadingButton';
+import Form from '../ui/Form';
+import LinkButton from '../ui/LinkButton';
 import { useMutateLogin } from '../api/useUser';
 
-export const Login = () => {
+function Login() {
    const [disabledBtn, setDisabledBtn] = useState(true);
    const formRef = useRef();
    const loginMutation = useMutateLogin();
@@ -55,4 +55,6 @@ export const Login = () => {
          </LinkButton>
       </Section>
    );
-};
+}
+
+export default Login;

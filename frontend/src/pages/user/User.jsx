@@ -1,13 +1,13 @@
-import { Section } from '../../ui/Section';
-import { LoadingSpinner } from '../../ui/LoadingSpinner';
-import { UsersNavbar } from './components/UsersNavbar';
+import Section from '../../ui/Section';
+import LoadingSpinner from '../../ui/LoadingSpinner';
+import UsersNavbar from './components/UsersNavbar';
 import { useMutateDeleteUser, useUsers } from '../../api/useUser';
-import { Button } from '../../ui/Button';
-import { LoadingButton } from '../../ui/LoadingButton';
-import { ErrorMessage } from '../../ui/ErrorMessage';
+import Button from '../../ui/Button';
+import LoadingButton from '../../ui/LoadingButton';
+import ErrorMessage from '../../ui/ErrorMessage';
 import { removeToken } from '../../utils/axiosHelpers';
 
-export const User = () => {
+function User() {
    const usersQuery = useUsers();
    const usersMutationDel = useMutateDeleteUser(usersQuery.data?._id);
 
@@ -50,4 +50,6 @@ export const User = () => {
          )}
       </Section>
    );
-};
+}
+
+export default User;

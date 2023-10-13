@@ -12,14 +12,14 @@ import {
 } from 'chart.js';
 import { Doughnut, Line } from 'react-chartjs-2';
 import { useAdminStatistics } from '../../api/useAdmin';
-import { Widget } from './components/Widget';
-import { Table } from './components/Table';
-import { TableOrdersData } from './components/TableOrdersData';
+import Widget from './components/Widget';
+import Table from './components/Table';
+import TableOrdersData from './components/TableOrdersData';
 import { areaChart, chartOptions, doughnutChart } from '../../utils/chartConfig';
-import { ManageSale } from './components/ManageSale';
-import { LoadingSpinner } from '../../ui/LoadingSpinner';
+import ManageSale from './components/ManageSale';
+import LoadingSpinner from '../../ui/LoadingSpinner';
 
-export const DashboardAdmin = () => {
+function DashboardAdmin() {
    ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Filler, ArcElement, Legend);
    const ordersHeaders = ['', 'image', 'username', 'product', 'amount', 'price', 'order id', 'date', 'status'];
    const statistics = useAdminStatistics();
@@ -87,4 +87,6 @@ export const DashboardAdmin = () => {
          )}
       </article>
    );
-};
+}
+
+export default DashboardAdmin;

@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { Button } from '../../../ui/Button';
+import Button from '../../../ui/Button';
 import { asideMenuObj } from '../../../utils/constants';
 import { logoIcon, menuIcon } from '../../../utils/icons';
-import { AsideItem } from './AsideItem';
-import { LinkButton } from '../../../ui/LinkButton';
+import AsideItem from './AsideItem';
+import LinkButton from '../../../ui/LinkButton';
 import { removeToken } from '../../../utils/axiosHelpers';
 
-export const AsideMenu = () => {
+function AsideMenu() {
    const [display, setDisplay] = useState(false);
 
    const logOut = () => {
@@ -43,4 +43,6 @@ export const AsideMenu = () => {
          </aside>
       </div>
    );
-};
+}
+
+export default AsideMenu;

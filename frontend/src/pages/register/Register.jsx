@@ -1,14 +1,14 @@
 import { useRef, useState } from 'react';
-import { Button } from '../../ui/Button';
-import { Section } from '../../ui/Section';
-import { Input } from '../../ui/Input';
-import { LoadingButton } from '../../ui/LoadingButton';
-import { Form } from '../../ui/Form';
-import { LinkButton } from '../../ui/LinkButton';
-import { UsersDataForm } from './components/UsersDataForm';
+import Button from '../../ui/Button';
+import Section from '../../ui/Section';
+import Input from '../../ui/Input';
+import LoadingButton from '../../ui/LoadingButton';
+import Form from '../../ui/Form';
+import LinkButton from '../../ui/LinkButton';
+import UsersDataForm from './components/UsersDataForm';
 import { useMutateRegister } from '../../api/useUser';
 
-export const Register = () => {
+function Register() {
    const [disabledBtn, setDisabledBtn] = useState(true);
    const [register, setRegister] = useState(false);
    const formRef = useRef();
@@ -56,4 +56,6 @@ export const Register = () => {
          )}
       </Section>
    );
-};
+}
+
+export default Register;

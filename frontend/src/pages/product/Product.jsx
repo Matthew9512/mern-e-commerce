@@ -1,12 +1,12 @@
 import { useParams } from 'react-router-dom';
-import { Section } from '../../ui/Section';
-import { Image } from '../../ui/Image';
-import { LoadingSpinner } from '../../ui/LoadingSpinner';
-import { ErrorMessage } from '../../ui/ErrorMessage';
+import Section from '../../ui/Section';
+import Image from '../../ui/Image';
+import LoadingSpinner from '../../ui/LoadingSpinner';
+import ErrorMessage from '../../ui/ErrorMessage';
 import { useProducts } from '../../api/useProducts';
-import { ProductAside } from './components/ProductAside';
+import ProductAside from './components/ProductAside';
 
-export const Product = () => {
+function Product() {
    const { id } = useParams();
    const productsQuery = useProducts(`/products/${id}`);
 
@@ -39,4 +39,6 @@ export const Product = () => {
          </article>
       </Section>
    );
-};
+}
+
+export default Product;

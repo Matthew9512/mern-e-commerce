@@ -1,4 +1,4 @@
-export const Input = ({
+function Input({
    variant,
    label,
    type,
@@ -11,7 +11,7 @@ export const Input = ({
    id,
    max,
    min,
-}) => {
+}) {
    const mainStyle =
       'rounded-md px-4 py-2 outline-0 shadow-md placeholder-primaryBlack disabled:cursor-not-allowed disabled:opacity-50';
    const styles = {
@@ -38,4 +38,6 @@ export const Input = ({
          />
       </div>
    );
-};
+}
+
+export default Input;

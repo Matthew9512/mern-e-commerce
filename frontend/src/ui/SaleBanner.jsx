@@ -1,6 +1,6 @@
 import { useSale } from '../api/useProducts';
 
-export const SaleBanner = () => {
+function SaleBanner() {
    const saleQuery = useSale();
 
    return (
@@ -12,4 +12,6 @@ export const SaleBanner = () => {
          )}
       </>
    );
-};
+}
+
+export default SaleBanner;

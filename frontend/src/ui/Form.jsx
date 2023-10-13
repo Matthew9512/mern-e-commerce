@@ -1,6 +1,6 @@
 import { logoIcon } from '../utils/icons';
 
-export const Form = ({ children, onHandleFn, onSubmitFn, formRef, variant }) => {
+function Form({ children, onHandleFn, onSubmitFn, formRef, variant }) {
    const mainStyle = 'mx-auto flex lg:w-fit sm:w-3/5 w-4/5 flex-col gap-10 rounded-md p-6 bg-secondaryWhite/50';
 
    const styles = {
@@ -14,4 +14,6 @@ export const Form = ({ children, onHandleFn, onSubmitFn, formRef, variant }) => 
          {children}
       </form>
    );
-};
+}
+
+export default Form;

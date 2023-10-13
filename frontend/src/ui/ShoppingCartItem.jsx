@@ -1,8 +1,8 @@
-import { Image } from './Image';
-import { Button } from './Button';
+import Image from './Image';
+import Button from './Button';
 import { closeIcon } from '../utils/icons';
 
-export const ShoppingCartItem = ({ product, storedValues, setStoredValues }) => {
+function ShoppingCartItem({ product, storedValues, setStoredValues }) {
    const handleFilteredLs = (item) => {
       const lsItems = storedValues.filter((lsItem) => lsItem?._id !== item?._id);
       setStoredValues(lsItems);
@@ -24,4 +24,6 @@ export const ShoppingCartItem = ({ product, storedValues, setStoredValues }) => 
          </Button>
       </div>
    );
-};
+}
+
+export default ShoppingCartItem;

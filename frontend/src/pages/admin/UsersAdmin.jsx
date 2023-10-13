@@ -1,11 +1,11 @@
 import { useLocation } from 'react-router-dom';
 import { useAdminUser } from '../../api/useAdmin';
 import { usePagination } from '../../api/usePagination';
-import { Table } from './components/Table';
-import { TableUsersData } from './components/TableUsersData';
-import { AdminSection } from './components/AdminSection';
+import Table from './components/Table';
+import TableUsersData from './components/TableUsersData';
+import AdminSection from './components/AdminSection';
 
-export const UsersAdmin = () => {
+function UsersAdmin() {
    const usersHeaders = ['', 'username', 'email', 'created', 'users id', 'actions'];
    const sortUsersArr = ['name', 'date'];
    const { page, setPage, onHandleReq } = usePagination();
@@ -30,4 +30,6 @@ export const UsersAdmin = () => {
          )}
       </AdminSection>
    );
-};
+}
+
+export default UsersAdmin;

@@ -1,11 +1,11 @@
 import { useLocation } from 'react-router-dom';
 import { useAdminOrders } from '../../api/useAdmin';
 import { usePagination } from '../../api/usePagination';
-import { AdminSection } from './components/AdminSection';
-import { Table } from './components/Table';
-import { TableOrdersData } from './components/TableOrdersData';
+import AdminSection from './components/AdminSection';
+import Table from './components/Table';
+import TableOrdersData from './components/TableOrdersData';
 
-export const OrdersAdmin = () => {
+function OrdersAdmin() {
    const ordersHeaders = ['', 'image', 'username', 'product', 'amount', 'price', 'order id', 'date', 'status'];
    const sortOrdersArr = ['user', 'date', 'price'];
    const { page, setPage, onHandleReq } = usePagination();
@@ -30,4 +30,6 @@ export const OrdersAdmin = () => {
          )}
       </AdminSection>
    );
-};
+}
+
+export default OrdersAdmin;

@@ -1,10 +1,10 @@
-import { Section } from '../../../ui/Section';
-import { UsersNavbar } from './/UsersNavbar';
-import { LoadingSpinner } from '../../../ui/LoadingSpinner';
+import Section from '../../../ui/Section';
+import UsersNavbar from './/UsersNavbar';
+import LoadingSpinner from '../../../ui/LoadingSpinner';
 import { useUsers } from '../../../api/useUser';
-import { Image } from '../../../ui/Image';
+import Image from '../../../ui/Image';
 
-export const OrderHistory = () => {
+function OrderHistory() {
    const usersQuery = useUsers();
 
    return (
@@ -30,4 +30,6 @@ export const OrderHistory = () => {
          </div>
       </Section>
    );
-};
+}
+
+export default OrderHistory;

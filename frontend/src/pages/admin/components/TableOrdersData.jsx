@@ -1,7 +1,7 @@
-import { Image } from '../../../ui/Image';
+import Image from '../../../ui/Image';
 import { checkIcon, falseIcon } from '../../../utils/icons';
 
-export const TableOrdersData = ({ fetchQuery }) => {
+function TableOrdersData({ fetchQuery }) {
    return (
       <>
          {fetchQuery.map((order, i) => (
@@ -21,4 +21,6 @@ export const TableOrdersData = ({ fetchQuery }) => {
          ))}
       </>
    );
-};
+}
+
+export default TableOrdersData;

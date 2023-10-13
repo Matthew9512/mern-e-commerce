@@ -1,13 +1,4 @@
-export const SearchSelect = ({
-   options,
-   label,
-   onHandleFn,
-   customClass,
-   category,
-   placeholder,
-   selectRef,
-   ...props
-}) => {
+function SearchSelect({ options, label, onHandleFn, customClass, category, placeholder, selectRef, ...props }) {
    return (
       <div className='flex flex-col'>
          <span>{label}:</span>
@@ -29,4 +20,6 @@ export const SearchSelect = ({
          </select>
       </div>
    );
-};
+}
+
+export default SearchSelect;

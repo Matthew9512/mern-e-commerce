@@ -1,4 +1,4 @@
-export const Checkbox = ({ placeholder, label, ...props }) => {
+function Checkbox({ placeholder, label, ...props }) {
    return (
       <div className='flex items-center gap-4'>
          <label className='w-8' htmlFor={label}>
@@ -14,4 +14,6 @@ export const Checkbox = ({ placeholder, label, ...props }) => {
          />
       </div>
    );
-};
+}
+
+export default Checkbox;

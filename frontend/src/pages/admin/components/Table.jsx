@@ -1,6 +1,6 @@
-import { TableHead } from './TableHead';
+import TableHead from './TableHead';
 
-export const Table = ({ headers, children }) => {
+function Table({ headers, children }) {
    return (
       <div className='w-full overflow-auto'>
          <table className='w-full text-center border border-primaryGrey'>
@@ -13,4 +13,6 @@ export const Table = ({ headers, children }) => {
          </table>
       </div>
    );
-};
+}
+
+export default Table;

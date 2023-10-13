@@ -1,20 +1,20 @@
 import { useContext } from 'react';
 import { toast } from 'react-hot-toast';
 import { ShoppingCartContext } from '../../context/shoppingCartContex';
-import { Section } from '../../ui/Section';
-import { Image } from '../../ui/Image';
-import { Button } from '../../ui/Button';
-import { LoadingButton } from '../../ui/LoadingButton';
+import Section from '../../ui/Section';
+import Image from '../../ui/Image';
+import Button from '../../ui/Button';
+import LoadingButton from '../../ui/LoadingButton';
 import { deleteIcon } from '../../utils/icons';
 import { useMutationOrder } from '../../api/useProducts';
 import { jwtDecodeToken } from '../../utils/axiosHelpers';
-import { Stripe } from './components/Stripe';
+import Stripe from './components/Stripe';
 
 /**
  * @todo stripe
  */
 
-export const Shop = () => {
+function Shop() {
    const { storedValues, setStoredValues } = useContext(ShoppingCartContext);
    const productsOrderMutation = useMutationOrder(storedValues, setStoredValues);
 
@@ -77,4 +77,6 @@ export const Shop = () => {
          <Stripe />
       </Section>
    );
-};
+}
+
+export default Shop;

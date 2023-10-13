@@ -1,9 +1,9 @@
 import { Outlet } from 'react-router-dom';
-import { Navbar } from './Navbar';
-import { Footer } from './Footer';
-import { SaleBanner } from './SaleBanner';
+import Navbar from './Navbar';
+import Footer from './Footer';
+import SaleBanner from './SaleBanner';
 
-export const Layout = () => {
+function Layout() {
    return (
       <>
          <SaleBanner />
@@ -12,4 +12,6 @@ export const Layout = () => {
          <Footer />
       </>
    );
-};
+}
+
+export default Layout;

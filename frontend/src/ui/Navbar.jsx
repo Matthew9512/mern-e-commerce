@@ -1,14 +1,14 @@
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { NavbarItem } from './NavbarItem';
+import NavbarItem from './NavbarItem';
 import { adminIcon, logoIcon, shoppingCartOutlineIcon, userIcon } from '../utils/icons';
 import { ShoppingCartContext } from '../context/shoppingCartContex';
-import { ShoppingCart } from './ShoppingCart';
-import { Button } from './Button';
-import { LinkButton } from './LinkButton';
+import ShoppingCart from './ShoppingCart';
+import Button from './Button';
+import LinkButton from './LinkButton';
 import jwtDecode from 'jwt-decode';
 
-export const Navbar = () => {
+function Navbar() {
    const { storedValues } = useContext(ShoppingCartContext);
    const [shoppingCartVis, setShoppingCartVis] = useState(false);
    const [checkRole, setCheckRole] = useState(false);
@@ -50,4 +50,6 @@ export const Navbar = () => {
          </div>
       </nav>
    );
-};
+}
+
+export default Navbar;

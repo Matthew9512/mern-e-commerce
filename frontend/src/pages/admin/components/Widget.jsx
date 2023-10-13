@@ -1,6 +1,6 @@
-import { LinkButton } from '../../../ui/LinkButton';
+import LinkButton from '../../../ui/LinkButton';
 
-export const Widget = ({ header, data, to, overall }) => {
+function Widget({ header, data, to, overall }) {
    return (
       <div className='border border-primaryBlack w-72 rounded-md p-4 space-y-4'>
          <p className='font-semibold text-lg'>{header}:</p>
@@ -14,4 +14,6 @@ export const Widget = ({ header, data, to, overall }) => {
          </LinkButton>
       </div>
    );
-};
+}
+
+export default Widget;

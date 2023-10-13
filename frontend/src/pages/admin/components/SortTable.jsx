@@ -1,9 +1,9 @@
 import { useLocation, useSearchParams } from 'react-router-dom';
-import { SearchSelect } from '../../../ui/SearchSelect';
+import SearchSelect from '../../../ui/SearchSelect';
 import { arrowDownIcon, arrowUpIcon } from '../../../utils/icons';
-import { LinkButton } from '../../../ui/LinkButton';
+import LinkButton from '../../../ui/LinkButton';
 
-export const SortTable = ({ sortByList, fetchQuery }) => {
+function SortTable({ sortByList, fetchQuery }) {
    const [searchParams, setSearchParams] = useSearchParams();
    const location = useLocation();
 
@@ -65,4 +65,6 @@ export const SortTable = ({ sortByList, fetchQuery }) => {
          </div>
       </>
    );
-};
+}
+
+export default SortTable;

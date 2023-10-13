@@ -1,11 +1,11 @@
 import { useRef, useState } from 'react';
-import { LinkButton } from '../../../ui/LinkButton';
-import { Button } from '../../../ui/Button';
+import LinkButton from '../../../ui/LinkButton';
+import Button from '../../../ui/Button';
 import { ConfirmModal } from '../../../ui/Modal';
 import { useAdminDeleteUser } from '../../../api/useAdmin';
 import { deleteIcon, eyeIcon } from '../../../utils/icons';
 
-export const TableUsersData = ({ fetchQuery, page, setPage }) => {
+function TableUsersData({ fetchQuery, page, setPage }) {
    const [display, setDisplay] = useState(false);
    const deleteUser = useAdminDeleteUser(page, setPage);
    let usersID = useRef();
@@ -38,4 +38,6 @@ export const TableUsersData = ({ fetchQuery, page, setPage }) => {
          ))}
       </>
    );
-};
+}
+
+export default TableUsersData;

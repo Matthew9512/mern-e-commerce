@@ -1,12 +1,12 @@
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
-import { Form } from '../../../ui/Form';
-import { Input } from '../../../ui/Input';
-import { Button } from '../../../ui/Button';
+import Form from '../../../ui/Form';
+import Input from '../../../ui/Input';
+import Button from '../../../ui/Button';
+import LoadingButton from '../../../ui/LoadingButton';
 import { useMutateUser } from '../../../api/useUser';
-import { LoadingButton } from '../../../ui/LoadingButton';
 
-export const UsersDataForm = ({ registerMutation }) => {
+function UsersDataForm({ registerMutation }) {
    const usersDataMutation = useMutateUser(registerMutation.data.id);
    const navigate = useNavigate();
 
@@ -34,4 +34,6 @@ export const UsersDataForm = ({ registerMutation }) => {
          {usersDataMutation.isLoading ? <LoadingButton /> : <Button variant='primary'>Save</Button>}
       </Form>
    );
-};
+}
+
+export default UsersDataForm;

@@ -1,13 +1,13 @@
 import debounce from 'lodash.debounce';
 import { useMemo } from 'react';
-import { Input } from '../../../ui/Input';
-import { SearchSelect } from '../../../ui/SearchSelect';
-import { Button } from '../../../ui/Button';
+import Input from '../../../ui/Input';
+import SearchSelect from '../../../ui/SearchSelect';
+import Button from '../../../ui/Button';
 import { categoryArr, sortArr } from '../../../utils/constants';
 import { useFilterParams } from '../../../api/useFilterParams';
 import { handleNameFilter } from '../../../api/filterBy';
 
-export const Search = ({ setEndpoint, reqType, setPage }) => {
+function Search({ setEndpoint, reqType, setPage }) {
    const { searchParams, setSearchParams, clearFilters, handleSearchBy } = useFilterParams(
       setEndpoint,
       reqType,
@@ -57,4 +57,6 @@ export const Search = ({ setEndpoint, reqType, setPage }) => {
          />
       </>
    );
-};
+}
+
+export default Search;

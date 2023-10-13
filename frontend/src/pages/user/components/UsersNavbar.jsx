@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom';
-import { LinkButton } from '../../../ui/LinkButton';
+import LinkButton from '../../../ui/LinkButton';
 
-export const UsersNavbar = () => {
+function UsersNavbar() {
    const { pathname } = useLocation();
 
    return (
@@ -17,4 +17,6 @@ export const UsersNavbar = () => {
          </LinkButton>
       </div>
    );
-};
+}
+
+export default UsersNavbar;

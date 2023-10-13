@@ -1,4 +1,4 @@
-import { Button } from './Button';
+import Button from './Button';
 import { closeIcon } from '../utils/icons';
 
 export const Modal = ({ display, setDisplay, children }) => {
@@ -52,3 +52,5 @@ export const ConfirmModal = ({ display, setDisplay, fetchQuery, itemID, item }) 
       </div>
    );
 };
+
+export default { Modal, ConfirmModal };

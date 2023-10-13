@@ -1,12 +1,12 @@
 import { useRef, useState } from 'react';
-import { Image } from '../../../ui/Image';
+import Image from '../../../ui/Image';
 import { checkIcon, deleteIcon, editIcon, falseIcon } from '../../../utils/icons';
-import { LinkButton } from '../../../ui/LinkButton';
-import { Button } from '../../../ui/Button';
+import LinkButton from '../../../ui/LinkButton';
+import Button from '../../../ui/Button';
 import { useAdminDeleteProducts } from '../../../api/useAdmin';
 import { ConfirmModal } from '../../../ui/Modal';
 
-export const TableProductsData = ({ fetchQuery, page, setPage }) => {
+function TableProductsData({ fetchQuery, page, setPage }) {
    const deleteProducts = useAdminDeleteProducts(page, setPage);
    const [display, setDisplay] = useState(false);
    const productsID = useRef();
@@ -60,4 +60,6 @@ export const TableProductsData = ({ fetchQuery, page, setPage }) => {
          ))}
       </>
    );
-};
+}
+
+export default TableProductsData;

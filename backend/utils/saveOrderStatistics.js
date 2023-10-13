@@ -8,6 +8,7 @@ const saveOrderStatistics = async function (order, username) {
          price: product.price,
          amount: product.amount,
          name: product.name,
+         image: product.image,
          status: true,
       });
    });

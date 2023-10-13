@@ -1,9 +1,9 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
-import { Button } from '../../../ui/Button';
-import { Image } from '../../../ui/Image';
+import Button from '../../../ui/Button';
+import Image from '../../../ui/Image';
 
-export const Slider = () => {
+function Slider() {
    const scrollToProducts = () => {
       document.querySelector('#productsList').scrollIntoView({ behavior: 'smooth' });
    };
@@ -60,4 +60,6 @@ export const Slider = () => {
          </SplideSlide>
       </Splide>
    );
-};
+}
+
+export default Slider;

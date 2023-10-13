@@ -1,11 +1,11 @@
 import { useRef, useState } from 'react';
-import { Input } from '../../../ui/Input';
-import { SearchSelect } from '../../../ui/SearchSelect';
+import Input from '../../../ui/Input';
+import SearchSelect from '../../../ui/SearchSelect';
 import { categoryArr } from '../../../utils/constants';
 import { useAdminSale } from '../../../api/useAdmin';
-import { Button } from '../../../ui/Button';
+import Button from '../../../ui/Button';
 
-export const ManageSale = () => {
+function ManageSale() {
    const [disabled, setDisabled] = useState(false);
    const discountRef = useRef();
    const categoryRef = useRef();
@@ -48,4 +48,6 @@ export const ManageSale = () => {
          </div>
       </div>
    );
-};
+}
+
+export default ManageSale;

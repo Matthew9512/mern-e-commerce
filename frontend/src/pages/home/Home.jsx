@@ -1,14 +1,14 @@
 import { useSearchParams } from 'react-router-dom';
 import { useRef, useState } from 'react';
-import { Slider } from './components/Slider';
-import { Section } from '../../ui/Section';
-import { TestiminalCart } from './components/TestiminalCart';
-import { Search } from './components/Search';
-import { ProductsList } from './components/ProductsList';
+import Slider from './components/Slider';
+import Section from '../../ui/Section';
+import TestiminalCart from './components/TestiminalCart';
+import Search from './components/Search';
+import ProductsList from './components/ProductsList';
 import { useProducts } from '../../api/useProducts';
-import { Pagination } from './components/Pagination';
+import Pagination from './components/Pagination';
 
-export const Home = () => {
+function Home() {
    const [searchParams, setSearchParams] = useSearchParams();
    const [page, setPage] = useState(1);
    let reqType = useRef(false);
@@ -63,4 +63,6 @@ export const Home = () => {
          </Section>
       </>
    );
-};
+}
+
+export default Home;

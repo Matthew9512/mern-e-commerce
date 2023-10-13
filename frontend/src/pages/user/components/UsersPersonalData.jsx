@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { useMutateUser, useUsers } from '../../../api/useUser';
-import { Section } from '../../../ui/Section';
-import { LoadingSpinner } from '../../../ui/LoadingSpinner';
-import { Form } from '../../../ui/Form';
-import { Input } from '../../../ui/Input';
-import { UsersNavbar } from './UsersNavbar';
-import { Button } from '../../../ui/Button';
-import { LoadingButton } from '../../../ui/LoadingButton';
+import Section from '../../../ui/Section';
+import LoadingSpinner from '../../../ui/LoadingSpinner';
+import Form from '../../../ui/Form';
+import Input from '../../../ui/Input';
+import UsersNavbar from './UsersNavbar';
+import Button from '../../../ui/Button';
+import LoadingButton from '../../../ui/LoadingButton';
 
-export const UsersPersonalData = () => {
+function UsersPersonalData() {
    const [edit, setEdit] = useState(false);
    const usersQuery = useUsers();
    const usersDataMutation = useMutateUser(usersQuery.data?._id);
@@ -58,4 +58,6 @@ export const UsersPersonalData = () => {
          )}
       </Section>
    );
-};
+}
+
+export default UsersPersonalData;

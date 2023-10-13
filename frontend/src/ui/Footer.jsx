@@ -1,6 +1,6 @@
 import { githubIcon, linkedInIcon } from '../utils/icons';
 
-export const Footer = () => {
+function Footer() {
    return (
       <footer className='p-4 absolute bottom-0 w-full'>
          <p className='flex items-center justify-center gap-2'>
@@ -14,4 +14,6 @@ export const Footer = () => {
          </p>
       </footer>
    );
-};
+}
+
+export default Footer;
