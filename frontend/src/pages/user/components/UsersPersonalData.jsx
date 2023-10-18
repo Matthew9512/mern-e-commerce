@@ -32,15 +32,15 @@ function UsersPersonalData() {
    };
 
    return (
-      <Section style='py-3 flex flex-col flex-wrap'>
+      <Section customClass='py-3 flex flex-col flex-wrap'>
          <UsersNavbar />
          {usersQuery.isLoading && <LoadingSpinner />}
          {!usersQuery.data ? (
             <p>No data available</p>
          ) : (
-            <Form onSubmitFn={handlePersonalDataForm} variant='default'>
+            <Form onSubmit={handlePersonalDataForm} variant='default'>
                {Object.entries(usersQuery.data.usersData).map(([key, value]) => (
-                  <Input key={key} type='text' variant='secondary' disabled={!edit} label={key} defValue={value} />
+                  <Input key={key} type='text' variant='secondary' disabled={!edit} label={key} defaultValue={value} />
                ))}
                <div className='flex gap-2 mx-auto'>
                   {usersDataMutation.isLoading ? (
@@ -49,7 +49,7 @@ function UsersPersonalData() {
                      <Button variant='primary'>{!edit ? 'Edit' : 'Save'}</Button>
                   )}
                   {edit && (
-                     <Button onHandleFn={() => setEdit(false)} variant='primary'>
+                     <Button onClick={() => setEdit(false)} variant='primary'>
                         Cancel
                      </Button>
                   )}

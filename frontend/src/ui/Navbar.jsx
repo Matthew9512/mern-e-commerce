@@ -36,12 +36,12 @@ function Navbar() {
          <NavbarItem redirect='/'>{logoIcon}</NavbarItem>
          <div className='flex items-center'>
             {checkRole && (
-               <LinkButton to='/admin/dashboard' customClass='mr-4 mt-1' onHandleFn={onRedirect}>
+               <LinkButton to='/admin/dashboard' customClass='mr-4 mt-1' onClick={onRedirect}>
                   {adminIcon}
                </LinkButton>
             )}
-            <Button onHandleFn={onRedirect}>{userIcon}</Button>
-            <NavbarItem customClass='text-lg' onHandleFn={() => setShoppingCartVis(!shoppingCartVis)}>
+            <Button onClick={onRedirect}>{userIcon}</Button>
+            <NavbarItem customClass='text-lg' onClick={() => setShoppingCartVis(!shoppingCartVis)}>
                <span className='absolute -right-4 -top-3 h-6 w-6 rounded-full bg-primaryBlue text-center text-base text-primaryWhite'>
                   {storedValues.length}
                </span>

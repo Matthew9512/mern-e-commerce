@@ -1,17 +1,4 @@
-function Input({
-   variant,
-   label,
-   type,
-   placeholder,
-   onHandleFn,
-   onKeyDownHandle,
-   inputRef,
-   defValue,
-   disabled,
-   id,
-   max,
-   min,
-}) {
+function Input({ variant, label, inputRef, ...props }) {
    const mainStyle =
       'rounded-md px-4 py-2 outline-0 shadow-md placeholder-primaryBlack disabled:cursor-not-allowed disabled:opacity-50';
    const styles = {
@@ -22,20 +9,7 @@ function Input({
    return (
       <div className='flex flex-col '>
          {label && <label htmlFor={label}>{label}:</label>}
-         <input
-            onKeyUp={onKeyDownHandle}
-            onChange={onHandleFn}
-            ref={inputRef}
-            defaultValue={defValue || ''}
-            className={styles[variant]}
-            type={type || 'text'}
-            placeholder={placeholder}
-            name={label}
-            id={id && id}
-            max={max && max}
-            min={min && min}
-            disabled={disabled}
-         />
+         <input ref={inputRef} className={styles[variant]} name={label} {...props} />
       </div>
    );
 }

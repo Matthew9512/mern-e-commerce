@@ -25,6 +25,7 @@ export const useProducts = (endpoint, page, reqType = false) => {
          fetchData({
             url: _reqURL,
          }),
+      retry: 1,
    });
 
    return productsQuery;

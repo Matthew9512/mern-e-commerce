@@ -31,7 +31,7 @@ function Shop() {
    };
 
    return (
-      <Section style='flex flex-wrap justify-center'>
+      <Section customClass='flex flex-wrap justify-center'>
          <article className='lg:w-1/2 md:w-3/5 w-full flex flex-col gap-4'>
             <p className='text-xl uppercase font-bold'>Your products:</p>
             {storedValues.length > 0 ? (
@@ -40,7 +40,7 @@ function Shop() {
                      <p className='uppercase font-semibold'>{product.name}</p>
                      <div className='flex lg:gap-10 gap-2 relative'>
                         <div className='w-40 h-40 flex justify-center items-center'>
-                           <Image variant='primary' image={product.image} alt={product.name} />
+                           <Image variant='primary' src={product.image} alt={product.name} />
                         </div>
                         <div className='flex flex-col items-center justify-center'>
                            <p>price:</p>
@@ -56,7 +56,7 @@ function Shop() {
                         </div>
                      </div>
                      <Button
-                        onHandleFn={() => handleRemoveShoppingCartItem(product._id)}
+                        onClick={() => handleRemoveShoppingCartItem(product._id)}
                         customClass='absolute top-2 right-2'
                      >
                         {deleteIcon}
@@ -69,7 +69,7 @@ function Shop() {
             {productsOrderMutation.isLoading ? (
                <LoadingButton />
             ) : (
-               <Button variant='primary' disabled={!storedValues.length} onHandleFn={completeOrder}>
+               <Button variant='primary' disabled={!storedValues.length} onClick={completeOrder}>
                   Order
                </Button>
             )}

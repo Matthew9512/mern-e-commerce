@@ -27,13 +27,14 @@ function Search({ setEndpoint, reqType, setPage }) {
    return (
       <>
          {searchParams?.size > 0 && (
-            <Button variant='primary' customClass='lg:mx-0' onHandleFn={clearFilters}>
+            <Button variant='primary' customClass='lg:mx-0' onClick={clearFilters}>
                Clear filters
             </Button>
          )}
          <SearchSelect
             id='searchSelect'
-            onHandleFn={handleSearchBy}
+            data-category='category'
+            onChange={handleSearchBy}
             options={categoryArr}
             label='Search by category'
             category='category'
@@ -41,14 +42,15 @@ function Search({ setEndpoint, reqType, setPage }) {
          />
          <SearchSelect
             id='searchSelect'
-            onHandleFn={handleSearchBy}
+            data-category='filter'
+            onChange={handleSearchBy}
             options={sortArr}
             label='Filter by'
             category='filter'
             placeholder='Choose from list'
          />
          <Input
-            onHandleFn={debounceFn}
+            onChange={debounceFn}
             type='text'
             label='Product name'
             placeholder='Write product name'

@@ -26,7 +26,9 @@ function ProductsAdmin() {
                <TableProductsData fetchQuery={productsList?.data?.productsList} page={page} setPage={setPage} />
             </Table>
          ) : (
-            <p>No products data available</p>
+            <div className='h-full flex items-center justify-center'>
+               <p>No products data available</p>
+            </div>
          )}
       </AdminSection>
    );

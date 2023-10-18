@@ -1,4 +1,4 @@
-function Button({ children, btnRef, variant, disabled, onHandleFn, customClass, dataType, ...props }) {
+function Button({ children, customRef, variant, customClass, ...props }) {
    const mainStyle = `bg-primaryBlack text-primaryWhite flex justify-center items-center hover:bg-primaryBlack/90 active:bg-primaryBlack/90 border-primaryBlack/80 disabled:bg-primaryBlack/30 disabled:cursor-not-allowed`;
    const styles = {
       primary: `${mainStyle} lg:w-fit mx-auto rounded-2xl py-2 px-4`,
@@ -10,11 +10,8 @@ function Button({ children, btnRef, variant, disabled, onHandleFn, customClass, 
 
    return (
       <button
-         ref={btnRef}
-         onClick={onHandleFn}
-         disabled={disabled}
+         ref={customRef}
          className={customClass ? `${customClass} ${styles[variant]}` : styles[variant]}
-         data-type={dataType}
          {...props}
       >
          {children}

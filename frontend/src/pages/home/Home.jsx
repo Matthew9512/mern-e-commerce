@@ -37,12 +37,12 @@ function Home() {
    return (
       <>
          <Slider />
-         <Section style='flex items-center justify-center md:flex-row flex-col gap-8' header='Filters'>
+         <Section customClass='flex items-center justify-center md:flex-row flex-col gap-8' header='Filters'>
             <Search setEndpoint={setEndpoint} setPage={setPage} reqType={reqType} />
          </Section>
          <Section
             id='productsList'
-            style='py-24 grid place-items-center grid-cols-[repeat(auto-fill,minmax(16em,1fr))]'
+            customClass='py-24 grid place-items-center grid-cols-[repeat(auto-fill,minmax(16em,1fr))]'
             header='Features List'
             border={true}
          >
@@ -52,7 +52,7 @@ function Home() {
             <Pagination page={page} onHandleReq={onHandleReq} fetchQuery={productsQuery} />
          )}
          <Section
-            style='py-24 grid place-items-center grid-cols-1 lg:grid-cols-3'
+            customClass='py-24 grid place-items-center grid-cols-1 lg:grid-cols-3'
             header='Users comments'
             border={true}
          >

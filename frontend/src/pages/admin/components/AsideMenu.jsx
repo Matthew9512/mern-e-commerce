@@ -4,15 +4,11 @@ import { asideMenuObj } from '../../../utils/constants';
 import { logoIcon, menuIcon } from '../../../utils/icons';
 import AsideItem from './AsideItem';
 import LinkButton from '../../../ui/LinkButton';
-import { removeToken } from '../../../utils/axiosHelpers';
+import { useMutateLogOut } from '../../../api/useUser';
 
 function AsideMenu() {
    const [display, setDisplay] = useState(false);
-
-   const logOut = () => {
-      removeToken();
-      window.location = '/';
-   };
+   const usersMutationLogOut = useMutateLogOut();
 
    return (
       <div>
@@ -37,7 +33,7 @@ function AsideMenu() {
                   ))}
                </li>
             </div>
-            <Button variant='primary' customClass='mb-8' onHandleFn={logOut}>
+            <Button variant='primary' customClass='mb-8' onClick={() => usersMutationLogOut.mutate()}>
                Log out
             </Button>
          </aside>

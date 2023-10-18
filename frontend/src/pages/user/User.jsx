@@ -1,29 +1,18 @@
 import Section from '../../ui/Section';
 import LoadingSpinner from '../../ui/LoadingSpinner';
 import UsersNavbar from './components/UsersNavbar';
-import { useMutateDeleteUser, useUsers } from '../../api/useUser';
+import { useMutateDeleteUser, useMutateLogOut, useUsers } from '../../api/useUser';
 import Button from '../../ui/Button';
 import LoadingButton from '../../ui/LoadingButton';
 import ErrorMessage from '../../ui/ErrorMessage';
-import { removeToken } from '../../utils/axiosHelpers';
 
 function User() {
    const usersQuery = useUsers();
-   const usersMutationDel = useMutateDeleteUser(usersQuery.data?._id);
-
-   const logOut = () => {
-      removeToken();
-      window.location = '/';
-   };
-
-   const removeAcc = () => {
-      usersMutationDel.mutate();
-      removeToken();
-      window.location = '/';
-   };
+   const usersMutationDel = useMutateDeleteUser();
+   const usersMutationLogOut = useMutateLogOut();
 
    return (
-      <Section style='py-3 flex flex-col  flex-wrap'>
+      <Section customClass='py-3 flex flex-col flex-wrap'>
          <UsersNavbar />
          {usersQuery.isLoading && <LoadingSpinner />}
          {/* {usersQuery.error && <ErrorMessage style='py-4'>{usersQuery.error?.message}</ErrorMessage>} */}
@@ -37,11 +26,11 @@ function User() {
                {usersMutationDel.isLoading ? (
                   <LoadingButton />
                ) : (
-                  <Button variant='primary' onHandleFn={removeAcc}>
+                  <Button variant='primary' onClick={() => usersMutationDel.mutate(usersQuery.data?._id)}>
                      Delete account
                   </Button>
                )}
-               <Button variant='primary' onHandleFn={logOut}>
+               <Button variant='primary' onClick={() => usersMutationLogOut.mutate()}>
                   Log out
                </Button>
             </>

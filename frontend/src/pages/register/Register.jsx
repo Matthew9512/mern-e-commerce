@@ -25,10 +25,10 @@ function Register() {
    };
 
    return (
-      <Section style='py-24 flex flex-col items-center justify-center flex-wrap'>
+      <Section customClass='py-24 flex flex-col items-center justify-center flex-wrap'>
          {!register ? (
             <>
-               <Form onHandleFn={verifyFrom} formRef={formRef} variant='default'>
+               <Form onChange={verifyFrom} formRef={formRef} variant='default'>
                   <Input label='username' type='text' placeholder='e.g. adam' variant='secondary' />
                   <Input label='email' type='email' placeholder='e.g. adam@gmail.com' variant='secondary' />
                   <Input label='password' type='password' placeholder='password' variant='secondary' />
@@ -36,7 +36,7 @@ function Register() {
                      <LoadingButton />
                   ) : (
                      <Button
-                        onHandleFn={(e) => registerMutation.mutate({ e, formRef })}
+                        onClick={(e) => registerMutation.mutate({ e, formRef })}
                         variant='primary'
                         disabled={disabledBtn}
                      >

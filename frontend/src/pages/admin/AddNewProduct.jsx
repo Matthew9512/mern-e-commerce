@@ -20,7 +20,7 @@ function AddNewProduct() {
    };
 
    return (
-      <Form variant='secondary' onSubmitFn={handleNewProduct}>
+      <Form variant='secondary' onSubmit={handleNewProduct}>
          <div className='flex md:flex-row flex-col gap-24'>
             <div className=' flex flex-col gap-6'>
                <Input label='name' type='text' placeholder='name' variant='secondary' />

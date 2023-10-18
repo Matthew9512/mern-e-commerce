@@ -20,7 +20,7 @@ function ShoppingCart({ shoppingCartVis, setShoppingCartVis }) {
          <Button
             variant='rounded'
             customClass='absolute top-8 right-8 navbar__btn'
-            onHandleFn={() => setShoppingCartVis(!shoppingCartVis)}
+            onClick={() => setShoppingCartVis(!shoppingCartVis)}
          >
             {closeIcon}
          </Button>
@@ -41,7 +41,7 @@ function ShoppingCart({ shoppingCartVis, setShoppingCartVis }) {
          <p className='py-4 text-center font-semibold'>total: $ {totalPrice}</p>
          <LinkButton
             disabled={!storedValues.length}
-            onHandleFn={() => setShoppingCartVis(!shoppingCartVis)}
+            onClick={() => setShoppingCartVis(!shoppingCartVis)}
             variant='primary'
             to='/shop'
          >

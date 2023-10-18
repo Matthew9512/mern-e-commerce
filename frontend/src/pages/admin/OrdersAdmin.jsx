@@ -26,7 +26,9 @@ function OrdersAdmin() {
                <TableOrdersData fetchQuery={ordersList?.data?.ordersList} />
             </Table>
          ) : (
-            <p>No orders data available</p>
+            <div className='h-full flex items-center justify-center'>
+               <p>No orders data available</p>
+            </div>
          )}
       </AdminSection>
    );

@@ -39,10 +39,10 @@ function ManageSale() {
             selectRef={categoryRef}
          />
          <div className='flex gap-2 h-24'>
-            <Button variant='primary' customClass='my-4 px-2 h-12' onHandleFn={handleActiveSale} disabled={!disabled}>
+            <Button variant='primary' customClass='my-4 px-2 h-12' onClick={handleActiveSale} disabled={!disabled}>
                Active sale
             </Button>
-            <Button variant='primary' customClass='my-4 px-2 h-12' onHandleFn={() => sale.mutate()}>
+            <Button variant='primary' customClass='my-4 px-2 h-12' onClick={() => sale.mutate()}>
                Remove Sale
             </Button>
          </div>

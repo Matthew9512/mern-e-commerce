@@ -25,7 +25,7 @@ function UsersDataForm({ registerMutation }) {
    };
 
    return (
-      <Form onSubmitFn={saveUsersData} variant='default'>
+      <Form onSubmit={saveUsersData} variant='default'>
          <Input label='name' type='text' placeholder='e.g. adam' variant='secondary' />
          <Input label='surname' type='text' placeholder='e.g. kowalski' variant='secondary' />
          <Input label='adress' type='text' placeholder='e.g. wierzbowa 4' variant='secondary' />

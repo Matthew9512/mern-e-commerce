@@ -120,10 +120,35 @@ export const useMutateUser = (id) => {
    return usersDataMutation;
 };
 
-// delete acc
-export const useMutateDeleteUser = (id) => {
-   const usersMutationDel = useMutation({
+// logout
+export const useMutateLogOut = () => {
+   const navigate = useNavigate();
+   const usersMutationLogOut = useMutation({
       mutationFn: () =>
+         fetchData(
+            {
+               url: `/users/logout`,
+               method: 'POST',
+            },
+            true
+         ),
+
+      onSuccess: (data) => {
+         toast.success(data?.message);
+         navigate('/', { replace: true });
+         removeToken();
+      },
+      onError: (err) => toast.error(err?.message),
+   });
+
+   return usersMutationLogOut;
+};
+
+// delete acc
+export const useMutateDeleteUser = () => {
+   const navigate = useNavigate();
+   const usersMutationDel = useMutation({
+      mutationFn: (id) =>
          fetchData(
             {
                url: `/users/delete-acc`,
@@ -136,8 +161,9 @@ export const useMutateDeleteUser = (id) => {
          ),
 
       onSuccess: (data) => {
-         removeToken();
          toast.success(data?.message);
+         navigate('/', { replace: true });
+         removeToken();
       },
       onError: (err) => toast.error(err?.message),
    });

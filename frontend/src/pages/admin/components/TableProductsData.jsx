@@ -29,7 +29,7 @@ function TableProductsData({ fetchQuery, page, setPage }) {
             <tr key={product?._id} className='tableRow hover:bg-secondaryWhite'>
                <td>{i + 1}</td>
                <td className='w-12 h-16'>
-                  <Image variant='profile' image={product?.image} alt={product?.name} />
+                  <Image variant='profile' src={product?.image} alt={product?.name} />
                </td>
                <td>{product?.name}</td>
                <td>{product?.category}</td>
@@ -41,12 +41,12 @@ function TableProductsData({ fetchQuery, page, setPage }) {
                      customClass='gap-2'
                      to={`/admin/products/${product?._id}/edit`}
                      variant='primary'
-                     onHandleFn={() => setProduct(product?._id)}
+                     onClick={() => setProduct(product?._id)}
                   >
                      {editIcon} Edit
                   </LinkButton>
                   <Button
-                     onHandleFn={() => {
+                     onClick={() => {
                         productsID.current = product?._id;
                         setDisplay((prev) => !prev);
                      }}

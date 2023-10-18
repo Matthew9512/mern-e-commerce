@@ -8,7 +8,7 @@ function TableOrdersData({ fetchQuery }) {
             <tr key={order?._id} className='tableRow hover:bg-secondaryWhite'>
                <td className='p-4'>{i + 1}</td>
                <td className='w-12 h-16'>
-                  <Image variant='profile' image={order?.image} alt={order?.name} />
+                  <Image variant='profile' src={order?.image} alt={order?.name} />
                </td>
                <td>{order?.username}</td>
                <td>{order?.name}</td>

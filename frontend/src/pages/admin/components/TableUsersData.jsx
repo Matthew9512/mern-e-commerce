@@ -25,7 +25,7 @@ function TableUsersData({ fetchQuery, page, setPage }) {
                      {eyeIcon} View
                   </LinkButton>
                   <Button
-                     onHandleFn={() => {
+                     onClick={() => {
                         usersID.current = user?._id;
                         setDisplay((prev) => !prev);
                      }}

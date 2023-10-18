@@ -99,7 +99,11 @@ const buyProducts = async function (req, res, next) {
       const { userID, ...orderArr } = req.body;
 
       // check if user send personal data
-      usersUtils.checkUsersData(userID, res);
+      const findUser = await usersModel.findById(userID);
+      if (findUser.usersData.name === '')
+         return res
+            .status(404)
+            .json({ message: `Please finish your registration process and complete your personal data` });
 
       // users order data
       const { order } = orderArr;

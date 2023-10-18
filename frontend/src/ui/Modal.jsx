@@ -9,11 +9,7 @@ export const Modal = ({ display, setDisplay, children }) => {
          }`}
       >
          <div className='relative w-[90%] min-h-[16em] max-h-[44em] p-2 bg-primaryGrey shadow-2xl text-primaryBlack rounded-md overflow-auto'>
-            <Button
-               onHandleFn={() => setDisplay((prev) => !prev)}
-               variant='rounded'
-               customClass='absolute top-2 right-2'
-            >
+            <Button onClick={() => setDisplay((prev) => !prev)} variant='rounded' customClass='absolute top-2 right-2'>
                {closeIcon}
             </Button>
             {children}
@@ -35,12 +31,12 @@ export const ConfirmModal = ({ display, setDisplay, fetchQuery, itemID, item }) 
                Are you sure that you want to delete this {item}? This action can&apos;t be undone?
             </p>
             <div className='absolute right-4 bottom-6 flex gap-4'>
-               <Button variant='primary' onHandleFn={() => setDisplay((prev) => !prev)}>
+               <Button variant='primary' onClick={() => setDisplay((prev) => !prev)}>
                   Cancel
                </Button>
                <Button
                   variant='primary'
-                  onHandleFn={() => {
+                  onClick={() => {
                      fetchQuery.mutate(itemID.current);
                      setDisplay((prev) => !prev);
                   }}

@@ -28,7 +28,7 @@ function ProductAside({ productsQuery, id }) {
                productsQuery.data?.sizesArr.map((size) => (
                   <Button
                      key={size?._id}
-                     onHandleFn={(e) => currentSize(e, productSize, size, inputRef)}
+                     onClick={(e) => currentSize(e, productSize, size, inputRef)}
                      variant='navLink'
                      customClass={size?.available <= 0 ? 'line-through pointer-events-none opacity-50' : ''}
                   >
@@ -41,8 +41,8 @@ function ProductAside({ productsQuery, id }) {
             <Input
                variant='primary'
                inputRef={inputRef}
-               onKeyDownHandle={checkTypedNumber}
-               defValue={1}
+               onKeyUp={checkTypedNumber}
+               defaultValue={1}
                type='number'
                placeholder='e.g. 2'
                label='Amount'
@@ -52,7 +52,7 @@ function ProductAside({ productsQuery, id }) {
             />
          </div>
          <Button
-            onHandleFn={() =>
+            onClick={() =>
                handleShoppingCartItems(
                   productsQuery.data,
                   lsItems,

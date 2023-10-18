@@ -11,13 +11,13 @@ function Product() {
    const productsQuery = useProducts(`/products/${id}`);
 
    return (
-      <Section style='py-24 flex flex-col items-center justify-center flex-wrap' loading={productsQuery.isLoading}>
-         {/* {productsQuery.isLoading && <LoadingSpinner />} */}
+      <Section customClass='py-24 flex flex-col items-center justify-center flex-wrap'>
+         {productsQuery.isLoading && <LoadingSpinner />}
          {productsQuery.error && <ErrorMessage>{productsQuery.error.message}</ErrorMessage>}
          <article className='flex flex-col lg:flex-row justify-center items-center gap-8'>
             <div className='flex flex-col justify-center items-center lg:w-[400px] w-4/5'>
                <div className='lg:h-96 lg:w-80 h-68 w-60 overflow-hidden flex items-center justify-center'>
-                  <Image variant='primary' image={productsQuery.data?.image} alt={productsQuery.data?.name} />
+                  <Image variant='primary' src={productsQuery.data?.image} alt={productsQuery.data?.name} />
                </div>
                <p className='text-center'>{productsQuery.data?.description}</p>
             </div>

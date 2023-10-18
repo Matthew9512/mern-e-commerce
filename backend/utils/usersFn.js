@@ -1,14 +1,4 @@
 const nodemailer = require('nodemailer');
-const usersModel = require('../models/usersModel');
-
-const checkUsersData = async function (userID, res) {
-   const findUser = await usersModel.findById(userID);
-
-   if (findUser.usersData.name === '')
-      return res
-         .status(404)
-         .json({ message: `Please finish your registration process and complete your personal data` });
-};
 
 const emailOptions = (email, username, order) => {
    const clientTemplate = order
@@ -65,4 +55,4 @@ const sendNotifications = async (usersOrder, order, next) => {
    });
 };
 
-module.exports = { checkUsersData, sendNotifications };
+module.exports = { sendNotifications };

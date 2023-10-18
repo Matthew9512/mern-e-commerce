@@ -26,7 +26,9 @@ function UsersAdmin() {
                <TableUsersData fetchQuery={usersList?.data?.usersList} page={page} setPage={setPage} />
             </Table>
          ) : (
-            <td>No users data available</td>
+            <div className='h-full flex items-center justify-center'>
+               <p>No users data available</p>
+            </div>
          )}
       </AdminSection>
    );

@@ -21,23 +21,29 @@ function EditProduct() {
    return (
       <>
          {product ? (
-            <Form variant='secondary' onSubmitFn={handleNewProduct}>
+            <Form variant='secondary' onSubmit={handleNewProduct}>
                <div className='flex gap-24'>
                   <div className=' flex flex-col gap-6'>
-                     <Input label='name' type='text' placeholder='name' variant='secondary' defValue={product.name} />
+                     <Input
+                        label='name'
+                        type='text'
+                        placeholder='name'
+                        variant='secondary'
+                        defaultValue={product.name}
+                     />
                      <Input
                         label='price'
                         type='text'
                         placeholder='price'
                         variant='secondary'
-                        defValue={product.price}
+                        defaultValue={product.price}
                      />
                      <Input
                         label='image'
                         type='text'
                         placeholder='image'
                         variant='secondary'
-                        defValue={product.image}
+                        defaultValue={product.image}
                      />
                      <label htmlFor='description'>product description:</label>
                      <textarea
@@ -56,12 +62,12 @@ function EditProduct() {
                         type='text'
                         placeholder='image'
                         variant='secondary'
-                        defValue={product.category}
+                        defaultValue={product.category}
                      />
                      <span>Input amount of product to specific size:</span>
                      {product.sizesArr.map((item) => (
                         <Checkbox
-                           checked={item.available > 0}
+                           defaultChecked={item.available > 0}
                            key={item?._id}
                            label={item.size}
                            placeholder='prod. amount'

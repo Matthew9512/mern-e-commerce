@@ -37,7 +37,7 @@ function SortTable({ sortByList, fetchQuery }) {
                </LinkButton>
             ) : null}
             <SearchSelect
-               onHandleFn={sortBySelected}
+               onChange={sortBySelected}
                options={sortByList}
                label='Sort by'
                placeholder='Choose from list'

@@ -53,7 +53,7 @@ const searchByName = async (req, res, next) => {
       const products = await productsModel.find({ name: productRegex });
 
       if (!products.length)
-         return res.status(404).json({
+         return res.status(200).json({
             message: `Looks like we can't find products that you are looking for, please change your criteria or see our full offer ;)`,
          });
 
