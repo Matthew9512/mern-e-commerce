@@ -4,8 +4,8 @@ import SaleDiscount from './SaleDiscount';
 
 function ProductsCart({ product }) {
    return (
-      <div className='group h-[460px] flex max-w-[16em] flex-col'>
-         <div className='relative flex h-60 items-center justify-center overflow-hidden'>
+      <div className='group h-[500px] flex max-w-[16em] flex-col'>
+         <div className='relative flex h-60 justify-center overflow-hidden '>
             {product?.sale && <SaleDiscount product={product} />}
             <Image variant='primary' src={product?.image} alt={product?.name} />
          </div>
