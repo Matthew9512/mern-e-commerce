@@ -78,7 +78,7 @@ export const useAdminDeleteUser = (page, setPage) => {
          toast.success(data?.message);
          queryClient.invalidateQueries({ queryKey: ['admin', 'users'] });
          if (page === 1) return;
-         else setPage((prev) => prev - 1);
+         // else setPage((prev) => prev - 1);
       },
       onError: (err) => {
          toast.error(err?.message);
@@ -114,12 +114,12 @@ export const useAdminNewProduct = () => {
    const queryClient = useQueryClient();
    const navigate = useNavigate();
    const createNewProduct = useMutation({
-      mutationFn: (formData) =>
+      mutationFn: ({ formData, uploadedImgArr }) =>
          fetchData(
             {
                url: `admin/products/create`,
                method: 'POST',
-               data: { formData },
+               data: { formData, uploadedImgArr },
             },
             true
          ),
@@ -162,23 +162,25 @@ export const useAdminDeleteProducts = (page, setPage) => {
    return deleteProducts;
 };
 
-export const useAdminEditProducts = (id) => {
-   const queryClient = useQueryClient();
+export const useAdminEditProducts = (id, setUploadedImgArr, product) => {
    const navigate = useNavigate();
    const editProduct = useMutation({
-      mutationFn: (formData) =>
+      mutationFn: ({ formData, uploadedImgArr }) =>
          fetchData(
             {
                url: `/admin/products/${id}/edit`,
                method: 'PUT',
-               data: { formData },
+               data: { formData, uploadedImgArr },
             },
             true
          ),
 
       onSuccess: (data) => {
          toast.success(data?.message);
-         queryClient.invalidateQueries({ queryKey: ['admin', 'products'] });
+         sessionStorage.setItem('admin-edit', JSON.stringify(product));
+
+         // clear arr to remove duplicated images
+         setUploadedImgArr([]);
          navigate(-1);
       },
       onError: (err) => {
@@ -188,6 +190,35 @@ export const useAdminEditProducts = (id) => {
 
    return editProduct;
 };
+//
+export const useAdminProductsImg = (imageID, product) => {
+   const queryClient = useQueryClient();
+   const updateProductsImg = useMutation({
+      mutationFn: (id) =>
+         fetchData(
+            {
+               url: `/admin/products/${id}/update-images`,
+               method: 'PUT',
+               data: { imageID: imageID.current },
+            },
+            true
+         ),
+
+      onSuccess: () => {
+         toast.success('Image successfully deleted');
+         queryClient.invalidateQueries({ queryKey: ['admin', 'products'] });
+
+         product.image = product.image.filter((img) => img !== imageID.current);
+         sessionStorage.setItem('admin-edit', JSON.stringify(product));
+      },
+      onError: (err) => {
+         toast.error(err?.message);
+      },
+   });
+
+   return updateProductsImg;
+};
+//
 // PRODUCTS //
 
 // ORDER

@@ -4,7 +4,7 @@ import { closeIcon } from '../utils/icons';
 export const Modal = ({ display, setDisplay, children }) => {
    return (
       <div
-         className={`absolute inset-0 bg-secondaryWhite/20 backdrop-blur-sm flex items-center justify-center flex-col text-primaryWhite ${
+         className={`absolute inset-0 bg-secondaryWhite/20 backdrop-blur-sm flex items-center justify-center flex-col text-primaryWhite z-50 ${
             !display && 'hidden'
          }`}
       >
@@ -21,7 +21,7 @@ export const Modal = ({ display, setDisplay, children }) => {
 export const ConfirmModal = ({ display, setDisplay, fetchQuery, itemID, item }) => {
    return (
       <div
-         className={`absolute inset-0 bg-secondaryWhite/20 backdrop-blur-sm flex items-center justify-center flex-col text-primaryWhite ${
+         className={`absolute inset-0 bg-secondaryWhite/20 backdrop-blur-sm flex items-center justify-center flex-col text-primaryWhite z-50 ${
             !display && 'hidden'
          }`}
       >

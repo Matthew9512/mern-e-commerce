@@ -7,7 +7,7 @@ function ProductsCart({ product }) {
       <div className='group h-[500px] flex max-w-[16em] flex-col'>
          <div className='relative flex h-60 justify-center overflow-hidden '>
             {product?.sale && <SaleDiscount product={product} />}
-            <Image variant='primary' src={product?.image} alt={product?.name} />
+            <Image variant='primary' src={product?.image?.at(0)} alt={product?.name} />
          </div>
          <div className='flex flex-col justify-center gap-4 text-lg'>
             <p className='font-semibold uppercase'>{product?.name}</p>

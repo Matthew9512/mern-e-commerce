@@ -158,7 +158,8 @@ const getProducts = async function (req, res, next) {
 
 const createNewProducts = async function (req, res, next) {
    try {
-      const { name, price, image, category, description, ...sizes } = req.body.formData;
+      const { name, price, category, description, ...sizes } = req.body.formData;
+      const { uploadedImgArr } = req.body;
 
       const sizesArr = Object.entries(sizes).map(([key, value]) => {
          return {
@@ -167,7 +168,7 @@ const createNewProducts = async function (req, res, next) {
          };
       });
 
-      await productsModel.create({ name, price, image, category, description, sizesArr });
+      await productsModel.create({ name, price, category, description, image: uploadedImgArr, sizesArr });
 
       res.status(200).json({ message: `Product successfully created` });
    } catch (error) {
@@ -191,6 +192,7 @@ const editProduct = async function (req, res, next) {
    try {
       const { id } = req.params;
       const { name, price, image, category, description, ...sizes } = req.body.formData;
+      const { uploadedImgArr } = req.body;
 
       const sizesArr = Object.entries(sizes).map(([key, value]) => {
          return {
@@ -199,7 +201,28 @@ const editProduct = async function (req, res, next) {
          };
       });
 
-      await productsModel.findByIdAndUpdate(id, { name, price, image, category, description, sizesArr });
+      await productsModel.findByIdAndUpdate(id, {
+         name,
+         price,
+         image,
+         category,
+         description,
+         sizesArr,
+         image: uploadedImgArr,
+      });
+
+      res.status(200).json({ message: `Product successfully updated` });
+   } catch (error) {
+      next(error.message);
+   }
+};
+
+const editProductImg = async function (req, res, next) {
+   try {
+      const { id } = req.params;
+      const imageID = req.body.imageID;
+
+      await productsModel.findByIdAndUpdate(id, { $pull: { image: imageID } });
 
       res.status(200).json({ message: `Product successfully updated` });
    } catch (error) {
@@ -330,6 +353,7 @@ module.exports = {
    createNewProducts,
    deleteProduct,
    editProduct,
+   editProductImg,
    sortProducts,
    getOrders,
    sortOrders,

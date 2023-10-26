@@ -13,6 +13,7 @@ router.get('/users/page/:page/q', admin.sortUsers);
 router.get('/products/page/:page', admin.getProducts);
 router.post('/products/create', admin.createNewProducts);
 router.put('/products/:id/edit', admin.editProduct);
+router.put('/products/:id/update-images', admin.editProductImg);
 router.delete('/delete-product', admin.deleteProduct);
 router.get('/products/page/:page/q', admin.sortProducts);
 

@@ -29,7 +29,7 @@ function TableProductsData({ fetchQuery, page, setPage }) {
             <tr key={product?._id} className='tableRow hover:bg-secondaryWhite'>
                <td>{i + 1}</td>
                <td className='w-12 h-16'>
-                  <Image variant='profile' src={product?.image} alt={product?.name} />
+                  <Image variant='profile' src={product?.image?.at(0)} alt={product?.name} />
                </td>
                <td>{product?.name}</td>
                <td>{product?.category}</td>
