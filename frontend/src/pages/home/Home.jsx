@@ -17,9 +17,7 @@ function Home() {
       if (params !== 'all') return (params = `/products/category/${params}`);
       else return '/products';
    });
-
    const sortByParams = searchParams.get('sortBy') || 'all';
-
    const productsQuery = useProducts(endpoint, page, reqType);
 
    const onHandleReq = (e) => {
@@ -32,6 +30,10 @@ function Home() {
 
       if (click.dataset.type === 'prev') setPage((prev) => prev - 1);
       if (click.dataset.type === 'next') setPage((prev) => prev + 1);
+
+      setTimeout(() => {
+         document.querySelector('#productsList').scrollIntoView();
+      }, 100);
    };
 
    return (

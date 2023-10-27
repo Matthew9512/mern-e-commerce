@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+   scroll-behavior: smooth;
+}
 .load {
    @apply animate-pulse shadow-md;
 }

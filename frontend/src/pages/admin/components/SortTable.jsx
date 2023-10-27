@@ -30,37 +30,39 @@ function SortTable({ sortByList, fetchQuery }) {
 
    return (
       <>
-         <div className='flex md:gap-4 gap-1 items-end mb-6'>
+         <div className='flex md:flex-row flex-col md:gap-4 gap-1 items-end mb-6'>
             {location.pathname === '/admin/products' ? (
-               <LinkButton to={`${location.pathname}-new`} variant='primary' customClass='lg:text-base text-sm'>
+               <LinkButton to={`${location.pathname}-new`} variant='primary'>
                   + Add new
                </LinkButton>
             ) : null}
-            <SearchSelect
-               onChange={sortBySelected}
-               options={sortByList}
-               label='Sort by'
-               placeholder='Choose from list'
-            />
-            <div className='flex items-center justify-center pb-3'>
-               <p
-                  onClick={sortingOrder}
-                  data-order='incr'
-                  className={`hover:cursor-pointer ${
-                     location.search.includes('order=incr') ? 'pointer-events-none opacity-30' : ''
-                  }`}
-               >
-                  {arrowUpIcon}
-               </p>
-               <p
-                  onClick={sortingOrder}
-                  data-order='decr'
-                  className={`hover:cursor-pointer ${
-                     location.search.includes('order=decr') ? 'pointer-events-none opacity-30' : ''
-                  }`}
-               >
-                  {arrowDownIcon}
-               </p>
+            <div className='flex gap-2 items-end justify-center'>
+               <SearchSelect
+                  onChange={sortBySelected}
+                  options={sortByList}
+                  label='Sort by'
+                  placeholder='Choose from list'
+               />
+               <div className='flex items-center justify-center pb-3'>
+                  <p
+                     onClick={sortingOrder}
+                     data-order='incr'
+                     className={`hover:cursor-pointer ${
+                        location.search.includes('order=incr') ? 'pointer-events-none opacity-30' : ''
+                     }`}
+                  >
+                     {arrowUpIcon}
+                  </p>
+                  <p
+                     onClick={sortingOrder}
+                     data-order='decr'
+                     className={`hover:cursor-pointer ${
+                        location.search.includes('order=decr') ? 'pointer-events-none opacity-30' : ''
+                     }`}
+                  >
+                     {arrowDownIcon}
+                  </p>
+               </div>
             </div>
          </div>
       </>
