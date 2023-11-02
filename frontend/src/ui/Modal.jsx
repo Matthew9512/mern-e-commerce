@@ -1,8 +1,9 @@
 import Button from './Button';
 import { closeIcon } from '../utils/icons';
+import { createPortal } from 'react-dom';
 
 export const Modal = ({ display, setDisplay, children }) => {
-   return (
+   return createPortal(
       <div
          className={`absolute inset-0 bg-secondaryWhite/20 backdrop-blur-sm flex items-center justify-center flex-col text-primaryWhite z-50 ${
             !display && 'hidden'
@@ -14,12 +15,13 @@ export const Modal = ({ display, setDisplay, children }) => {
             </Button>
             {children}
          </div>
-      </div>
+      </div>,
+      document.getElementById('modal-root')
    );
 };
 
 export const ConfirmModal = ({ display, setDisplay, fetchQuery, itemID, item }) => {
-   return (
+   return createPortal(
       <div
          className={`absolute inset-0 bg-secondaryWhite/20 backdrop-blur-sm flex items-center justify-center flex-col text-primaryWhite z-50 ${
             !display && 'hidden'
@@ -45,7 +47,8 @@ export const ConfirmModal = ({ display, setDisplay, fetchQuery, itemID, item }) 
                </Button>
             </div>
          </div>
-      </div>
+      </div>,
+      document.getElementById('modal-root')
    );
 };
 

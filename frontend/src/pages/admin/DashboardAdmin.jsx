@@ -59,20 +59,26 @@ function DashboardAdmin() {
                      to='orders'
                   />
                </div>
-               <div className='flex justify-between overflow-auto h-72 gap-4 my-6'>
-                  <div className='w-[900px] h-56 flex flex-col'>
-                     <p className='font-semibold text-lg mb-4'>Monthly incomes statistics:</p>
-                     <Line data={areaChartData} options={chartOptions} />
+               {statistics?.data?.monthlyOrders.length > 0 && (
+                  <div className='flex justify-between overflow-auto h-72 gap-4 my-6'>
+                     <div className='w-[900px] h-56 flex flex-col'>
+                        <p className='font-semibold text-lg mb-4'>Monthly incomes statistics:</p>
+                        <Line data={areaChartData} options={chartOptions} />
+                     </div>
                   </div>
-               </div>
+               )}
             </div>
             <div className='h-full mx-auto'>
                <ManageSale />
-               <p className='font-semibold text-lg my-6 text-center'>Monthly transactions statistics:</p>
-               <Doughnut
-                  data={doughnutChartData}
-                  options={{ plugins: { legend: { display: false }, tooltip: { displayColors: false } } }}
-               />
+               {statistics?.data?.monthlyOrders.length > 0 && (
+                  <>
+                     <p className='font-semibold text-lg my-6 text-center'>Monthly transactions statistics:</p>
+                     <Doughnut
+                        data={doughnutChartData}
+                        options={{ plugins: { legend: { display: false }, tooltip: { displayColors: false } } }}
+                     />
+                  </>
+               )}
             </div>
          </div>
          {statistics?.data?.monthlyOrders.length ? (
@@ -83,7 +89,7 @@ function DashboardAdmin() {
                </Table>
             </>
          ) : (
-            <p>No orders data for this month available</p>
+            <p className='xl:text-left text-center'>No orders data for this month available</p>
          )}
       </article>
    );

@@ -45,7 +45,7 @@ export const useMutationOrder = (storedValues, setStoredValues) => {
                amount: product?.amount,
                price: product?.price,
                size: product?.size,
-               image: product?.image,
+               image: product?.image[0],
             };
          });
 
